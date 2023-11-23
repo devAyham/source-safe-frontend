@@ -4,6 +4,9 @@ import { HttpStatus } from "../constants/httpStatusCodes";
 import { AuthSliceActions } from "../../features/auth/redux/slices/authSlice";
 import useHandleUserCredantilesInStorge from "../../features/auth/hooks/useHandleUserCredantilesInStorge";
 import { useAppDispatch } from "../../features/common/hooks/useReduxHooks";
+import { useRefreshToken } from "api/apiHooks/useRefreshToken";
+import { showErrorMessage } from "api/helpers/showErrorMessage";
+import { showSuccessMessage } from "api/helpers/showSuccessMessage";
 
 type ErrorData = {
   [key: string]: string[];
@@ -22,21 +25,8 @@ type HandleReturnType = {
 };
 
 export const useHandle = (): HandleReturnType => {
-  const { removeUserCredantilesInStorge } = useHandleUserCredantilesInStorge();
-  const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const showErrorMessage = (message: string) => {
-    notification.error({
-      message,
-      duration: 4,
-    });
-  };
-  const showSuccessMessage = (message: string) => {
-    notification.success({
-      message,
-      duration: 3,
-    });
-  };
+  const { getNewTokens } = useRefreshToken();
 
   const handleError = (error: any, navigateTo?: string) => {
     const statusCode = error?.response?.status;
@@ -44,13 +34,9 @@ export const useHandle = (): HandleReturnType => {
 
     if (statusCode && Object.values(HttpStatus).includes(statusCode)) {
       switch (statusCode) {
-        // Handle Unauthorized error
+        // Handle Unauthorized error for access token
         case HttpStatus.Unauthorized:
-          showErrorMessage(errorMessage);
-          removeUserCredantilesInStorge();
-          dispatch(AuthSliceActions.Logout());
-          navigate("/auth/formLogin");
-
+          getNewTokens();
           break;
         case HttpStatus.Forbidden:
           showErrorMessage(errorMessage);
