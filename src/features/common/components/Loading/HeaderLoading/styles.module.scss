@@ -1,0 +1,32 @@
+.container {
+  position: relative;
+  .loader {
+    position: absolute;
+    width: fit-content;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  $width: 20%;
+  .line {
+    height: 3px;
+    background-color: var(--primary_color_1);
+    position: absolute;
+    left: 0;
+    width: $width;
+    border-radius: 5px;
+    animation-name: spin;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes spin {
+    0% {
+      left: 0;
+    }
+    100% {
+      left: calc(100% - $width);
+    }
+  }
+}

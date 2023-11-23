@@ -1,0 +1,12 @@
+@use "./styles/colors.module" as *;
+
+.button {
+  margin-inline-end: 25px;
+  margin-top: 5px;
+  font-weight: bold;
+  color: $icon_color; //   font-size: 20px;
+  &.full {
+    color: $primary_color_1;
+    border-color: $primary_color_1;
+  }
+}

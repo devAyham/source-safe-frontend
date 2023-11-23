@@ -1,0 +1,231 @@
+@use "styles/colors.module" as *;
+.sidebar {
+  background: $sider-color !important;
+  transition: all 0.7s ease-in-out !important;
+  height: 100vh;
+  // position: sticky !important;
+  z-index: 1000;
+  position: fixed !important;
+  inset-inline-start: 0;
+  top: 0;
+  bottom: 0;
+  .logobox {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 10px 0 10px 0;
+    cursor: pointer;
+    overflow: hidden;
+  }
+  .logo {
+    width: 100%;
+    height: auto;
+    position: relative;
+    padding: 10px;
+    // background-color: red;
+    display: flex;
+    justify-content: center;
+    .subLogo1 {
+      left: -14px;
+      top: 4.9px;
+      position: absolute;
+    }
+    .subLogo2 {
+      transition: all 500ms;
+      transform: rotate(1deg);
+      left: 2.2px;
+      top: 37.588px;
+      position: absolute;
+    }
+    &.uncollapsed {
+      position: relative;
+      .ant-menu-submenu-popup .ant-menu-vertical {
+        overflow: hidden !important;
+      }
+      .subLogo2 {
+        z-index: 2;
+        animation-name: animatesubLogo2;
+        animation-duration: 0.8s;
+        animation-delay: 1s;
+        animation-fill-mode: forwards;
+        animation-timing-function: linear;
+      }
+      .subLogo1 {
+        z-index: 2;
+        animation-name: animateLogo;
+        animation-duration: 2s;
+        animation-delay: 1.6s;
+        animation-fill-mode: forwards;
+        animation-timing-function: ease;
+      }
+      .textlogoOverlay {
+        z-index: 1;
+        position: absolute;
+        background-color: $sider-color;
+        animation-name: animateOverlayLogo;
+        animation-duration: 2.3s;
+        animation-delay: 1.45s;
+        animation-fill-mode: forwards;
+        width: 300%;
+        height: 100%;
+        left: -95%;
+      }
+      .textLogo {
+        position: absolute;
+        z-index: 0;
+        top: 19px;
+        left: -47px;
+        width: 300%;
+        height: 100%;
+      }
+    }
+  }
+  .fullLogo {
+    // width: 100%;
+    // height: 100%;
+    height: 65px;
+    object-fit: contain;
+    animation-name: animateLogo;
+    animation-duration: 1.5s;
+  }
+  .menu {
+    padding-top: 25px;
+    background-color: $sider-color !important;
+    border-inline: none !important;
+    display: block;
+    max-height: 80%;
+    overflow: hidden auto;
+    &::-webkit-scrollbar {
+      width: 0;
+    }
+    .navIcon {
+      width: 25px;
+      height: 100%;
+      fill: $icon_color;
+      margin: auto !important;
+      display: block;
+    }
+  }
+  ///////////////////////////////////////////////
+  // override ant-desgin menu styles
+  ///////////////////////////////////////////////
+  ///
+  .ant-layout-sider-zero-width-trigger {
+    top: 19px !important;
+    z-index: 1000;
+  }
+  .ant-menu-inline-collapsed {
+    .ant-menu-submenu-title {
+      padding-inline: calc(50% - 20px) !important;
+    }
+  }
+  .ant-menu-submenu-selected {
+    .ant-menu-submenu-title {
+      color: $primary_color_1 !important;
+      inset-inline-start: 5px !important;
+      background-color: $white !important;
+      border-start-start-radius: 100px !important;
+      border-end-start-radius: 100px !important;
+      .navIcon {
+        * {
+          fill: $primary_color_1 !important;
+        }
+        animation-name: navIconColorize;
+        animation-duration: 1s;
+        animation-play-state: running;
+        animation-iteration-count: 1;
+        margin: auto;
+        display: block;
+        height: 100%;
+      }
+    }
+    .ant-menu-sub.ant-menu-inline {
+      background-color: white !important;
+      border-end-start-radius: 20px !important;
+    }
+  }
+  .ant-menu-submenu-title,
+  .ant-menu-item {
+    transition: all 250ms !important;
+    height: 40px !important;
+    &:hover {
+      inset-inline-start: 5px !important;
+      background-color: white !important;
+      border-start-start-radius: 100px !important;
+      border-end-start-radius: 100px !important;
+    }
+  }
+  .ant-menu-inline {
+    border-inline-start: none !important;
+    .ant-menu-submenu.ant-menu-submenu-selected {
+      background-color: white !important;
+      margin-inline-start: 10px !important;
+      border-start-start-radius: 20px !important;
+      border-end-start-radius: 20px !important;
+      border-end-end-radius: 0px;
+      border-start-end-radius: 0px;
+    }
+    &.ant-menu-light:not(.ant-menu-horizontal) .ant-menu-item-selected {
+      // background-color: red;
+      background-color: var(--primary_color_5);
+      border-start-start-radius: 20px !important;
+      border-end-start-radius: 20px !important;
+    }
+  }
+}
+
+@keyframes animateLogo {
+  0% {
+    left: -14px;
+  }
+  50% {
+    left: 70px;
+  }
+  100% {
+    left: -70px;
+  }
+}
+@keyframes animatesubLogo2 {
+  0% {
+    // transform: rotate(0deg) translateY(-20px);
+    opacity: 1;
+  }
+  25% {
+    transform: rotate(10deg) translateY(5px);
+    opacity: 0.5;
+  }
+  // 50% {
+  //   transform: rotate(90deg) translateY(-40px);
+  //   opacity: 0.5;
+  // }
+  100% {
+    transform: rotate(20deg) translateY(10px);
+    opacity: 0;
+  }
+}
+@keyframes animateOverlayLogo {
+  0% {
+    margin-left: 0px;
+  }
+  50% {
+    margin-left: 0px;
+  }
+  100% {
+    margin-left: -160px;
+  }
+}
+@keyframes navIconColorize {
+  0% {
+    transform: scale(1) rotate(360deg);
+    opacity: 1;
+  }
+  1% {
+    transform: scale(0) rotate(0deg);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1) rotate(360deg);
+
+    opacity: 1;
+  }
+}

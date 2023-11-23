@@ -1,0 +1,69 @@
+@use "../../../../../../styles/colors.module.scss" as *;
+.uploadContanier {
+  width: 100% !important;
+  height: 100% !important;
+  display: flex;
+  //   justify-content: center;
+  //   align-items: center;
+  flex-direction: column;
+  .upload {
+    width: 100% !important;
+    height: 150px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    .uploadButton {
+      width: 25%;
+      margin: 10px;
+    }
+    .uploadText {
+      // padding-block-start: 20px;
+      font-size: 20px;
+      color: $icon_color;
+    }
+    .image {
+      width: 175px;
+      height: 175px;
+      object-fit: contain;
+    }
+  }
+  &[class~="ant-upload-wrapper"] {
+    [class~="ant-upload-list"] {
+      position: relative;
+      height: 150px !important;
+      margin-block: 20px;
+      display: flex !important;
+      justify-content: center;
+      align-items: center;
+      [class~="ant-upload-list-item-container"] {
+        z-index: 1;
+        width: unset !important;
+        height: unset !important;
+        margin-block-end: 30px !important;
+        [class~="ant-upload-list-item"] {
+          // border: none !important;
+          padding: 0 !important;
+          height: 5rem !important;
+          overflow: hidden;
+          &::before {
+            width: 100% !important;
+            height: 100% !important;
+          }
+        }
+      }
+      [class~="ant-upload"][class~="ant-upload-select"] {
+        position: absolute !important;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background-color: white;
+        [class~="ant-upload"] {
+          background-color: var(--card-color);
+        }
+      }
+    }
+  }
+}

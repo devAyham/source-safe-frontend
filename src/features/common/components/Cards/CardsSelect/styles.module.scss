@@ -1,0 +1,16 @@
+@use "../../../../../styles/colors.module.scss" as *;
+
+.select {
+    color: $icon_color;
+    font-size: large;
+    opacity: 0.6;
+    transition: all 300ms;
+    &:hover {
+      opacity: 0.8;
+      color: $primary_color_1;
+    }
+    &.active {
+      opacity: 1;
+      color: $primary_color_1;
+    }
+  }

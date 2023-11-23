@@ -1,0 +1,36 @@
+@use "/src/styles/colors.module.scss" as *;
+@use "/src/styles/mixins/defualt_form_styles" as *;
+.form {
+  display: flex;
+  flex-direction: column;
+  @include default_form_styles;
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+}
+.filter_icon {
+  cursor: pointer;
+  opacity: 0.6;
+  transition: all 250ms ease-in-out;
+  fill: $icon_color;
+  display: flex;
+  width: 38px;
+  height: 38px;
+  background: whitesmoke;
+  border-radius: 4px;
+  justify-content: center;
+  padding: inherit;
+  &:hover {
+    opacity: 1;
+  }
+  &.active * {
+    opacity: 1;
+    fill: $primary_color_1;
+  }
+  &.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}

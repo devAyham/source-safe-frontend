@@ -1,0 +1,10 @@
+.downloadButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary_color_1);
+  border-color: var(--primary_color_1);
+  svg {
+    margin-inline-end: 10px;
+  }
+}

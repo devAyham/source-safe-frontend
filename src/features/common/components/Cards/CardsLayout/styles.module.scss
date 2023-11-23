@@ -1,0 +1,15 @@
+@use "../../../../../styles/colors.module.scss" as *;
+.cardLayout {
+  // margin-block: 36px;
+  .cardLayoutContent {
+    min-height: 60vh;
+  }
+  .freeSampleLayout {
+    min-height: 55vh;
+  }
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+}

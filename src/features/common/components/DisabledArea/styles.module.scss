@@ -1,0 +1,18 @@
+.disabledArea {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  z-index: 10;
+  //   backdrop-filter: drop-shadow(4px 4px 10px gray);
+  backdrop-filter: grayscale(100%);
+  pointer-events: none;
+}
+.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+  width: 100%;
+  height: 100%;
+}

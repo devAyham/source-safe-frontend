@@ -1,0 +1,67 @@
+@use "/src/styles/colors.module" as *;
+.collapse {
+  display: flex;
+  width: 100%;
+  overflow-x: auto;
+  &::-webkit-scrollbar {
+    height: 2px;
+  }
+  .collapsePanel {
+    flex-shrink: 0;
+    width: 2.2rem;
+    height: 2.2rem;
+    display: flex;
+    color: $primary_color_1;
+    font-weight: 500;
+    align-items: center;
+    background-color: rgba(82, 82, 82, 0.07);
+    border-radius: 60px;
+    margin: 0 1rem 1rem 0;
+    transition: all 0.4s ease-out;
+    .collapseBtn {
+      background-color: transparent;
+      border: none;
+      width: 2.2rem;
+      height: 2.2rem;
+      padding: 0;
+      border-radius: 50%;
+      svg {
+        width: 2.2rem;
+        height: 2.2rem;
+      }
+      .customSVG {
+        background-color: rgba(82, 82, 82, 0.07);
+        width: 2.2rem;
+        height: 2.2rem;
+        border-radius: 50%;
+        vertical-align: 0em;
+        transform: scale(1);
+        display: grid;
+        justify-items: center;
+        svg {
+          width: 1.2rem;
+          height: 1.2rem;
+          color: #838383;
+        }
+      }
+    }
+    .content {
+      display: inline-block;
+      padding-inline: 0;
+      width: 0;
+      overflow: hidden;
+      transition: all 0.4s ease-out;
+      .name {
+        color: $icon_color;
+        font-size: x-small;
+      }
+      .value,
+      .name {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 85%;
+      }
+    }
+  }
+}

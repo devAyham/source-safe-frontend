@@ -1,0 +1,23 @@
+@use "./styles/colors.module.scss" as *;
+
+.tableContainer {
+  // height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: auto;
+  flex-direction: column;
+  gap: 10px;
+  .pagination {
+    margin-top: auto;
+  }
+}
+.action {
+  width: 100%;
+  font-size: 20px;
+  color: $icon_color;
+  transition: all 500ms;
+  &:hover {
+    color: $primary_color_1;
+  }
+}

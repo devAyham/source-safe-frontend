@@ -1,0 +1,63 @@
+@use "./styles/colors.module" as *;
+//overrdie ant header props
+.ant-layout-header {
+  padding-inline: 20px !important;
+}
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 990 !important;
+  width: 100%;
+  height: 70px !important;
+  background: $white !important;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin: 0;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.479);
+  .notifyAndAvatarBox {
+    display: flex;
+    align-items: center;
+    .notifyIcon {
+      transition: all 500ms;
+      margin-inline-end: 20px;
+      cursor: pointer;
+      fill: $icon_color;
+      &:hover {
+        fill: $primary_color_2;
+      }
+    }
+    // .avatar {
+    // cursor: pointer;
+    // }
+    .profileMenu {
+      margin: 0 10px;
+      .menuIcon {
+        transition: all 500ms;
+        color: $icon_color;
+        &:hover {
+          color: $primary_color_2;
+        }
+      }
+    }
+  }
+  .linksBox {
+    width: 30%;
+    // margin-inline-end: 40px;
+    display: flex;
+    justify-content: center;
+    .linksMenu {
+      margin-top: 10px;
+      background-color: transparent !important;
+      color: $primary_color_1;
+      font-weight: bold;
+      width: 100%;
+      margin-bottom: 2px !important;
+      .link {
+        padding-inline: 0 !important;
+        width: 100%;
+        color: $primary_color_1 !important;
+      }
+    }
+  }
+}

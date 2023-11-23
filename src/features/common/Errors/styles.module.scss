@@ -1,0 +1,30 @@
+@use "/src/styles/colors.module" as *;
+.errorPage {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    .image {
+      width: -webkit-fill-available;
+      width: -moz-available;
+      height: 25rem;
+      @media (min-width: 768px) {
+        margin-block-start: 3rem;
+      }
+    }
+    .text {
+      margin: 6rem 2rem 0;
+      text-align: center;
+      font-size: 25px;
+      color: $icon_color;
+    }
+    .actions {
+      margin-top: 20px;
+    }
+  }
+}

@@ -1,0 +1,45 @@
+@use "src/styles/colors.module.scss" as *;
+.upload {
+  width: 100% !important;
+  height: 100% !important;
+  display: flex;
+  flex-direction: column;
+  margin-block-end: 20px;
+  position: relative;
+  .uploadContent {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    padding: 5px;
+    .uploadText {
+      color: $icon_color;
+      margin-inline: 10px;
+    }
+    z-index: 1;
+    width: fit-content;
+  }
+  .uploadContanier {
+    width: 100% !important;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: row;
+    height: 100%;
+    background-color: $white_smoke;
+    overflow: hidden;
+    z-index: 0;
+    border-radius: 10px;
+    position: absolute;
+    .uploadButton {
+      width: fit-content;
+      border-radius: 0;
+      padding-inline: 10px;
+      inset-inline-end: 0;
+      height: 100%;
+      svg {
+        height: 100%;
+      }
+    }
+  }
+}
