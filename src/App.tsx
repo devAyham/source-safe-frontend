@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {Provider} from "react-redux/es/exports";
+import store from "./redux/store";
+import "styles/global/App.scss";
+import Main from "Main";
+import {HashRouter} from "react-router-dom";
+import CustomQueryClientProvider from "providers/CustomQueryClientProvider/CustomQueryClientProvider";
+import CookiesProvider from "providers/CookiesProvider/CookiesProvider";
+import CustomErrorBoundary from "features/common/Errors/CustomErrorBoundary/CustomErrorBoundary";
+import LoadingProvider from "./providers/IsLoadingProvider/LoadingProvider";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <>
+            <HashRouter>
+                <CustomErrorBoundary>
+                    <Provider store={store}>
+                        <CustomQueryClientProvider>
+                            <CookiesProvider>
+                                <LoadingProvider>
+                                    <Main/>
+                                </LoadingProvider>
+                            </CookiesProvider>
+                        </CustomQueryClientProvider>
+                    </Provider>
+                </CustomErrorBoundary>
+            </HashRouter>
+        </>
+    );
 }
 
 export default App;
