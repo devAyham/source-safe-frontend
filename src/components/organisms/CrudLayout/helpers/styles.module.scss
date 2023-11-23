@@ -1,0 +1,9 @@
+@use "/src/styles/colors.module" as *;
+.menu {
+  &[class~="ant-dropdown-menu-item-active"] {
+    background-color: transparent !important;
+    &:hover {
+      background-color: $errors_color_1 !important;
+    }
+  }
+}

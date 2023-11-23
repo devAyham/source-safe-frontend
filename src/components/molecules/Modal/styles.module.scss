@@ -1,0 +1,44 @@
+@use "./styles/colors.module.scss" as *;
+.modal {
+  [class~="ant-modal-content"] {
+    padding-inline: 45px !important;
+  }
+  .okStyles {
+  }
+  .cancelStyles {
+  }
+  .footerStyles {
+  }
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  // padding: 45px;
+
+  //   height: 300px;
+  .modalLogo {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: -5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .largeModalLogo {
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    top: -5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .xlModalLogo {
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    top: -2%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}

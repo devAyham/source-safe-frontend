@@ -1,0 +1,23 @@
+.flex {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  .pagination {
+    margin-top: 25px;
+  }
+}
+
+.not-data-placeholder {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 50vh;
+}
+.Stable {
+  margin-block: 48px;
+}

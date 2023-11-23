@@ -1,0 +1,42 @@
+@use "./styles/colors.module.scss" as *;
+.Srow {
+  // margin-top: 20px !important;
+  display: flex !important;
+  // justify-content: center !important;
+  align-items: center !important;
+  .SmainTitle {
+    display: flex;
+    align-items: center;
+    .Stitle {
+      // margin-inline-start: 20px !important;
+    }
+    .Stag {
+      display: flex;
+      align-items: center;
+      margin-inline-start: 20px;
+      &.Sclickable {
+        cursor: pointer;
+      }
+      svg,
+      img {
+        margin-inline-end: 10px;
+      }
+    }
+  }
+  // .mainActionsContainer {
+  //   marg
+  // }
+  .SextraActions {
+    margin-inline-start: auto !important;
+  }
+  .SsearchCol {
+    margin-inline-start: auto !important;
+    padding-inline: 5px !important;
+  }
+  .Scol {
+    padding-inline: 5px !important;
+  }
+  .SFilter {
+    padding-inline: 5px !important;
+  }
+}

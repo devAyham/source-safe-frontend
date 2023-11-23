@@ -1,0 +1,41 @@
+@use "./styles/colors.module.scss" as *;
+
+.primary {
+  // background-color: red;
+}
+.text {
+  color: $primary_color_1;
+  transition: all 500ms;
+  font-weight: 500;
+  // &:hover {
+  //   color: $primary_color_1 !important;
+  // }
+}
+.link {
+  color: $icon_color;
+  transition: all 500ms;
+  // &[danger] {
+  &:not([class~="ant-btn-dangerous"]) {
+    &:hover {
+      color: $primary_color_1 !important;
+    }
+  }
+  // background-color: red;
+}
+.ghost {
+  color: $subtitle_color;
+  transition: all 500ms;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  &:hover {
+    color: $primary_color_2 !important;
+  }
+  // background-color: red;
+}
+.secondry {
+  // border-color: red !important;
+}
+.notClickable {
+  pointer-events: none;
+}

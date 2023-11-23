@@ -1,0 +1,12 @@
+@use "./styles/colors.module.scss" as *;
+
+.title {
+  font-weight: 700;
+  color: $title_color !important;
+  line-height: 3rem !important;
+  margin: 0 !important;
+}
+.paragraph {
+}
+.text {
+}

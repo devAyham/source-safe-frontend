@@ -1,0 +1,24 @@
+@use "./styles/colors.module.scss" as *;
+.antTableHeaderStyles {
+  :global(.ant-table thead tr th) {
+    background-color: $primary_color_4;
+    backdrop-filter: blur(10px);
+    color: $title_color;
+  }
+}
+.tableContainer {
+  // height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: auto;
+  flex-direction: column;
+  gap: 10px;
+  .table {
+    width: 100%;
+  }
+  .pagination {
+    margin-top: auto;
+  }
+}
