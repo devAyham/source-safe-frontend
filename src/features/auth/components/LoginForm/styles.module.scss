@@ -1,0 +1,61 @@
+@use "../../../../styles/colors.module.scss" as *;
+
+.login_form {
+  position: relative;
+  box-sizing: border-box;
+  margin-block-start: 4rem;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  .login_modal {
+    margin-top: auto;
+    position: relative;
+    width: 100%;
+    .avatar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      user-select: none;
+      pointer-events: none;
+      flex-direction: column;
+      .avatar_icon {
+        margin-bottom: 10px;
+        height: 6rem;
+      }
+      .avatar_title {
+        font-family: Expansiva;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        color: red;
+      }
+    }
+    .form {
+      margin-top: 70px;
+      .login_input {
+        padding-block: 10px !important;
+        margin-block: 10px !important;
+        border: 0;
+        border-bottom: 1px solid #5f607c !important;
+        border-radius: 0;
+        background: transparent !important;
+        box-shadow: none;
+        transition-duration: 0.5s;
+        [class*="ant-input-prefix"] {
+          color: $black;
+          [class*="anticon"] {
+            margin-inline-end: 1.5rem;
+          }
+        }
+        &:hover,
+        &:focus-within {
+          border-bottom-color: $primary_color_1;
+        }
+      }
+    }
+  }
+}
