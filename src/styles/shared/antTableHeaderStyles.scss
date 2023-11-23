@@ -1,0 +1,7 @@
+@use "./styles/colors.module.scss" as *;
+.antTableHeaderStyles {
+  .ant-table thead tr th {
+    background-color: yellow;
+    backdrop-filter: blur(10px);
+  }
+}

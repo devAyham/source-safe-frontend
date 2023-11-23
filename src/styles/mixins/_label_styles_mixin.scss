@@ -1,0 +1,6 @@
+@use "./styles/colors.module.scss" as *;
+
+@mixin label_styles {
+  color: $icon_color;
+  font-weight: 500;
+}

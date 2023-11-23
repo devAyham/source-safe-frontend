@@ -1,0 +1,37 @@
+@mixin default_form_styles {
+  &[class~="ant-form"] {
+    [class~="ant-form-item"] {
+      margin: 5px;
+      [class~="ant-form-item-control"] {
+        [class~="ant-form-item-control-input"] {
+          [class~="ant-input-affix-wrapper"],
+          [class~="ant-form-item-control-input-content"] input,
+          [class~="ant-form-item-control-input-content"]
+            [class~="ant-select-selector"],
+          [class~="ant-form-item-control-input-content"] textarea {
+            &:not(:hover):not(:focus) {
+              border-color: transparent;
+            }
+          }
+          [class~="ant-input-affix-wrapper"] {
+            padding: 1px !important;
+          }
+          [class~="ant-form-item-control-input-content"]:not(
+              :has([class~="ant-input-affix-wrapper"])
+            )
+            input {
+            padding: 1px !important;
+          }
+          [class~="ant-form-item-control-input-content"] textarea {
+            padding: 1px !important;
+          }
+          [class~="ant-form-item-control-input-content"]
+            [class~="ant-select-selector"] {
+            padding: 1px 1px !important;
+            min-height: 36px !important;
+          }
+        }
+      }
+    }
+  }
+}

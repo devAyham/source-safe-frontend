@@ -1,0 +1,17 @@
+@use "./styles/colors.module.scss" as *;
+
+.tag {
+  color: $title_color;
+  background-color: $primary_color_3;
+  border: 1px solid $primary_color_2;
+  display: flex;
+  flex-wrap: nowrap;
+  width: fit-content;
+  max-width: 120px;
+  overflow: hidden;
+  .tagText {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}

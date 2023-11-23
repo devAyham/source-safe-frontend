@@ -1,0 +1,19 @@
+@use "./styles/colors.module.scss" as *;
+
+.custom-input-number-styles {
+  .ant-input-number-input {
+    background-color: var(--primary_color_1) !important;
+    color: $white !important;
+    width: 25px !important;
+    height: 26px !important;
+    border-radius: 50% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    text-align: center !important;
+  }
+  .ant-input-number-group-addon {
+    border: none !important;
+    background-color: transparent !important;
+    padding: 0 6px !important;
+  }
+}

@@ -1,0 +1,39 @@
+@use "../colors.module.scss" as *;
+
+.row {
+  margin-top: 20px !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+.maintitle {
+  color: red;
+  margin-inline-start: 20px !important;
+}
+.searchCol {
+  margin-inline-start: auto !important;
+  padding-inline: 5px !important;
+}
+.switcherCol {
+  padding-inline: 5px !important;
+}
+.col {
+  padding-inline: 5px !important;
+}
+.filter {
+  cursor: pointer;
+  fill: $icon_color !important;
+  opacity: 0.6;
+  &:hover {
+    opacity: 1;
+  }
+  &:active {
+    opacity: 1 !important;
+    fill: $primary_color_1 !important;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .switcherCol {
+    margin-inline-start: auto;
+  }
+}

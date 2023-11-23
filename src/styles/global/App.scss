@@ -1,0 +1,310 @@
+@use "./styles/colors.module.scss" as *;
+@use "/src/styles/mixins/label_styles_mixin" as *;
+
+:root {
+  --primary_color_1: #11c1e0;
+  --primary_color_2: #11c1e0ce;
+  --primary_color_3: #11c1e067;
+  --primary_color_4: #11c1e05e;
+  --primary_color_5: #11c1e03a;
+  --sider-color: #caecff;
+  --card-color: #d6daf34d;
+}
+
+body[data-theme="green"] {
+  --primary_color_1: #23a494;
+  --primary_color_2: #81ddbc;
+  --primary_color_3: #81ddbbd7;
+  --primary_color_4: #81ddbb90;
+  --primary_color_5: #81ddbb51;
+  --sider-color: #ddf5ed;
+  --card-color: #f0f1f6;
+}
+
+* {
+  zoom: 100% !important;
+
+  &::-webkit-scrollbar {
+    width: 0.5vw;
+    height: 0;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $icon_color;
+    border-radius: 5px;
+    margin: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  &::-webkit-scrollbar-button {
+    background-color: transparent;
+    height: 30px !important;
+  }
+
+  &::selection {
+    background-color: $primary_color_1 !important;
+    color: $white !important;
+  }
+}
+
+// .ant-popover .ant-popover-arrow::before {
+//   background-color: green !important;
+// }
+
+html {
+  background-color: $white;
+  overflow-x: hidden !important;
+
+  &:has(.ant-modal-mask) {
+    overflow: hidden !important;
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: $white;
+  width: 100vw;
+}
+
+.label {
+  @include label_styles;
+}
+
+.spin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+// override some ant-desgin styles
+// .ant-layout thead tr th {
+//   background-color: $primary_color_4 !important;
+// }
+.ant-form {
+  .ant-form-item {
+    margin: 0;
+    .ant-select-selection-item {
+      margin-inline-start: 10px;
+    }
+    .ant-form-item-control {
+      .ant-form-item-control-input {
+        .ant-input-affix-wrapper,
+        .ant-form-item-control-input-content input,
+        .ant-form-item-control-input-content .ant-select-selector,
+        .ant-form-item-control-input-content textarea {
+          &:not(:hover):not(:focus) {
+            border-color: transparent;
+          }
+        }
+        .ant-input-affix-wrapper {
+          padding: 11px;
+        }
+        .ant-form-item-control-input-content:not(:has(.ant-input-affix-wrapper))
+          input {
+          padding: 11px 0px 11px 11px;
+          // background-color: red;
+        }
+        .ant-form-item-control-input-content textarea {
+          padding: 6px 11px 6px 5px;
+        }
+        .ant-form-item-control-input-content .ant-select-selector {
+          padding: 6px 0px 6px 11px;
+          min-height: 46px;
+          max-height: fit-content;
+        }
+      }
+    }
+  }
+}
+.ant-form-item-label label {
+  color: $icon_color !important;
+  font-weight: 500 !important;
+}
+.ant-upload-wrapper .ant-upload-drag {
+  border-width: 3px !important;
+}
+.ant-progress.ant-progress-circle .ant-progress-text {
+  inset-inline-start: unset;
+  left: 50%;
+}
+
+.ant-table-cell.ant-table-cell-scrollbar {
+  background: transparent !important;
+  border: none !important;
+}
+
+.ant-layout {
+  background-color: $white !important;
+  // overflow: hidden;
+}
+
+.ant-card-meta {
+  width: 100% !important;
+  height: 100% !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+
+  .ant-card-meta-detail,
+  .ant-card-meta-description {
+    width: 100% !important;
+    height: 100% !important;
+  }
+}
+
+.ant-card-body {
+  width: 100% !important;
+  height: 100% !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  padding: 5px !important;
+}
+
+.ant-form-item-label {
+  padding: 0px !important;
+}
+
+.ant-form-item {
+  height: max-content;
+
+  .ant-form-item-row {
+    width: 100%;
+    height: 100%;
+
+    .ant-form-item-control {
+      width: 100%;
+    }
+
+    .ant-select-arrow {
+      color: $icon_color;
+    }
+
+    .ant-select-selector {
+      background-color: var(--card-color) !important;
+    }
+
+    .ant-select-disabled {
+      .ant-select-selector {
+        opacity: 0.9;
+        // background-color: $errors_color_4;
+      }
+    }
+
+    .ant-input,
+    .ant-input-number {
+      background-color: var(--card-color);
+      border-radius: 10px;
+      &.ant-input-number-in-form-item {
+        padding: 11px 0px 11px 11px !important;
+      }
+      &:not(:hover):not(:focus) {
+        border-color: transparent;
+      }
+    }
+
+    .ant-input-disabled {
+      opacity: 0.9;
+    }
+
+    .ant-input-affix-wrapper {
+      background-color: var(--card-color);
+
+      input {
+        background-color: transparent;
+      }
+    }
+
+    .ant-input-affix-wrapper-disabled {
+      opacity: 0.9;
+    }
+
+    .ant-picker-range {
+      width: 100%;
+      background-color: var(--card-color);
+
+      svg {
+        fill: $icon_color;
+      }
+
+      ::placeholder {
+        @include label_styles;
+        opacity: 1;
+      }
+    }
+
+    .ant-picker-disabled {
+      opacity: 0.9;
+    }
+  }
+
+  ::placeholder {
+    @include label_styles;
+    opacity: 1;
+  }
+}
+
+.ant-tree-node-selected {
+  background-color: $primary_color_2 !important;
+}
+
+//time-picker
+.ant-picker {
+  background-color: var(--card-color) !important;
+  width: 100%;
+
+  .ant-picker-input {
+    input {
+      ::placeholder {
+        @include label_styles;
+        opacity: 1;
+      }
+    }
+  }
+}
+.ant-select-selection-search {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  // background: red;
+  width: 100%;
+  margin-inline-start: 0px !important;
+  input {
+    padding: 0px !important;
+  }
+}
+
+//swiper
+.swiper {
+  width: 100%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.swiper-slide {
+  background-position: center;
+  background-size: cover;
+  width: 300px;
+  height: 300px;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+}
+
+//modal
+.ant-modal {
+  .ant-modal-content {
+    .ant-modal-footer {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}

@@ -1,0 +1,66 @@
+$primary_color_1: var(--primary_color_1);
+$primary_color_2: var(--primary_color_2);
+$primary_color_3: var(--primary_color_3);
+$primary_color_4: var(--primary_color_4);
+$primary_color_5: var(--primary_color_5);
+$sider-color: var(--sider-color);
+$card-color: var(--card-color);
+
+$errors_color_1: #dc6e6e;
+$errors_color_2: #ec9e9ed1;
+$errors_color_3: #ec9e9e92;
+$errors_color_4: #ec9e9e47;
+$warning_dark: #ff9811;
+$warning_two: #fbf8e1;
+$warning_light: #f5e6df;
+$success_dark: #23a494;
+$success_light: #81ddbb85;
+$success_color: green;
+$active_color: #39c54f;
+$light_color: #f0f1f6;
+$white_smoke: #f5f5f5;
+$white: white;
+$black: black;
+$dark_color: #0e0e2c;
+$title_color: #484964;
+$subtitle_color: #5f607c;
+$dark_gray_color: #4a4a68;
+$light_gray_color: #d1d3d4;
+$light_gray_color_2: hsla(0, 0%, 32%, 0.07);
+$icon_color: #8c8ca1;
+$dorian: rgba(82, 82, 82, 0.075);
+
+:export {
+  primary_color_one: #11c1e0;
+  primary_color_two: #11c1e0ce;
+  primary_color_three: #11c1e080;
+  primary_color_four: #11c1e05e;
+  primary_color_five: #11c1e03a;
+}
+
+:export {
+  primary_color_one_green: #23a494;
+  primary_color_two_green: #81ddbc;
+  primary_color_three_green: #81ddbbd7;
+  primary_color_four_green: #81ddbb90;
+  primary_color_five_green: #81ddbb51;
+}
+:export {
+  errors_color_one: $errors_color_1;
+  errors_color_two: $errors_color_2;
+  errors_color_three: $errors_color_3;
+  errors_color_four: $errors_color_4;
+  warninig_dark: $warning_dark;
+  warning_two: $warning_two;
+  warning_light: $warning_light;
+  sider_color: $sider-color;
+  dark_color: $dark_color;
+  dark_gray_color: $dark_gray_color;
+  icon_color: $icon_color;
+  light_color: $light_color;
+  white: $white;
+  black: $black;
+  white_smoke: $white_smoke;
+  success_color: $success_color;
+  active_color: $active_color;
+}
