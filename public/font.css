@@ -1,0 +1,122 @@
+/* // Cairo */
+@font-face {
+  font-family: "Default";
+  src: url("./fonts/Cario/Cairo.ttf");
+  unicode-range: U+0600-06FF;
+  font-weight: 100;
+}
+@font-face {
+  font-family: "Default";
+  src: url("./fonts/Cario/Cairo.ttf");
+  unicode-range: U+0600-06FF;
+  font-weight: 300;
+}
+@font-face {
+  font-family: "Default";
+  src: url("./fonts/Cario/Cairo.ttf");
+  unicode-range: U+0600-06FF;
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Default";
+  src: url("./fonts/Cario/Cairo.ttf");
+  unicode-range: U+0600-06FF;
+  font-weight: 500;
+}
+@font-face {
+  font-family: "Default";
+  src: url("./fonts/Cario/Cairo.ttf");
+  unicode-range: U+0600-06FF;
+  font-weight: 700;
+}
+@font-face {
+  font-family: "Default";
+  src: url("./fonts/Cario/Cairo.ttf");
+  unicode-range: U+0600-06FF;
+  font-weight: 900;
+}
+
+/* // Roboto */
+@font-face {
+  font-family: "Default";
+  src: url("./fonts/Roboto/Roboto-Thin.ttf");
+  unicode-range: U+0000-00FF;
+  font-weight: 100;
+}
+@font-face {
+  font-family: "Default";
+  src: url("./fonts/Roboto/Roboto-Light.ttf");
+  unicode-range: U+0000-00FF;
+  font-weight: 300;
+}
+@font-face {
+  font-family: "Default";
+  src: url("./fonts/Roboto/Roboto-Regular.ttf");
+  unicode-range: U+0000-00FF;
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Default";
+  src: url("./fonts/Roboto/Roboto-Medium.ttf");
+  unicode-range: U+0000-00FF;
+  font-weight: 500;
+}
+@font-face {
+  font-family: "Default";
+  src: url("./fonts/Roboto/Roboto-Bold.ttf");
+  unicode-range: U+0000-00FF;
+  font-weight: 700;
+}
+@font-face {
+  font-family: "Default";
+  src: url("./fonts/Roboto/Roboto-Black.ttf");
+  unicode-range: U+0000-00FF;
+  font-weight: 900;
+}
+/* // Roboto - italic */
+@font-face {
+  font-family: "Default";
+  src: url("./fonts/Roboto/Roboto-ThinItalic.ttf");
+  unicode-range: U+0000-00FF;
+  font-weight: 100;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Default";
+  src: url("./fonts/Roboto/Roboto-LightItalic.ttf");
+  unicode-range: U+0000-00FF;
+  font-weight: 300;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Default";
+  src: url("./fonts/Roboto/Roboto-Italic.ttf");
+  unicode-range: U+0000-00FF;
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Default";
+  src: url("./fonts/Roboto/Roboto-MediumItalic.ttf");
+  unicode-range: U+0000-00FF;
+  font-weight: 500;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Default";
+  src: url("./fonts/Roboto/Roboto-BoldItalic.ttf");
+  unicode-range: U+0000-00FF;
+  font-weight: 700;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Default";
+  src: url("./fonts/Roboto/Roboto-BlackItalic.ttf");
+  unicode-range: U+0000-00FF;
+  font-weight: 900;
+  font-style: italic;
+}
+
+* {
+  font-family: "Default" !important;
+}
