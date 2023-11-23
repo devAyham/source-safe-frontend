@@ -16,7 +16,7 @@ interface SideBarProps {
 const SideBar = ({ onWidthChange }: SideBarProps) => {
   const [collapsed, setCollapsed] = useState(true);
   const [widths, setWidths] = useState({ width: "15%", collapsedWidth: "80" });
-  const { userInfo } = useAppSelector((state) => state.auth);
+  const { user } = useAppSelector((state) => state.auth);
   const [roleBasedMenuItems, setRoleBasedMenuItems] =
     useState<MenuItemType[]>();
   const { width, height } = useWindowSize();
@@ -38,7 +38,7 @@ const SideBar = ({ onWidthChange }: SideBarProps) => {
       items.push(item.item);
     });
     setRoleBasedMenuItems(items);
-  }, [userInfo]);
+  }, [user]);
 
   useEffect(() => {
     resize();

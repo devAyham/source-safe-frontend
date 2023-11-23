@@ -12,6 +12,6 @@ interface AuthorizedRoutesProps {
  * @param {rolesTypes[]} roles - roles that we want to check
  */
 export const AuthorizedRoutes = ({ roles }: AuthorizedRoutesProps) => {
-  const { userInfo } = useAppSelector((state) => state.auth);
+  const { user } = useAppSelector((state) => state.auth);
   return roles.includes("user") ? <Outlet /> : <FourOThreePage />;
 };

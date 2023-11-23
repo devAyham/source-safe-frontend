@@ -70,7 +70,7 @@ const NotificationPopover = () => {
   );
 };
 const AuthUserMenu = () => {
-  const { userInfo } = useAppSelector((state) => state.auth);
+  const { user } = useAppSelector((state) => state.auth);
   const navigate = useNavigate();
   const { t } = useTranslation();
 

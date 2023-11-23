@@ -15,10 +15,10 @@ export const useNewLogin = () => {
         //The data has any type why?
         onSuccess(data: AxiosResponse<IAuthEntity>) {
           const {
-            data: { user, token },
+            data: { user, tokens },
           } = data;
           onSuccessLoginHelper({
-            token,
+            tokens,
             user,
           });
         },

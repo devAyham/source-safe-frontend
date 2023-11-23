@@ -53,10 +53,7 @@ export const useHandle = (): HandleReturnType => {
 
           break;
         case HttpStatus.Forbidden:
-          //NOTE - fixed by ayham becuase this message is wronge
           showErrorMessage(errorMessage);
-          // showErrorMessage("you can't remove this item , another items depend on it");
-          // Handle Forbidden error
           break;
         case HttpStatus.UnprocessableEntity:
           showErrorMessage(errorMessage);

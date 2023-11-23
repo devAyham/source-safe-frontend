@@ -1,7 +1,10 @@
 import { EntityIdType } from "types/EntityId.type";
 
 export default interface IEntity {
-  token: string;
+  tokens: {
+    accessToken: string;
+    refreshToken: string;
+  };
   user: IUserData;
 }
 export interface IUserData {

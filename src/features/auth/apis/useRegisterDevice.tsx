@@ -15,15 +15,15 @@ export const useRegisterDevice = () => {
         onSuccess(data) {
           if (data.data.user !== null) {
             const {
-              data: { user, token },
+              data: { user, tokens },
             } = data;
 
             const userInfo = DestructureUserInfo(user);
             //for first mount
-            if (token) {
+            if (tokens) {
               setUserGlobally({
-                token,
-                userInfo,
+                tokens,
+                user: userInfo,
               });
             }
           }

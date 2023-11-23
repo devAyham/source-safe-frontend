@@ -1,36 +1,32 @@
-import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {AuthStateInterface} from "features/auth/interfaces/AuthStateInterface.d";
-import {WritableDraft} from "immer/dist/internal";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { AuthStateInterface } from "features/auth/interfaces/AuthStateInterface.d";
+import { WritableDraft } from "immer/dist/internal";
+import { loginAction } from "../actions/login";
+import { logoutAction } from "../actions/logout";
+import { setRememberMeAction } from "../actions/setRememberMe";
+import { setTokensAction } from "../actions/setTokens";
 
 const initialState: AuthStateInterface = {
   rememberMe: false,
-  userInfo: null,
-  token: null,
+  user: null,
+  tokens: {
+    accessToken: null,
+    refreshToken: null,
+  },
 };
 
-const loginAction = (
-  state: WritableDraft<AuthStateInterface>,
-  action: PayloadAction<AuthStateInterface>
-) => {
-  state.token = action.payload.token;
-  state.userInfo = action.payload.userInfo;
-  state.rememberMe = action.payload.rememberMe;
-};
 /**
  * @namespace authSlice
  */
+
 const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
     Login: loginAction,
-    Logout: () => ({ ...initialState }),
-    SetRememberMe: (state, action: PayloadAction<boolean>) => {
-      state.rememberMe = action.payload;
-    },
-    SetToken: (state, action: PayloadAction<string | null>) => {
-      state.token = action.payload;
-    },
+    Logout: logoutAction,
+    SetRememberMe: setRememberMeAction,
+    SetTokens: setTokensAction,
   },
 });
 

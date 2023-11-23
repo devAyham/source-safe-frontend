@@ -37,7 +37,7 @@ export default function VideoUploader({
 }: UploadButtonProps) {
   const dispatch = useAppDispatch();
   // const { mutate, isLoading } = useDeleteUploadedVideo();
-  const { token } = useAppSelector((state) => state.auth);
+  const { tokens } = useAppSelector((state) => state.auth);
   // const { VideoRemovedAction, VideoUploadedAction } = videosSliceAction;
 
   const { t } = useTranslation();
@@ -54,7 +54,7 @@ export default function VideoUploader({
     <Uploader
       maxFilesErrorRetries={3}
       headerObject={{
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${tokens.accessToken}`,
         "Accept-Language": language,
         "current-page": window.location.href,
       }}

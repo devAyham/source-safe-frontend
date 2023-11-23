@@ -54,7 +54,7 @@ const SingleApiSelectInputWithAddLocalSearch = ({
   const [arName, setArName] = useState("");
   const [enName, setEnName] = useState("");
   const [value, setValue] = useState<string>("");
-  const { token } = useAppSelector((state) => state.auth);
+  const { tokens } = useAppSelector((state) => state.auth);
 
   const { t } = useTranslation();
 
@@ -85,7 +85,7 @@ const SingleApiSelectInputWithAddLocalSearch = ({
         url,
         method: "POST",
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${tokens.accessToken}`,
         },
         data,
       });

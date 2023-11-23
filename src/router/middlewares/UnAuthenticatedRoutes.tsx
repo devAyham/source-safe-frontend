@@ -5,11 +5,11 @@ import { Navigate, Outlet, useLocation } from "react-router-dom";
  * @description a middleware to prevent a user from navigate to apps pages if already enter in an app
  */
 export const UnAuthenticatedRoutes = () => {
-  const { userInfo } = useAppSelector((state) => state.auth);
+  const { user } = useAppSelector((state) => state.auth);
   const to = "/medicines";
   // const to = userInfo?.brand_id ? "/medicines" : "/";
   const location = useLocation();
-  return userInfo == (null || undefined) ? (
+  return user == (null || undefined) ? (
     <Outlet />
   ) : (
     <Navigate to={to} state={{ from: location }} />

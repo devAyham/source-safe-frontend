@@ -54,12 +54,12 @@ const ImagesUploder = ({
 }: ImagesUploderProps) => {
   const [fileList, setFileList] = useState<UploadFile[]>([]);
   const { t } = useTranslation();
-  const { token } = useAppSelector((state) => state.auth);
+  const { tokens } = useAppSelector((state) => state.auth);
   const { language } = useLanguage();
   //   const [imagesUploaded, setImagesUploaded] = useState<string[]>([]);
 
   const authHeader = {
-    Authorization: `Bearer ${token}`,
+    Authorization: `Bearer ${tokens.accessToken}`,
     "Accept-Language": language,
     "current-page": window.location.href,
   };

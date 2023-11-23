@@ -10,7 +10,7 @@ import { useEffect, useLayoutEffect } from "react";
 
 const AuthProvider = ({ children }: any) => {
   const { FCMtoken, language } = useAppSelector((state) => state.ui);
-  const { token } = useAppSelector((state) => state.auth);
+  const { tokens } = useAppSelector((state) => state.auth);
   const { isValid, isChecked, decryptedInfo } = useDecryptUserData();
   const { mutate: mutateRegister } = useRegisterDevice();
   const { getAccessWithoutLogin } = useGetAccessWithoutLogin();
@@ -27,7 +27,7 @@ const AuthProvider = ({ children }: any) => {
     if (FCMtoken !== null) {
       mutateRegister();
     }
-  }, [FCMtoken, token, language]);
+  }, [FCMtoken, tokens, language]);
   return <>{children}</>;
 };
 

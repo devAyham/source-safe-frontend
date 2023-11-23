@@ -2,9 +2,12 @@ import { UserInterface } from "./UserInterface.d";
 /** */
 export interface AuthStateInterface {
   /** */
-  token: string | null;
+  tokens: {
+    accessToken: string | null;
+    refreshToken: string | null;
+  };
   /** */
-  userInfo: UserInterface | null;
+  user: UserInterface | null;
   /** */
   rememberMe: boolean;
 }

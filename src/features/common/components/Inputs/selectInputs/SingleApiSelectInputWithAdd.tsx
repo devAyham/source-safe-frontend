@@ -59,7 +59,7 @@ const SingleApiSelectInputWithAdd = ({
   const [searchContent, setSearchTerm] = useSearchDelay();
   const [arName, setArName] = useState("");
   const [enName, setEnName] = useState("");
-  const { token } = useAppSelector((state) => state.auth);
+  const { tokens } = useAppSelector((state) => state.auth);
 
   const { t } = useTranslation();
 
@@ -98,7 +98,7 @@ const SingleApiSelectInputWithAdd = ({
         url,
         method: "POST",
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${tokens.accessToken}`,
         },
         data,
       });

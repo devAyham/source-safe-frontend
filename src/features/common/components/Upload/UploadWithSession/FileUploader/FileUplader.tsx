@@ -51,10 +51,10 @@ const FilesUploder = ({
   disabled = false,
 }: FilesUploderProps) => {
   const [fileList, setFileList] = useState<UploadFile[]>([]);
-  const { token } = useAppSelector((state) => state.auth);
+  const { tokens } = useAppSelector((state) => state.auth);
   const { language } = useLanguage();
   const authHeader = {
-    Authorization: `Bearer ${token}`,
+    Authorization: `Bearer ${tokens.accessToken}`,
     "Accept-Language": language,
     "current-page": window.location.href,
   };
