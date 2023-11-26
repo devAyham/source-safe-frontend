@@ -4,9 +4,9 @@ import { UnlockFilled } from "@ant-design/icons";
 import variables from "styles/_colors.module.scss";
 import { useAppSelector } from "features/common/hooks/useReduxHooks";
 /**
- * 
- * @param param0 
- * @returns 
+ *
+ * @param param0
+ * @returns
  */
 const PasswordInput = ({ className }: { className?: string }) => {
   const { t } = useTranslation();

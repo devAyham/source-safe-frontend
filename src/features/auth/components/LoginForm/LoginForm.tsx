@@ -1,22 +1,16 @@
-import { Col, Form, Row } from "antd";
-import styles from "./styles.module.scss";
-import { useTranslation } from "react-i18next";
-import PhoneInput from "features/common/components/Inputs/numberInputs/PhoneInput";
-import PasswordInput from "../Inputs/PasswordInput";
-import RememberMeCheck from "../Inputs/RememberMeCheck";
-import { memo } from "react";
-import {
-  useAppDispatch,
-  useAppSelector,
-} from "features/common/hooks/useReduxHooks";
 import { MobileFilled } from "@ant-design/icons";
-import variables from "styles/_colors.module.scss";
-import ImportSvg from "features/common/helpers/importSvg";
+import { Col, Form, Input, Row } from "antd";
+import { ReactComponent as Logo } from "assets/svg/generalSvgs/logo.svg";
 import { Button } from "components";
 import { useNewLogin } from "features/auth/apis/useLogin";
-import { ISubmittedValues } from "./SubmittedValues";
 import { AuthSliceActions } from "features/auth/redux/slices/authSlice";
-import { ReactComponent as Logo } from "assets/svg/generalSvgs/logo.svg";
+import { useAppDispatch } from "features/common/hooks/useReduxHooks";
+import { memo } from "react";
+import { useTranslation } from "react-i18next";
+import PasswordInput from "../Inputs/PasswordInput";
+import RememberMeCheck from "../Inputs/RememberMeCheck";
+import { ISubmittedValues } from "./SubmittedValues";
+import styles from "./styles.module.scss";
 
 /**
  *
@@ -25,7 +19,6 @@ import { ReactComponent as Logo } from "assets/svg/generalSvgs/logo.svg";
 const LoginForm = () => {
   const { t } = useTranslation();
   const { mutateAsync, isLoading } = useNewLogin();
-  const { theme } = useAppSelector((state) => state.ui);
   const dispatch = useAppDispatch();
 
   const onFinish = ({ email, password, rememberMe }: ISubmittedValues) => {
@@ -51,45 +44,22 @@ const LoginForm = () => {
             onFinish={onFinish}
             autoComplete="off"
           >
-            <PhoneInput
-              placeholder={`${t("PHONE_NUMBER")}`}
+            <Form.Item
+              name={"email"}
               rules={[
                 {
-                  validator(rule, value, callback) {
-                    if (!value) {
-                      return Promise.reject(
-                        new Error(`${t("THIS_FIELD_IS_REQUIRED")}`)
-                      );
-                    }
-                    if (value && value.match(/^[0]/g)) {
-                      return Promise.reject(
-                        new Error(`${t("SHOULD_NOT_START_WITH_ZERO")}`)
-                      );
-                    }
-                    if (value && !value.match(/^[0-9]{9}$/g)) {
-                      return Promise.reject(
-                        new Error(`${t("THIS_VALUE_IS_INVALID")}`)
-                      );
-                    }
-                    return Promise.resolve();
-                  },
+                  required: true,
+                  type: "email",
                 },
               ]}
-              prefix={
-                <>
-                  <MobileFilled
-                    style={{
-                      color:
-                        theme === "green"
-                          ? variables.primary_color_one_green
-                          : variables.primary_color_one,
-                    }}
-                  />{" "}
-                  +963
-                </>
-              }
-              className={styles.login_input}
-            />
+            >
+              <Input
+                type="email"
+                className={styles.login_input}
+                prefix={<MobileFilled color="" />}
+                placeholder="Email"
+              />
+            </Form.Item>
             <PasswordInput className={styles.login_input} />
             <RememberMeCheck />
             <Form.Item

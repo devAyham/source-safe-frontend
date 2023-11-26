@@ -12,11 +12,6 @@ const FormLoginPage = () => {
         <AuthContainer>
           <ConfigProvider direction="ltr">
             <LoginForm />
-            {/* <div>
-              <NavLink className={styles.link} to={"/auth/qrCodeLogin"}>
-                {t("OR_QUICK_LOGIN_USING_QR_SCANNER_")}
-              </NavLink>
-            </div> */}
           </ConfigProvider>
         </AuthContainer>
       </div>
