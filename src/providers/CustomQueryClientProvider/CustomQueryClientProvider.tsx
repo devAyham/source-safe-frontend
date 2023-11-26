@@ -1,8 +1,10 @@
 import decryptData from "features/common/helpers/decryptData";
 import encryptData from "features/common/helpers/encryptData";
+import useCheckRetryStatus from "hooks/useCheckRetryStatus";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { createWebStoragePersistor } from "react-query/createWebStoragePersistor-experimental";
 import { persistQueryClient } from "react-query/persistQueryClient-experimental";
+import { RetryValue } from "react-query/types/core/retryer";
 
 /**
  * @namespace CustomQueryClientProvider
@@ -13,14 +15,36 @@ import { persistQueryClient } from "react-query/persistQueryClient-experimental"
  * @param {ReactNode} children - wrapped components
  */
 const CustomQueryClientProvider = ({ children }: any) => {
-  //   const dispatch = useAppDispatch();
-  // useErrorHandler();
+  const { isRetryOnStatus } = useCheckRetryStatus();
   const queryClient = new QueryClient({
-    defaultOptions: {
-      queries: {
-        refetchOnWindowFocus: false,
-      },
-    },
+    // defaultOptions: {
+    //   queries: {
+    //     retry: (failureCount, error: any) => {
+    //       const RetryCount = 3;
+    //       const t = async () => {
+    //         if (
+    //           failureCount < RetryCount &&
+    //           (await isRetryOnStatus(error.response?.status))
+    //         )
+    //           return true;
+    //         else return false;
+    //       };
+    //       const f = t().then((val) => val);
+    //       return f;
+    //     },
+    //   },
+    //   mutations: {
+    //     retry(failureCount, error: any) {
+    //       const RetryCount = 3;
+    //       if (
+    //         failureCount < RetryCount &&
+    //         (await isRetryOnStatus(error.response?.status))
+    //       )
+    //         return true;
+    //       else return false;
+    //     },
+    //   },
+    // },
   });
 
   // {
