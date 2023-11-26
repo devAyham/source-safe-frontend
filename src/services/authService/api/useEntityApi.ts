@@ -1,33 +1,16 @@
 import { IApiCrudConfig } from "../../../api/interfaces/apiCrudConfig";
 import ICreate from "../interfaces/Create.interface";
-import IGetResponse from "../interfaces/GetResponse.interface";
-import IRequestParams from "../interfaces/RequestParams.interface";
-import IGetAllResponse from "../interfaces/GetAllResponse.interface";
+
 import { ServiceName } from "../constant/ServiceName";
 import useApiCRUD from "api/apiHooks/useApiCrud";
-import IUpdate from "../interfaces/Update.interface";
 
 interface Props {
   customServiceName?: string;
-  options?: IApiCrudConfig<
-    IRequestParams,
-    ICreate,
-    IUpdate,
-    IUpdate,
-    IGetResponse,
-    IGetAllResponse
-  >;
+  options?: IApiCrudConfig<{}, ICreate, {}, {}, {}, {}>;
 }
 
 const useEntityApi = ({ customServiceName, options }: Props) => {
-  return useApiCRUD<
-    IRequestParams,
-    ICreate,
-    IUpdate,
-    IUpdate,
-    IGetResponse,
-    IGetAllResponse
-  >(
+  return useApiCRUD<{}, ICreate, {}, {}, {}, {}>(
     ServiceName,
     {
       ...options,

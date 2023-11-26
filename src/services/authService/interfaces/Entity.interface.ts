@@ -7,6 +7,7 @@ export default interface IEntity {
   };
   user: IUserData;
 }
+
 export interface IUserData {
   id: EntityIdType;
   email: string;
