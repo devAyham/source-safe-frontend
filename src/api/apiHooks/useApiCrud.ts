@@ -10,6 +10,7 @@ import {
 import { IBaseApiResponse } from "../interfaces/baseResponse";
 import { ICustomEndpoints } from "api/interfaces/customEndPoints";
 import { useAppSelector } from "../../features/common/hooks/useReduxHooks";
+import { useRefreshToken } from "./useRefreshToken";
 
 export default function useApiCRUD<
   requestParams = {},
@@ -42,8 +43,8 @@ export default function useApiCRUD<
 
   const queryClient = useQueryClient();
   const { handleError, handleSuccess } = useHandle();
-
   const { tokens } = useAppSelector((state) => state.auth);
+  const { getNewTokens } = useRefreshToken();
   const { create, deleteItem, getAll, getDetails, update, patchItem } =
     new CRUDService<
       requestParams,
@@ -52,7 +53,7 @@ export default function useApiCRUD<
       patchRequest,
       getResponse,
       getAllResponse
-    >(serviceName, customEndPoint, {
+    >(getNewTokens, tokens, serviceName, customEndPoint, {
       token: tokens.accessToken,
     });
 
@@ -69,7 +70,6 @@ export default function useApiCRUD<
     () => getAll(getAllConfig?.params),
     {
       enabled: false,
-      retry: 3,
       ...getAllConfig,
       onSuccess: (data: IBaseApiResponse<getAllResponse>) => {
         getAllConfig?.onSuccess &&
@@ -109,10 +109,7 @@ export default function useApiCRUD<
     {
       enabled: false,
       refetchOnWindowFocus: false,
-      retry: 3,
-
       ...getDetailsConfig,
-
       onSuccess: (data) => {
         getDetailsConfig?.onSuccess &&
           getDetailsConfig.onSuccess(

@@ -5,7 +5,7 @@ import {
   useAppDispatch,
   useAppSelector,
 } from "features/common/hooks/useReduxHooks";
-import { request } from "libs/axios";
+import { Axios } from "libs/axios";
 import { useNavigate } from "react-router-dom";
 
 export const useRefreshToken = () => {
@@ -14,7 +14,7 @@ export const useRefreshToken = () => {
   const dispatch = useAppDispatch();
   const { removeUserCredantilesInStorge } = useHandleUserCredantilesInStorge();
   const getNewTokens = async () => {
-    const res = await request({
+    const res = await Axios({
       method: "POST",
       //need service name
       url: `/token-refresh`,
@@ -37,8 +37,7 @@ export const useRefreshToken = () => {
     if (res) {
       console.log(res);
       dispatch(AuthSliceActions.SetTokens(res.data.tokens));
-    } else {
-      dispatch(AuthSliceActions.Logout());
+      return res.data;
     }
   };
   return { getNewTokens };
