@@ -1,16 +1,18 @@
-import { AxiosRequestConfig } from "axios";
-import ApiService from "./apiService";
-import { ICustomEndpoints } from "../interfaces/customEndPoints";
-import { IRequestParams } from "../interfaces/requestParams";
-import { httpMethodsDefaultSuffix } from "../constants/httpMethodsDefaultSuffix";
-import { addHeaders } from "../helpers/addHeaders";
+import {
+  AxiosRequestConfig
+} from "axios";
 import { EntityIdInterface } from "../../interfaces/EntityId.interface";
 import { EntityIdType } from "../../types/EntityId.type";
+import { httpMethodsDefaultSuffix } from "../constants/httpMethodsDefaultSuffix";
+import { addHeaders } from "../helpers/addHeaders";
+import { ICustomEndpoints } from "../interfaces/customEndPoints";
+import { IRequestParams } from "../interfaces/requestParams";
+import ApiService from "./apiService";
 
 export interface ICrudResponse<T> {
   data: T;
   message?: string;
-  extra?:any
+  extra?: any;
 }
 
 export class CRUDService<
@@ -24,19 +26,33 @@ export class CRUDService<
   customEndpoints?: ICustomEndpoints;
 
   constructor(
+    getNewTokens: () => Promise<{
+      accessToken: any;
+      refreshToken: any;
+    }>,
+    tokens: {
+      accessToken: any;
+      refreshToken: any;
+    },
     serviceName: string,
     customEndpoints?: ICustomEndpoints,
     headers?: any,
     customConfig?: AxiosRequestConfig
   ) {
     super({
-      baseURL: `${process.env.REACT_APP_BASE_API_URL}${
-        !customEndpoints ? serviceName : ""
-      }`,
-      headers: {
-        ...headers,
-        ...(customConfig ? customConfig.headers : (addHeaders(headers) as any)),
+      config: {
+        baseURL: `${process.env.REACT_APP_BASE_API_URL}${
+          !customEndpoints ? serviceName : ""
+        }`,
+        headers: {
+          ...headers,
+          ...(customConfig
+            ? customConfig.headers
+            : (addHeaders(headers) as any)),
+        },
       },
+      getNewTokens,
+      tokens,
     });
     if (customEndpoints) this.customEndpoints = customEndpoints;
   }
