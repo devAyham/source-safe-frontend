@@ -1,6 +1,4 @@
-import {
-  AxiosRequestConfig
-} from "axios";
+import { AxiosRequestConfig } from "axios";
 import { EntityIdInterface } from "../../interfaces/EntityId.interface";
 import { EntityIdType } from "../../types/EntityId.type";
 import { httpMethodsDefaultSuffix } from "../constants/httpMethodsDefaultSuffix";
@@ -27,12 +25,12 @@ export class CRUDService<
 
   constructor(
     getNewTokens: () => Promise<{
-      accessToken: any;
-      refreshToken: any;
+      accessToken: string | null;
+      refreshToken: string | null;
     }>,
     tokens: {
-      accessToken: any;
-      refreshToken: any;
+      accessToken: string | null;
+      refreshToken: string | null;
     },
     serviceName: string,
     customEndpoints?: ICustomEndpoints,

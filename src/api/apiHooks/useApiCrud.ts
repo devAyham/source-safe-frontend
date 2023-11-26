@@ -54,7 +54,7 @@ export default function useApiCRUD<
       getResponse,
       getAllResponse
     >(getNewTokens, tokens, serviceName, customEndPoint, {
-      token: tokens.accessToken,
+      token: tokens?.accessToken,
     });
 
   // get All entities
