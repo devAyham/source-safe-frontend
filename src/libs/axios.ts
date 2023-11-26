@@ -2,7 +2,7 @@ import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
 import { AuthStateInterface } from "features/auth/interfaces/AuthStateInterface.d";
 import decryptData from "features/common/helpers/decryptData";
 
-const interceptor = axios.create({
+export const Axios = axios.create({
   baseURL: process.env.REACT_APP_BASE_API_URL,
 });
 
@@ -17,7 +17,7 @@ export const request = async ({
     sessionStorage.getItem("user") || ""
   );
   const token = decryptedData?.tokens.accessToken ?? null;
-  interceptor.defaults.headers.common.Authorization = `Bearer ${token}`; //from local storage or cookies
+  Axios.defaults.headers.common.Authorization = `Bearer ${token}`; //from local storage or cookies
   const onSuccess = (response: AxiosResponse) => response;
   const onError = (error: unknown) => {
     // optionaly catch errors and add additional logging here
@@ -25,7 +25,7 @@ export const request = async ({
   };
 
   try {
-    const response = await interceptor(options);
+    const response = await Axios(options);
     return onSuccess(response);
   } catch (error) {
     return onError(error);
