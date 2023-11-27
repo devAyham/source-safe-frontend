@@ -6,8 +6,7 @@ import { Navigate, Outlet, useLocation } from "react-router-dom";
  */
 export const UnAuthenticatedRoutes = () => {
   const { user } = useAppSelector((state) => state.auth);
-  const to = "/medicines";
-  // const to = userInfo?.brand_id ? "/medicines" : "/";
+  const to = "/";
   const location = useLocation();
   return user == (null || undefined) ? (
     <Outlet />

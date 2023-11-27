@@ -1,5 +1,6 @@
 import { useAppSelector } from "features/common/hooks/useReduxHooks";
 import { Navigate, Outlet, useLocation } from "react-router-dom";
+import { PagesRotes } from "router/constants/pagesRoutes";
 
 /**
  * @description a middleware for check if the user have app token
@@ -10,6 +11,10 @@ export const AuthenticatedRoutes = () => {
   return user ? (
     <Outlet />
   ) : (
-    <Navigate to="/auth/formLogin" state={{ from: location }} replace />
+    <Navigate
+      to={PagesRotes.AuthRoutes.login}
+      state={{ from: location }}
+      replace
+    />
   );
 };
