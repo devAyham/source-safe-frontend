@@ -1,6 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
 import uiReducer from "features/common/redux/slices/uiSlices";
-import ShearedDataReducer from "features/common/redux/slices/shearedDataSlices";
 import authReducer from "features/auth/redux/slices/authSlice";
 
 /**
@@ -11,7 +10,6 @@ const store = configureStore({
   reducer: {
     ui: uiReducer,
     auth: authReducer,
-    shearedData: ShearedDataReducer,
   },
 });
 export default store;

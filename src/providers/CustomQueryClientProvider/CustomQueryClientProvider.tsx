@@ -1,10 +1,8 @@
 import decryptData from "features/common/helpers/decryptData";
 import encryptData from "features/common/helpers/encryptData";
-import useCheckRetryStatus from "hooks/useCheckRetryStatus";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { createWebStoragePersistor } from "react-query/createWebStoragePersistor-experimental";
 import { persistQueryClient } from "react-query/persistQueryClient-experimental";
-import { RetryValue } from "react-query/types/core/retryer";
 
 /**
  * @namespace CustomQueryClientProvider
@@ -15,8 +13,12 @@ import { RetryValue } from "react-query/types/core/retryer";
  * @param {ReactNode} children - wrapped components
  */
 const CustomQueryClientProvider = ({ children }: any) => {
-  const { isRetryOnStatus } = useCheckRetryStatus();
   const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        refetchOnWindowFocus: false,
+      },
+    },
     // defaultOptions: {
     //   queries: {
     //     retry: (failureCount, error: any) => {

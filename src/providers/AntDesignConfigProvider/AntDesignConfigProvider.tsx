@@ -19,7 +19,7 @@ import { UiSliceActions } from "features/common/redux/slices/uiSlices";
  *   @param {any} children - wrapped components
  */
 const AntDesignConfigProvider = ({ children }: any) => {
-  const { direction, theme, language } = useAppSelector((state) => state.ui);
+  const { theme } = useAppSelector((state) => state.ui);
 
   const customizeRenderEmpty = () => (
     <div style={{ textAlign: "center", height: "150px" }}>
@@ -27,11 +27,7 @@ const AntDesignConfigProvider = ({ children }: any) => {
     </div>
   );
   return (
-    <ConfigProvider
-      direction={direction}
-      theme={defaultTheme}
-      renderEmpty={customizeRenderEmpty}
-    >
+    <ConfigProvider theme={defaultTheme} renderEmpty={customizeRenderEmpty}>
       {children}
     </ConfigProvider>
   );
