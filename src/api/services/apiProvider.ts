@@ -18,20 +18,29 @@ export default class ApiProvider {
         }
         return config;
       },
-      (error) => Promise.reject(error)
+      (error) => {
+        return Promise.reject(error);
+      }
     );
 
     this.axiosInstance.interceptors.response.use(
       (response) => response,
       async (error) => {
+        console.log(tokens);
         const prevRequest = error?.config;
-        if (error?.response?.status === 403 && !prevRequest?.sent) {
+        if (
+          error?.response?.status === 401 &&
+          !prevRequest?.sent &&
+          tokens.refreshToken
+        ) {
           prevRequest.sent = true;
           const newTokens = await getNewTokens();
-          prevRequest.headers[
-            "Authorization"
-          ] = `Bearer ${newTokens.accessToken}`;
-          return this.axiosInstance(prevRequest);
+          if (newTokens.accessToken) {
+            prevRequest.headers[
+              "Authorization"
+            ] = `Bearer ${newTokens?.accessToken}`;
+            return this.axiosInstance(prevRequest);
+          }
         }
         return Promise.reject(error);
       }
