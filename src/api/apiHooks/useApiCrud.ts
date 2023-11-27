@@ -70,6 +70,7 @@ export default function useApiCRUD<
     () => getAll(getAllConfig?.params),
     {
       enabled: false,
+      retry: 3,
       ...getAllConfig,
       onSuccess: (data: IBaseApiResponse<getAllResponse>) => {
         getAllConfig?.onSuccess &&
@@ -109,7 +110,10 @@ export default function useApiCRUD<
     {
       enabled: false,
       refetchOnWindowFocus: false,
+      retry: 3,
+
       ...getDetailsConfig,
+
       onSuccess: (data) => {
         getDetailsConfig?.onSuccess &&
           getDetailsConfig.onSuccess(
