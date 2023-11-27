@@ -1,12 +1,7 @@
-import { useNavigate } from "react-router-dom";
-import { notification } from "antd";
-import { HttpStatus } from "../constants/httpStatusCodes";
-import { AuthSliceActions } from "../../features/auth/redux/slices/authSlice";
-import useHandleUserCredantilesInStorge from "../../features/auth/hooks/useHandleUserCredantilesInStorge";
-import { useAppDispatch } from "../../features/common/hooks/useReduxHooks";
-import { useRefreshToken } from "api/apiHooks/useRefreshToken";
 import { showErrorMessage } from "api/helpers/showErrorMessage";
 import { showSuccessMessage } from "api/helpers/showSuccessMessage";
+import { useNavigate } from "react-router-dom";
+import { HttpStatus } from "../constants/httpStatusCodes";
 
 type ErrorData = {
   [key: string]: string[];
@@ -26,17 +21,16 @@ type HandleReturnType = {
 
 export const useHandle = (): HandleReturnType => {
   const navigate = useNavigate();
-  const { getNewTokens } = useRefreshToken();
 
   const handleError = (error: any, navigateTo?: string) => {
     const statusCode = error?.response?.status;
-    const errorMessage = error?.response?.data.message;
+    const errorMessage = error?.response?.data?.message;
 
     if (statusCode && Object.values(HttpStatus).includes(statusCode)) {
       switch (statusCode) {
         // Handle Unauthorized error for access token
         case HttpStatus.Unauthorized:
-          getNewTokens();
+          showErrorMessage(errorMessage);
           break;
         case HttpStatus.Forbidden:
           showErrorMessage(errorMessage);
