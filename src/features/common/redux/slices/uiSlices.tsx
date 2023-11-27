@@ -7,12 +7,9 @@ import { WritableDraft } from "immer/dist/internal";
 
 const initialStateForUi: InitialStateUiInterface = {
   disaplay: "isDesktop ",
-  language: "en",
   theme: "purple",
-  direction: "ltr",
   errors: null,
   loading: false,
-  FCMtoken: null,
   deferredPrompt: null,
 };
 /**
@@ -31,13 +28,6 @@ const uiSlice = createSlice({
     ) => {
       state.disaplay = action.payload;
     },
-    ChangeLanguage: (
-      state: WritableDraft<InitialStateUiInterface>,
-      action: PayloadAction<LanguageTypes>
-    ) => {
-      state.language = action.payload;
-      state.direction = action.payload === "ar" ? "rtl" : "ltr";
-    },
     ChangeTheme: (
       state: WritableDraft<InitialStateUiInterface>,
       action: PayloadAction<"purple" | "green">
@@ -49,9 +39,6 @@ const uiSlice = createSlice({
     },
     SetError: (state, action: PayloadAction<ErrorHandlerInterface | null>) => {
       state.errors = action.payload;
-    },
-    SetFCMtoken: (state, action: PayloadAction<string | null | false>) => {
-      state.FCMtoken = action.payload;
     },
     SetDeferredPrompt: (state, action: PayloadAction<any>) => {
       state.deferredPrompt = action.payload;

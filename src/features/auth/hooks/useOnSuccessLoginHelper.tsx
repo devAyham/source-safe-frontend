@@ -19,7 +19,6 @@ function useOnSuccessLoginHelper() {
   const onSuccessLoginHelper = ({ tokens, user }: Props) => {
     const userInfo = DestructureUserInfo(user);
     console.log(userInfo);
-
     setUserGlobally({
       tokens,
       user,

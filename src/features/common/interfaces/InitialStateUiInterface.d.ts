@@ -6,17 +6,12 @@ export interface InitialStateUiInterface {
   /** */
   theme: "purple" | "green";
   /** */
-  language: LanguageTypes;
-  /** */
   disaplay: DisplayTypes;
-  /** */
-  direction: "ltr" | "rtl";
   /** */
   errors: ErrorHandlerInterface | null;
   /** */
   loading: boolean;
   /** */
-  FCMtoken: string | null | false;
   /** */
   deferredPrompt: any;
 }

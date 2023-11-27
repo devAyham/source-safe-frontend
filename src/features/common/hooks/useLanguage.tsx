@@ -4,7 +4,7 @@ import { useCallback, useEffect, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { useAppDispatch } from "./useReduxHooks";
 /**
- * @description a hook that get used of the i18n lib to changr the app 
+ * @description a hook that get used of the i18n lib to changr the app
  * language and store the current lang in the ui slice
  * @param {LanguageTypes} language
  * @param {Function} setLanguage
@@ -20,7 +20,7 @@ export const useLanguage = (): {
   const handleChangeLanguage = useCallback(
     async (locale: LanguageTypes) => {
       localStorage.setItem("lng", locale);
-      dispatch(UiSliceActions.ChangeLanguage(locale));
+      // dispatch(UiSliceActions.ChangeLanguage(locale));
       await i18n.changeLanguage(locale);
     },
     [i18n]

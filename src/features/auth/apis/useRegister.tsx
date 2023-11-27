@@ -7,10 +7,10 @@ import { CustomEndPoints } from "api/constants/customEndPoints";
  *
  * @returns
  */
-export const useNewLogin = () => {
+export const useRegister = () => {
   const { onSuccessLoginHelper } = useOnSuccessLoginHelper();
   const { createEntity } = useAuthApi({
-    customServiceName: `${AuthServiceName}/${CustomEndPoints.SignIn}`,
+    customServiceName: `${AuthServiceName}/${CustomEndPoints.SignUp}`,
     options: {
       createConfig: {
         onSuccess(data: AxiosResponse<IAuthEntity>) {

@@ -22,21 +22,6 @@ export const menuItemsWithRoles: MenuItemWithRoleInterface[] = [
   {
     roles: ["user"],
     item: getItem(
-      <Translation>{(t) => t("DASHBOARD")}</Translation>,
-      "/Dashboard",
-      // <DashIcon className={"navIcon"} />,
-      <UsersICon className={"navIcon"} />,
-      [
-        getItem(
-          <Translation>{(t) => t("WORKPLACE_TYPES")}</Translation>,
-          PagesRotes.DashboardRoutes.WorkPlacesTypes.index
-        ),
-      ]
-    ),
-  },
-  {
-    roles: ["user"],
-    item: getItem(
       <Translation>{(t) => t("USERS")}</Translation>,
       "/users-management",
       <UsersICon className={"navIcon"} />,

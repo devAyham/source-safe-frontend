@@ -1,7 +1,7 @@
 /** */
 export interface loginInterface {
   /** */
-  phone: number;
+  email: string;
   /** */
-  password: number;
+  password: string;
 }

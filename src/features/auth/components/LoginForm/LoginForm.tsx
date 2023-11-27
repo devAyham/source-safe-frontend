@@ -18,13 +18,13 @@ import styles from "./styles.module.scss";
  */
 const LoginForm = () => {
   const { t } = useTranslation();
-  const { mutateAsync, isLoading } = useNewLogin();
+  const { mutate, isLoading } = useNewLogin();
   const dispatch = useAppDispatch();
 
   const onFinish = ({ email, password, rememberMe }: ISubmittedValues) => {
     dispatch(AuthSliceActions.SetRememberMe(rememberMe));
     setTimeout(() => {
-      mutateAsync({ password, email });
+      mutate({ password, email });
     }, 0);
   };
 

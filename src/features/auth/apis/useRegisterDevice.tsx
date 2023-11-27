@@ -5,7 +5,7 @@ import useSetUserGlobally from "../hooks/useSetUserGlobally";
 import { useAuthApi } from "services/authService";
 
 export const useRegisterDevice = () => {
-  const { FCMtoken, language } = useAppSelector((state) => state.ui);
+  // const { FCMtoken, language } = useAppSelector((state) => state.ui);
   const uuid = useGetUniqueID();
   const { setUserGlobally } = useSetUserGlobally();
   const { createEntity } = useAuthApi({

@@ -6,6 +6,6 @@ export const setTokensAction = (
   { tokens }: WritableDraft<AuthStateInterface>,
   action: PayloadAction<Partial<typeof tokens>>
 ) => {
-  tokens.accessToken = action.payload.accessToken ?? tokens.accessToken;
-  tokens.refreshToken = action.payload.refreshToken ?? tokens.refreshToken;
+  tokens.accessToken = action.payload?.accessToken ?? tokens?.accessToken;
+  tokens.refreshToken = action.payload?.refreshToken ?? tokens?.refreshToken;
 };
