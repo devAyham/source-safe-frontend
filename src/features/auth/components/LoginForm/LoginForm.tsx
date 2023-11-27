@@ -1,7 +1,6 @@
 import { MobileFilled } from "@ant-design/icons";
 import { Col, Form, Input, Row } from "antd";
-import { ReactComponent as Logo } from "assets/svg/generalSvgs/logo.svg";
-import { Button } from "components";
+import { Button, Image } from "components";
 import { useNewLogin } from "features/auth/apis/useLogin";
 import { AuthSliceActions } from "features/auth/redux/slices/authSlice";
 import { useAppDispatch } from "features/common/hooks/useReduxHooks";
@@ -11,6 +10,7 @@ import PasswordInput from "../Inputs/PasswordInput";
 import RememberMeCheck from "../Inputs/RememberMeCheck";
 import { ISubmittedValues } from "./SubmittedValues";
 import styles from "./styles.module.scss";
+import logo from "assets/logo.png";
 
 /**
  *
@@ -33,9 +33,8 @@ const LoginForm = () => {
       <Row className={styles.login_form}>
         <Col span={24} className={styles.login_modal}>
           <div className={styles.avatar}>
-            <Logo className={styles.avatar_icon} />
+            <Image src={logo} className={styles.avatar_icon} />
           </div>
-
           <Form
             className={styles.form}
             name="login"

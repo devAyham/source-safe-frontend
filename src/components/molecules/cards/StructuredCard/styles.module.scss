@@ -2,15 +2,15 @@
 
 .cardStyles {
   .card {
-    background-color: $card-color;
+    background-color: whitesmoke;
     // border: 1px solid #8c8ca173;
     // height: 115px;
     overflow: hidden;
     &.selected {
-      background-color: $primary_color_5 !important;
+      background-color: $primary_color_1 !important;
     }
     &.hoverAble:hover {
-      background-color: $primary_color_5;
+      background-color: $primary_color_1;
     }
     .contentStyles {
       width: 100%;

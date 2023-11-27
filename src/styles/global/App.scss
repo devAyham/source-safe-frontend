@@ -1,26 +1,6 @@
 @use "./styles/colors.module.scss" as *;
 @use "/src/styles/mixins/label_styles_mixin" as *;
 
-:root {
-  --primary_color_1: #11c1e0;
-  --primary_color_2: #11c1e0ce;
-  --primary_color_3: #11c1e067;
-  --primary_color_4: #11c1e05e;
-  --primary_color_5: #11c1e03a;
-  --sider-color: #caecff;
-  --card-color: #d6daf34d;
-}
-
-body[data-theme="green"] {
-  --primary_color_1: #23a494;
-  --primary_color_2: #81ddbc;
-  --primary_color_3: #81ddbbd7;
-  --primary_color_4: #81ddbb90;
-  --primary_color_5: #81ddbb51;
-  --sider-color: #ddf5ed;
-  --card-color: #f0f1f6;
-}
-
 * {
   zoom: 100% !important;
 

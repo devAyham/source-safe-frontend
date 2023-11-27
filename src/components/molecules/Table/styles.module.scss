@@ -1,7 +1,7 @@
 @use "./styles/colors.module.scss" as *;
 .antTableHeaderStyles {
   :global(.ant-table thead tr th) {
-    background-color: $primary_color_4;
+    background-color: $primary_color_1;
     backdrop-filter: blur(10px);
     color: $title_color;
   }

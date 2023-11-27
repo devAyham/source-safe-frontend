@@ -1,4 +1,4 @@
-@use "../../../../styles/colors.module.scss" as *;
+@use "src/styles/colors.module.scss" as *;
 
 .form_login_page {
   display: flex;
@@ -13,9 +13,9 @@
   // background-color: $primary_color_1;
   background: linear-gradient(
     116deg,
-    #009599 3.55%,
-    #31d5f8 62.84%,
-    #28bfda 97.84%
+    $primary_color_1 3.55%,
+    $primary_color_1 62.84%,
+    $primary_color_1 97.84%
   );
   .link {
     display: block;
