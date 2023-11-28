@@ -1,4 +1,4 @@
-import variables from "styles/_colors.module.scss";
+import variables from "styles/_variables/main_colors_vars.module.scss";
 
 enum UserStatus {
   Active = "active",

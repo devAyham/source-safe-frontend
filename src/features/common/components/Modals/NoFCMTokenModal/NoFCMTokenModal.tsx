@@ -3,7 +3,7 @@ import { ReactComponent as NoConnectionIcon } from "assets/svgs/no_connection_ic
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import modalStyles from "styles/shared/modalStyles.module.scss";
-import variables from "styles/_colors.module.scss";
+import variables from "styles/_variables/main_colors_vars.module.scss";
 /** */
 interface NoFCMTokenModalProps {
   /** */

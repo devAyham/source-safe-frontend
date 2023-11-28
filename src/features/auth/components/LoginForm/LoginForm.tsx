@@ -11,7 +11,7 @@ import RememberMeCheck from "../Inputs/RememberMeCheck";
 import { ISubmittedValues } from "./SubmittedValues";
 import styles from "./styles.module.scss";
 import logo from "assets/images/logo.png";
-import variables from "styles/_colors.module.scss";
+import variables from "styles/variables/_main_colors_vars.module.scss";
 
 /**
  *

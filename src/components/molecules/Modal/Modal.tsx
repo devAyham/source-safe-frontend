@@ -2,7 +2,7 @@ import { Modal as AntModal } from "antd";
 import { ModalProps } from "./ModalProps";
 import styles from "./styles.module.scss";
 import { Button } from "components/atoms";
-import variables from "styles/_colors.module.scss";
+import variables from "styles/variables/_main_colors_vars.module.scss";
 import React from "react";
 import { Translation } from "react-i18next";
 

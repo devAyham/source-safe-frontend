@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Resumablejs from "resumablejs";
 import IUploaderProps from "../../../interfaces/IUploderProps.d";
 import styles from "./styles.module.scss";
-import variables from "styles/_colors.module.scss";
+import variables from "styles/_variables/main_colors_vars.module.scss";
 import { useCallbackPrompt } from "features/common/hooks/useCallbackPrompt";
 import LeavingPageModal from "../../Modals/LeavingPageModal/LeavingPageModal";
 import { DeleteOutlined } from "@ant-design/icons";

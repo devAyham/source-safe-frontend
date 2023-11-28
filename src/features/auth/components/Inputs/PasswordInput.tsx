@@ -1,6 +1,6 @@
 import { UnlockFilled } from "@ant-design/icons";
 import { Form, Input } from "antd";
-import variables from "styles/_colors.module.scss";
+import variables from "styles/variables/_main_colors_vars.module.scss";
 /**
  *
  * @param param0
