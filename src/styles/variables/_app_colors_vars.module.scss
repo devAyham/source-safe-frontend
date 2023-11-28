@@ -1,0 +1,51 @@
+@use "/src/styles/variables/variables/main_colors_vars.module" as *;
+
+//typography vars
+$typo_primary_color: $primary_color_1;
+$typo_secondary_color: $secondary_color;
+$title_color: $secondary_color;
+$text_color: $gray;
+
+// header vars
+$header_background: $primary_color_1;
+$header_links_color: $white;
+$overlay_background_color: $black_with_opacity;
+
+// button vars
+$primary_button_background: $primary_color_1;
+$primary_button_color: $black;
+
+$primary_light_button_background: $primary_color_1;
+$primary_light_button_color: $white;
+
+$secondary_button_background: $primary_color_6;
+$secondary_button_color: $black;
+
+$secondary_light_button_background: $primary_color_2;
+$secondary_light_button_color: $white;
+
+$text_button_background: transparent;
+$text_button_color: $black;
+
+$link_button_background: transparent;
+$link_button_color: $black;
+
+$ghost_button_background: $primary_color_2;
+$ghost_button_color: $black;
+
+// avatar
+$avatar_background: $dark_gray;
+$avatar_text_color: $dark_blue;
+
+//backgrounds
+$light_gray_background: $light_gray_without_opacity;
+$blury_background: $light_gray_with_opacity;
+
+:export {
+  header_color: $header_background;
+  header_links_color: $header_links_color;
+  title_color: $title_color;
+  text_color: $text_color;
+  avatar_background: $avatar_background;
+  avatar_text_color: $avatar_text_color;
+}

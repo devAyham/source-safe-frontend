@@ -1,6 +1,6 @@
-@use "/src/styles/colors.module" as *;
+@use "/src/styles/variables/main_colors_vars.module" as *;
 .content {
-  min-height: 1060vh !important;
-  background: $white_smoke;
+  min-height: 100vh !important;
+  background: black;
   overflow: scroll;
 }
