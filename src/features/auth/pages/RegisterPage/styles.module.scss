@@ -1,0 +1,36 @@
+@use "src/styles/colors.module.scss" as *;
+
+.register_page {
+  display: flex;
+  position: relative;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  box-sizing: border-box;
+  // background-color: $primary_color_1;
+  background: linear-gradient(
+    116deg,
+    $primary_color_1 3.55%,
+    $primary_color_1 62.84%,
+    $primary_color_1 97.84%
+  );
+  .link {
+    display: block;
+    text-decoration: none;
+    color: $primary_color_1;
+    direction: rtl;
+    transition: all 500ms;
+    font-weight: bold;
+    padding: 10px;
+    opacity: 0.8;
+    width: fit-content;
+    margin: 0 auto;
+    &:hover {
+      opacity: 1;
+      transition: all 250ms;
+    }
+  }
+}

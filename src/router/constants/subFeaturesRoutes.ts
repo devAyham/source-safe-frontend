@@ -1,4 +1,4 @@
 export enum SubFeaturesRoutes {
-  Login = "formLogin",
+  Login = "login",
   Register = "register",
 }
