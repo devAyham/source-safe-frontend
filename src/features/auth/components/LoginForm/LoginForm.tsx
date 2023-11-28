@@ -11,6 +11,7 @@ import RememberMeCheck from "../Inputs/RememberMeCheck";
 import { ISubmittedValues } from "./SubmittedValues";
 import styles from "./styles.module.scss";
 import logo from "assets/logo.png";
+import variables from "styles/_colors.module.scss";
 
 /**
  *
@@ -55,18 +56,19 @@ const LoginForm = () => {
               <Input
                 type="email"
                 className={styles.login_input}
-                prefix={<MobileFilled color="" />}
+                prefix={
+                  <MobileFilled
+                    style={{
+                      color: variables.primary_color_one,
+                    }}
+                  />
+                }
                 placeholder="Email"
               />
             </Form.Item>
             <PasswordInput className={styles.login_input} />
             <RememberMeCheck />
-            <Form.Item
-              wrapperCol={{
-                xs: { offset: 0, span: 16 },
-                sm: { offset: 4, span: 16 },
-              }}
-            >
+            <Form.Item>
               <Button
                 loading={isLoading}
                 disabled={isLoading}
