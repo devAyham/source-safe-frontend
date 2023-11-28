@@ -1,7 +1,7 @@
 import { message } from "antd";
 import Uploader from "./ChunksUploder";
 import styles from "./styles.module.scss";
-import { ReactComponent as VideoUpload } from "assets/svg/generalSvgs/video_icon.svg";
+import { ReactComponent as VideoUpload } from "assets/svgs/video_icon.svg";
 import {
   useAppDispatch,
   useAppSelector,

@@ -1,6 +1,6 @@
 import { Tooltip } from "antd";
 import styles from "../style.module.scss";
-import { ReactComponent as PhoneIcon } from "assets/svg/generalSvgs/phone_icon.svg";
+import { ReactComponent as PhoneIcon } from "assets/svgs/phone_icon.svg";
 import React, { useEffect, useRef, useState } from "react";
 import {
   FacebookOutlined,

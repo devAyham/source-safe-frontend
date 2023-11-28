@@ -3,7 +3,7 @@ import getEditAction from "../helpers/getEditAction";
 import getViewDetailsAction from "../helpers/getViewDetailsAction";
 import getDeleteAction from "../helpers/getDeleteAction";
 import { IActionButtonsProps } from "../actionButtons";
-import { ReactComponent as OptionIcon } from "assets/svg/generalSvgs/option_icon.svg";
+import { ReactComponent as OptionIcon } from "assets/svgs/option_icon.svg";
 
 export default function ActionMenu<
   requestParams,

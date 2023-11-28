@@ -2,7 +2,7 @@ import {Modal} from "antd";
 import {useEffect, useState} from "react";
 import Provider from "react-cookie/cjs/CookiesProvider";
 import styles from "./styles.module.scss";
-import {ReactComponent as Cookie} from "assets/svg/generalSvgs/cookie_bite_icon.svg";
+import {ReactComponent as Cookie} from "assets/svgs/cookie_bite_icon.svg";
 import {Button} from "components";
 
 interface CookiesProviderProps {

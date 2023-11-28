@@ -1,7 +1,7 @@
 import { message, Upload } from "antd";
 import ImgCrop from "antd-img-crop";
 import { RcFile, UploadFile, UploadProps } from "antd/lib/upload/interface";
-import { ReactComponent as ImageIcon } from "assets/svg/generalSvgs/add_image_icon.svg";
+import { ReactComponent as ImageIcon } from "assets/svgs/add_image_icon.svg";
 import { useDeleteImage } from "features/common/apis/useDeleteImage";
 import { useLanguage } from "features/common/hooks/useLanguage";
 import { useAppSelector } from "features/common/hooks/useReduxHooks";

@@ -1,5 +1,5 @@
 import { message } from "antd";
-import { ReactComponent as DownloadIcon } from "assets/svg/generalSvgs/download_icon.svg";
+import { ReactComponent as DownloadIcon } from "assets/svgs/download_icon.svg";
 import styles from "./styles.module.scss";
 import { ReactNode } from "react";
 import { request } from "libs/axios";

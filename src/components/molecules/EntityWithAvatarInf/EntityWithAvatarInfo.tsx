@@ -2,7 +2,7 @@ import { UserOutlined } from "@ant-design/icons";
 import { Avatar, Space } from "antd";
 import { Image } from "components/atoms";
 import { Props } from "./EntityWithAvatarInfo.props";
-import usersIcon from "assets/svg/generalSvgs/users_icon.svg";
+import usersIcon from "assets/svgs/users_icon.svg";
 
 function EntityWithAvatarInfo({
   avatarProps,

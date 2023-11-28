@@ -1,4 +1,4 @@
-import { ReactComponent as UsersICon } from "assets/svg/generalSvgs/users_drawer_icon.svg";
+import { ReactComponent as UsersICon } from "assets/svgs/users_drawer_icon.svg";
 import { Translation } from "react-i18next";
 import { PagesRotes } from "router/constants/pagesRoutes";
 import { MenuItemWithRoleInterface } from "../interfaces/MenuItemWithRoleInterface.d";

@@ -1,7 +1,7 @@
 import { message, Upload } from "antd";
 import { UploadFile, UploadProps } from "antd/lib/upload/interface";
-import { ReactComponent as PapersIcon } from "assets/svg/generalSvgs/papers_icon.svg";
-import { ReactComponent as UploadIcon } from "assets/svg/generalSvgs/upload_icon.svg";
+import { ReactComponent as PapersIcon } from "assets/svgs/papers_icon.svg";
+import { ReactComponent as UploadIcon } from "assets/svgs/upload_icon.svg";
 import { Button } from "components";
 import { useLanguage } from "features/common/hooks/useLanguage";
 import { useAppSelector } from "features/common/hooks/useReduxHooks";

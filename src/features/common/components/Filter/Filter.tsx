@@ -1,7 +1,7 @@
 import { Form, Popover } from "antd";
 import { useForm } from "antd/es/form/Form";
 import { memo, useState } from "react";
-import { ReactComponent as FilterICon } from "assets/svg/generalSvgs/filter_icon.svg";
+import { ReactComponent as FilterICon } from "assets/svgs/filter_icon.svg";
 import { FilterType } from "../../interfaces/FilterInterface.d";
 import styles from "./styles.module.scss";
 import { changeDateToString } from "features/common/helpers/changeDateToString";

@@ -1,5 +1,5 @@
 import { Layout, Menu } from "antd";
-import { ReactComponent as Logo } from "assets/svg/generalSvgs/logo.svg";
+import { ReactComponent as Logo } from "assets/svgs/logo.svg";
 import { rolesTypes } from "features/auth/types/roleTypes";
 import { menuItemsWithRoles } from "features/common/data/MenuItems";
 import { useAppSelector } from "features/common/hooks/useReduxHooks";

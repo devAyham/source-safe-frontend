@@ -1,6 +1,6 @@
 import { Divider, Popover, Radio, Row, Space } from "antd";
 import { memo, useState } from "react";
-import { ReactComponent as SorterIcon } from "assets/svg/generalSvgs/sort_icon.svg";
+import { ReactComponent as SorterIcon } from "assets/svgs/sort_icon.svg";
 import { SorterInterface } from "../../interfaces/SorterInterface.d";
 import styles from "./styles.module.scss";
 import { useTranslation } from "react-i18next";

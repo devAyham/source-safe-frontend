@@ -1,5 +1,5 @@
 import { memo } from "react";
-import { ReactComponent as CardLogo } from "assets/svg/generalSvgs/card_icon.svg";
+import { ReactComponent as CardLogo } from "assets/svgs/card_icon.svg";
 import styles from "./styles.module.scss";
 /** */
 interface CardsTogglerProps {

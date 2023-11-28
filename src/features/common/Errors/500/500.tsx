@@ -1,6 +1,6 @@
 import {useTranslation} from "react-i18next";
 import styles from "../styles.module.scss";
-import {ReactComponent as SVG500} from "assets/svg/generalSvgs/500_svg.svg";
+import {ReactComponent as SVG500} from "assets/svgs/500_svg.svg";
 import {Space} from "antd";
 import {useNavigate} from "react-router";
 import {Button} from "components";

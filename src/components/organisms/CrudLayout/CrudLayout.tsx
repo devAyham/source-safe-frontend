@@ -13,7 +13,7 @@ import getDeleteAction from "./helpers/getDeleteAction";
 import getEditAction from "./helpers/getEditAction";
 import {getColumns} from "./helpers";
 import {EyeOutlined} from "@ant-design/icons";
-import noDataIcon from "assets/svg/generalSvgs/empty_data_list.svg";
+import noDataIcon from "assets/svgs/empty_data_list.svg";
 import {Spin} from "components/molecules/Spin";
 import {useTranslation} from "react-i18next";
 

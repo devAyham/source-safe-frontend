@@ -10,7 +10,7 @@ import {
 import { Header } from "antd/es/layout/layout";
 import styles from "./styles.module.scss";
 import { UserOutlined, DownOutlined } from "@ant-design/icons";
-import { ReactComponent as Notification } from "assets/svg/generalSvgs/notification.svg";
+import { ReactComponent as Notification } from "assets/svgs/notification.svg";
 import { LanguagePicker } from "features/common/components/Pickers/Language/LanguagePickerRadio";
 import Logout from "features/auth/components/Modals/Logout";
 import { useAppSelector } from "features/common/hooks/useReduxHooks";

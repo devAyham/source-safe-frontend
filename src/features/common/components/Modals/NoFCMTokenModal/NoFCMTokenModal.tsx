@@ -1,5 +1,5 @@
 import { Modal } from "antd";
-import { ReactComponent as NoConnectionIcon } from "assets/svg/generalSvgs/no_connection_icon.svg";
+import { ReactComponent as NoConnectionIcon } from "assets/svgs/no_connection_icon.svg";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import modalStyles from "styles/shared/modalStyles.module.scss";

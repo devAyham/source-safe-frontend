@@ -1,6 +1,6 @@
 import { Modal } from "antd";
 import modalStyles from "styles/shared/modalStyles.module.scss";
-import { ReactComponent as QRNotificationIcon } from "assets/svg/generalSvgs/qr_notification_icon.svg";
+import { ReactComponent as QRNotificationIcon } from "assets/svgs/qr_notification_icon.svg";
 import variables from "styles/_colors.module.scss";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";

@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 import styles from "../styles.module.scss";
-import { ReactComponent as SVG403 } from "assets/svg/generalSvgs/403_svg.svg";
+import { ReactComponent as SVG403 } from "assets/svgs/403_svg.svg";
 /**
  * @description a component that used to show an ui error intereface for 403 errors
  */

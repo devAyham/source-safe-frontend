@@ -4,7 +4,7 @@ import { Button } from "components";
 import { memo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import styles from "./styles.module.scss";
-import { ReactComponent as SearchSvg } from "assets/svg/generalSvgs/Search.svg";
+import { ReactComponent as SearchSvg } from "assets/svgs/Search.svg";
 /** */
 export interface SearchInputProps extends SearchProps {
   /**

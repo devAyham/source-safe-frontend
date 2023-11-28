@@ -1,6 +1,6 @@
 import styles from "./styles.module.scss";
-import { ReactComponent as FileIcon } from "assets/svg/generalSvgs/file_icon.svg";
-import { ReactComponent as DownloadIcon } from "assets/svg/generalSvgs/download_icon.svg";
+import { ReactComponent as FileIcon } from "assets/svgs/file_icon.svg";
+import { ReactComponent as DownloadIcon } from "assets/svgs/download_icon.svg";
 import downloadURL from "features/common/helpers/downloadFile";
 import { Button } from "components";
 /** */

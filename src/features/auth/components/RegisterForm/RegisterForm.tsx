@@ -10,7 +10,7 @@ import PasswordInput from "../Inputs/PasswordInput";
 import RememberMeCheck from "../Inputs/RememberMeCheck";
 import { ISubmittedValues } from "./SubmittedValues";
 import styles from "./styles.module.scss";
-import logo from "assets/logo.png";
+import logo from "assets/images/logo.png";
 import variables from "styles/_colors.module.scss";
 import { useRegister } from "features/auth/apis/useRegister";
 

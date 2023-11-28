@@ -1,7 +1,7 @@
 import { Empty } from "antd";
 import { CompoundedComponent } from "antd/es/float-button/interface";
 import { EmptyProps } from "antd/lib/empty";
-import noDataIcon from "assets/svg/generalSvgs/no_data_icon.svg";
+import noDataIcon from "assets/svgs/no_data_icon.svg";
 import styles from "./styles.module.scss";
 /** */
 interface CustomEmptyProps extends EmptyProps {

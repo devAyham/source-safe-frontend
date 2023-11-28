@@ -3,7 +3,7 @@ import ImgCrop from "antd-img-crop";
 import { RcFile, UploadFile, UploadProps } from "antd/lib/upload/interface";
 import { Dispatch, SetStateAction, useState } from "react";
 import styles from "./styles.module.scss";
-import { ReactComponent as ImageLogo } from "assets/svg/generalSvgs/image_icon.svg";
+import { ReactComponent as ImageLogo } from "assets/svgs/image_icon.svg";
 import { useAppSelector } from "features/common/hooks/useReduxHooks";
 import { useTranslation } from "react-i18next";
 import { UploadFileStatus } from "antd/es/upload/interface";
