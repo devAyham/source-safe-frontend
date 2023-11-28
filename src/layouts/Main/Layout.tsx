@@ -1,28 +1,32 @@
-import { Layout as AntLayout, FloatButton } from "antd";
+import { Layout as AntLayout } from "antd";
 import { Content } from "antd/es/layout/layout";
+import { ContentInfo } from "components/particels/ContentInfo";
+import { SiderBar } from "components/particels/SiderBar";
 import { useEffect, useRef, useState } from "react";
-import { Outlet } from "react-router-dom";
 import { Props } from "./Props";
-
+import styles from "./styles.module.scss";
+import { Outlet } from "react-router-dom";
 /**
  * the main controlled component for the entire app layout t
  */
 const Layout = (props: Props) => {
-  const [width, setWidth] = useState<string>("80px");
+  const [width, setWidth] = useState<string>("0px");
   const layoutRef = useRef<HTMLElement | null>(null);
   useEffect(() => {
     if (layoutRef.current) {
       layoutRef.current.style.marginInlineStart = width;
     }
   }, [width]);
+
   return (
     <AntLayout hasSider>
-      <AntLayout ref={layoutRef} style={{ transition: "all 0.7s ease-in-out" }}>
-        <Content style={{ padding: "5px 43px  18px 48px", minHeight: "90vh" }}>
+      <SiderBar />
+      <AntLayout>
+        <Content className={styles.content}>
           <Outlet />
         </Content>
-        <FloatButton.BackTop style={{ insetInlineStart: "1.5rem" }} />
       </AntLayout>
+      <ContentInfo />
     </AntLayout>
   );
 };

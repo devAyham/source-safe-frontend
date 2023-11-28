@@ -1,5 +1,6 @@
+import styles from "./styels.module.scss";
 function Component() {
-  return <div>Component</div>;
+  return <div className={styles.siderBar}>SiderBar</div>;
 }
 
 export default Component;

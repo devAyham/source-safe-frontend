@@ -35,9 +35,7 @@
 // }
 
 html {
-  background-color: $white;
   overflow-x: hidden !important;
-
   &:has(.ant-modal-mask) {
     overflow: hidden !important;
   }
@@ -45,8 +43,8 @@ html {
 
 body {
   margin: 0;
-  padding: 0;
-  background-color: $white;
+  padding: 0px;
+  background-color: blue;
   width: 100vw;
 }
 

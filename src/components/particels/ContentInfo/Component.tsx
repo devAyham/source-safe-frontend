@@ -1,8 +1,6 @@
-
+import styles from "./styels.module.scss";
 function Component() {
-  return (
-    <div>Component</div>
-  )
+  return <div className={styles.contentInfo}></div>;
 }
 
-export default Component
+export default Component;

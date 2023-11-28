@@ -1,0 +1,6 @@
+@use "/src/styles/colors.module" as *;
+.content {
+  min-height: 1060vh !important;
+  background: $white_smoke;
+  overflow: scroll;
+}
