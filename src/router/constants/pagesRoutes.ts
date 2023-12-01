@@ -6,5 +6,16 @@ export const PagesRotes = {
     login: `/${MainFeaturesRoutes.Auth}/${SubFeaturesRoutes.Login}`,
     register: `/${MainFeaturesRoutes.Auth}/${SubFeaturesRoutes.Register}`,
   },
-  DashboardRoutes: {},
+  DashboardRoutes: {
+    index: `/${MainFeaturesRoutes.DashboardRoute}`,
+  },
+  TrashRoutes: {
+    index: `/${MainFeaturesRoutes.TrashRoute}`,
+  },
+  FoldersRequestsRoutes: {
+    index: `/${MainFeaturesRoutes.FoldersRequests}`,
+  },
+  SharedWithMeRoutes: {
+    index: `/${MainFeaturesRoutes.SharedWithMe}`,
+  },
 };

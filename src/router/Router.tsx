@@ -9,6 +9,7 @@ import { ErrorRoutes } from "./middlewares/ErrorRoutes";
 import { UnAuthenticatedRoutes } from "./middlewares/UnAuthenticatedRoutes";
 import SuspenseLoading from "features/common/components/Loading/SuspenseLoading/SuspenseLoading";
 import { MainLayout } from "layouts";
+import { MainFeaturesRoutes } from "./constants/mainFeaturesRoutes";
 // import CustomErrorBoundary from "features/common/Errors/CustomErrorBoundary/CustomErrorBoundary";
 
 /**
@@ -27,9 +28,8 @@ const MainRouter = () => {
         </Route>
         <Route key={"AuthenticatedRoutes"} element={<AuthenticatedRoutes />}>
           <Route path="/" element={<MainLayout />}>
+            <Route path={MainFeaturesRoutes.DashboardRoute} element={<></>} />
             <Route element={<ErrorRoutes />}>
-              <Route element={<AuthorizedRoutes roles={["user"]} />}></Route>
-              <Route element={<AuthorizedRoutes roles={["user"]} />}>= </Route>
               <Route path="*" element={<FourOFourPage />} />
             </Route>
           </Route>
