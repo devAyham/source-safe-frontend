@@ -1,0 +1,33 @@
+@use "/src/styles/variables/app_sizes_vars.module" as *;
+@use "/src/styles/variables/app_colors_vars.module" as *;
+
+.siderBarInfo {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  .logo_container {
+    width: 100%;
+    height: $sideBar_menu_padding_top;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    .logo {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+  }
+  .contentContainer {
+    width: 100%;
+    height: calc(100% - $sideBar_menu_padding_top);
+    padding-inline: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+  }
+}
