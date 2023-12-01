@@ -2,16 +2,15 @@ import { useState } from "react";
 import { Modal } from "antd";
 import { useTranslation } from "react-i18next";
 import { Button } from "components";
-import { useNewLogout } from "features/auth/apis/useLogout";
+import { useLogout } from "features/auth/apis/useLogout";
+import { LogoutMenuItem } from "../LogoutMenuItem";
 /**
  *
  * @returns
  */
 const Logout = () => {
   const [open, setOpen] = useState(false);
-  const { mutate, isLoading } = useNewLogout();
-  const { t } = useTranslation();
-
+  const { mutate, isLoading } = useLogout();
   const onOk = () => {
     mutate({});
   };
@@ -21,19 +20,17 @@ const Logout = () => {
 
   return (
     <>
-      <Button block danger onClick={() => setOpen(true)}>
-        {t("LOGOUT")}
-      </Button>
+      <LogoutMenuItem onClick={() => setOpen(true)} />
       <Modal
         open={open}
         onOk={onOk}
-        title={t("ARE_YOU_SURE_YOU_WANT_TO_LOGOUT")}
+        title={"ARE_YOU_SURE_YOU_WANT_TO_LOGOUT"}
         closable={false}
         onCancel={onCancel}
         okButtonProps={{ danger: true }}
         cancelButtonProps={{ danger: true }}
-        okText={t("LOGOUT")}
-        cancelText={t("CANCEL")}
+        okText={"LOGOUT"}
+        cancelText={"CANCEL"}
         confirmLoading={isLoading}
         width={310}
       />
