@@ -1,7 +1,14 @@
 $siderBar_width: 300px;
-$content_info_width: 300px;
-
+$siderBar_info_width: 225px;
+$content_info_width: 250px;
+$siderBar_border_radius: 50px;
+$content_info_radius: 50px;
+$sideBar_menu_padding_top: 130px;
+$logout_item_container_height: 200px;
 :export {
   siderBar_width: $siderBar_width;
+  siderBar_info_width: $siderBar_info_width;
   content_info_width: $content_info_width;
+  siderBar_border_radius: $siderBar_border_radius;
+  content_info_radius: $content_info_radius;
 }
