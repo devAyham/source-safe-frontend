@@ -1,7 +1,7 @@
 import { Layout as AntLayout } from "antd";
 import { Content } from "antd/es/layout/layout";
 import { ContentInfo } from "components/particels/ContentInfo";
-import { SiderBar } from "components/particels/SiderBar";
+import { SideBar } from "components/particels/SideBar";
 import { useEffect, useRef, useState } from "react";
 import { Props } from "./Props";
 import styles from "./styles.module.scss";
@@ -20,7 +20,7 @@ const Layout = (props: Props) => {
 
   return (
     <AntLayout hasSider>
-      <SiderBar />
+      <SideBar />
       <AntLayout>
         <Content className={styles.content}>
           <Outlet />

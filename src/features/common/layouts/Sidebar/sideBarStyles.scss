@@ -1,6 +1,6 @@
-@use "styles/variables/main_colors_vars.module" as *;
+@use "/src/styles/variables/app_colors_vars.module" as *;
 .sidebar {
-  background: $sider-color !important;
+  background: $sider_background !important;
   transition: all 0.7s ease-in-out !important;
   height: 100vh;
   // position: sticky !important;
@@ -61,7 +61,7 @@
       .textlogoOverlay {
         z-index: 1;
         position: absolute;
-        background-color: $sider-color;
+        background-color: $sider_background;
         animation-name: animateOverlayLogo;
         animation-duration: 2.3s;
         animation-delay: 1.45s;
@@ -90,7 +90,7 @@
   }
   .menu {
     padding-top: 25px;
-    background-color: $sider-color !important;
+    background-color: $sider_background !important;
     border-inline: none !important;
     display: block;
     max-height: 80%;
