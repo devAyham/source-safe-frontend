@@ -1,0 +1,44 @@
+@use "/src/styles/variables/app_sizes_vars.module" as *;
+@use "/src/styles/variables/app_colors_vars.module" as *;
+
+.siderBar {
+  width: $siderBar_width;
+  height: 100vh;
+  background-color: $sider_background;
+  position: fixed;
+  border-radius: 0 $siderBar_border_radius $siderBar_border_radius 0;
+  box-shadow: 17px 2px 18px -5px rgba(156, 156, 156, 0.4);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  .siderBarMenuContainer {
+    width: calc($siderBar_width - $siderBar_info_width);
+    height: 100%;
+    background-color: transparent;
+    order: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: $sideBar_menu_padding_top;
+    overflow: hidden;
+
+    .logoutItemContainer {
+      width: 100%;
+      height: $logout_item_container_height;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+  .siderBarInfoContainer {
+    width: $siderBar_info_width;
+    height: 100%;
+    background-color: $sider_info_background;
+    border-radius: $siderBar_border_radius $siderBar_border_radius;
+    order: 2;
+    overflow: hidden;
+  }
+}
