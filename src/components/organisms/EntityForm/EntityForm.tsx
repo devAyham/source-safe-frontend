@@ -73,7 +73,7 @@ export function EntityForm<
                     {...controlRenderField}
                     key={String(controlRenderField.name)}
                     label={controlRenderField.label}
-                    name={String(controlRenderField.name)}
+                    name={String(controlRenderField.name) as any}
                     rules={[
                       {
                         required: controlRenderField.required,
@@ -128,7 +128,7 @@ export function EntityForm<
                     {...defaultField}
                     key={String(defaultField.name)}
                     label={defaultField.label}
-                    name={String(defaultField.name)}
+                    name={String(defaultField.name)  as any}
                     rules={[
                       {
                         required: defaultField.required,

@@ -8,8 +8,6 @@ interface DeletePopComfirmProps extends EntityIdInterface{
   /** */
   deletProduct: any;
   /** */
-
-  /** */
   iconSize?: number;
 }
 /**
