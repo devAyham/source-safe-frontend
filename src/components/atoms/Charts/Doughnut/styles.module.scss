@@ -1,0 +1,10 @@
+@use "/src/styles/variables/app_colors_vars.module" as *;
+.type {
+  color: $text_color !important;
+  font-weight: bold;
+  font-size: 23px;
+}
+.content {
+  color: $desc_color;
+  font-size: 16px;
+}
