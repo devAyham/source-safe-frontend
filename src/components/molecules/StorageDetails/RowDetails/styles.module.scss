@@ -1,0 +1,32 @@
+@use "/src/styles/variables/app_sizes_vars.module" as *;
+@use "/src/styles/variables/app_colors_vars.module" as *;
+
+.row {
+  width: 100%;
+  height: 60px;
+  // background-color: red;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+  padding: 20px;
+  .details {
+    padding-inline-start: 5px;
+    width: 50%;
+    .title {
+      font-weight: bold;
+      font-size: 15px;
+      text-transform: capitalize;
+    }
+    .filesNumber {
+      color: $desc_color;
+      font-size: 13px;
+      font-weight: bold;
+    }
+  }
+  .storage {
+    color: $text_color;
+    font-size: 16px;
+    font-weight: bold;
+  }
+}
