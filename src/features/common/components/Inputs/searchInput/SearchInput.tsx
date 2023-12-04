@@ -1,10 +1,12 @@
-import { Input } from "antd";
+import { Input, Space } from "antd";
 import { SearchProps } from "antd/es/input";
 import { Button } from "components";
 import { memo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import styles from "./styles.module.scss";
 import { ReactComponent as SearchSvg } from "assets/svgs/Search.svg";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 /** */
 export interface SearchInputProps extends SearchProps {
   /**
@@ -42,9 +44,9 @@ const SearchInput = ({
       <Input.Search
         bordered={false}
         disabled={selectionMode}
-        enterButton={<SearchSvg />}
+        enterButton={<FontAwesomeIcon icon={faMagnifyingGlass} />}
         size="large"
-        placeholder={`${t("SEARCH")}`}
+        placeholder={"Search"}
         loading={isLoading}
         onSearch={(value: string) => {
           setSearchTerm(value);

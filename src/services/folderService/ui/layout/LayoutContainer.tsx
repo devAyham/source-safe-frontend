@@ -32,7 +32,7 @@ const LayoutContainer = (props: Props) => {
         IGetResponse,
         IGetAllResponse
       >
-        viewType="list"
+        viewType="cards"
         tableProps={{
           columns: GetTableColumns(),
         }}

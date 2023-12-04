@@ -8,6 +8,9 @@ export const PagesRotes = {
   },
   DashboardRoutes: {
     index: `/${MainFeaturesRoutes.DashboardRoute}`,
+    MyFolders: {
+      index: `/${MainFeaturesRoutes.DashboardRoute}/${SubFeaturesRoutes.MyFolders}`,
+    },
   },
   TrashRoutes: {
     index: `/${MainFeaturesRoutes.TrashRoute}`,
