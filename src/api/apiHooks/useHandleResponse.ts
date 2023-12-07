@@ -1,5 +1,9 @@
 import { showErrorMessage } from "api/helpers/showErrorMessage";
 import { showSuccessMessage } from "api/helpers/showSuccessMessage";
+import {
+  useAppDispatch
+} from "features/common/hooks/useReduxHooks";
+import { UiSliceActions } from "features/common/redux/slices/uiSlices";
 import { useNavigate } from "react-router-dom";
 import { HttpStatus } from "../constants/httpStatusCodes";
 
@@ -21,10 +25,20 @@ type HandleReturnType = {
 
 export const useHandle = (): HandleReturnType => {
   const navigate = useNavigate();
-
+  const { SetError } = UiSliceActions;
+  const dispatch = useAppDispatch();
   const handleError = (error: any, navigateTo?: string) => {
     const statusCode = error?.response?.status;
     const errorMessage = error?.response?.data?.message;
+    if (error.response.config.method === "get") {
+      dispatch(
+        SetError({
+          code: statusCode,
+          message: errorMessage,
+          navigate: true,
+        })
+      );
+    }
 
     if (statusCode && Object.values(HttpStatus).includes(statusCode)) {
       switch (statusCode) {
@@ -39,6 +53,9 @@ export const useHandle = (): HandleReturnType => {
           showErrorMessage(errorMessage);
           break;
         case HttpStatus.BadRequest:
+          showErrorMessage(errorMessage);
+          break;
+        case HttpStatus.NotFound:
           showErrorMessage(errorMessage);
           break;
         default:
