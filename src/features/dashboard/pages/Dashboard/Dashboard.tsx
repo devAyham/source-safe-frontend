@@ -29,7 +29,15 @@ function Dashbaord() {
             }}
           />
         </div>
-        <FolderLayout />
+        <FolderLayout
+        // pagination={{
+        //   pageSize: 10,
+        //   onChange(page, pageSize) {
+        // setPage(page);
+        // setPerPage(pageSize);
+        //   },
+        // }}
+        />
       </Col>
     </Row>
   );

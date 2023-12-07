@@ -36,7 +36,7 @@ function Form({ formName, entityId, onSuccess, onError }: IFormProps) {
         handleSubmit={onFinish}
         serviceName={ServiceType.Folder}
         formName={formName}
-        entityId={10}
+        entityId={entityId}
         formProps={{
           layout: "vertical",
         }}

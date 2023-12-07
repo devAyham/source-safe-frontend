@@ -1,3 +1,4 @@
+import { EntityIdType } from "types";
 import { MainFeaturesRoutes } from "./mainFeaturesRoutes";
 import { SubFeaturesRoutes } from "./subFeaturesRoutes";
 
@@ -10,6 +11,8 @@ export const PagesRotes = {
     index: `/${MainFeaturesRoutes.DashboardRoute}`,
     MyFolders: {
       index: `/${MainFeaturesRoutes.DashboardRoute}/${SubFeaturesRoutes.MyFolders}`,
+      show: (id: EntityIdType) =>
+        `/${MainFeaturesRoutes.DashboardRoute}/${SubFeaturesRoutes.MyFolders}/${id}`,
     },
   },
   TrashRoutes: {

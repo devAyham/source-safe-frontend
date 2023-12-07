@@ -2,7 +2,7 @@
 @use "/src/styles/variables/app_sizes_vars.module" as *;
 
 .content {
-  min-height: 100vh !important;
+  height: 100vh !important;
   background: $content_background;
   overflow: scroll;
   margin-inline-start: calc($siderBar_width);
