@@ -54,7 +54,7 @@ function CrudLayout<
   // const gridProps = viewCardGrid;
   const _defaultCardColProps = viewCardGrid ?? {
     xs: 24,
-    md: 12,
+    lg: 12,
     xl: 8,
   };
 
