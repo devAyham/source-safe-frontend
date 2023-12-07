@@ -17,13 +17,7 @@ function Pagination({
         showTotal={(total: number) => {
           return (
             <>
-              {[
-                t("SHOWING"),
-                currentPageLength,
-                t("OF"),
-                total,
-                t("RESULT"),
-              ].join(" ")}
+              {["Showing", currentPageLength, "of", total, "result"].join(" ")}
             </>
           );
         }}
