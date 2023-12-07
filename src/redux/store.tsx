@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import uiReducer from "features/common/redux/slices/uiSlices";
 import authReducer from "features/auth/redux/slices/authSlice";
 import { dashboardReducer } from "features/dashboard/redux/slices/dashboardSlice";
+import { SharedDataReducer } from "features/common/redux/slices/shearedDataSlices";
 
 /**
  * @description the redux store
@@ -12,6 +13,7 @@ const store = configureStore({
     ui: uiReducer,
     auth: authReducer,
     dashboard: dashboardReducer,
+    sharedData: SharedDataReducer,
   },
 });
 export default store;
