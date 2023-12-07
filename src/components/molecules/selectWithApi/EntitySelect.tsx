@@ -28,7 +28,7 @@ export default function EntitySelect<T>({
     },
   });
   const options: EntityOption[] =
-    getAllEntities?.data?.data.items.map((entity) => ({
+    getAllEntities?.data?.data.map((entity) => ({
       label: entity[labelKey],
       value: entity[valueKey],
     })) ?? [];
@@ -57,11 +57,11 @@ export default function EntitySelect<T>({
       {...restProps}
       filterOption={false}
       options={
-        customOptions?.(getAllEntities.data?.data.items ?? []) ??
+        customOptions?.(getAllEntities.data?.data ?? []) ??
         options.map((option, index) => ({
           ...option,
           label: optionRender
-            ? optionRender(getAllEntities?.data?.data.items[index] as T)
+            ? optionRender(getAllEntities?.data?.data[index] as T)
             : option.label,
         }))
       }
