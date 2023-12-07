@@ -18,8 +18,10 @@
     }
   }
   .foldersContainer {
-    // background-color: red;
-    // height: 200px;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 240px;
+    gap: 20px;
   }
 }

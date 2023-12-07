@@ -7,15 +7,33 @@ import { useNavigate } from "react-router-dom";
 import { PagesRotes } from "router/constants/pagesRoutes";
 import { FolderLayout } from "services/folderService";
 import styles from "./styles.module.scss";
+import { DashboardPagesType } from "features/dashboard/types/dashboardPages.type";
+import {
+  useAppDispatch,
+  useAppSelector,
+} from "features/common/hooks/useReduxHooks";
+import { dashboardSliceActions } from "features/dashboard/redux/slices/dashboardSlice";
+import { debounce } from "lodash";
+
 function Dashbaord() {
   const navigate = useNavigate();
+  const resource: DashboardPagesType = "index";
+  const {
+    index: { search },
+  } = useAppSelector((state) => state.dashboard);
+  const { SetSearch } = dashboardSliceActions;
+  const dispatch = useAppDispatch();
+
+  const setSearchTerm = debounce((value: string) => {
+    dispatch(SetSearch({ resource, value }));
+  }, 1500);
   return (
     <Row className={styles.page}>
       <Col span={24}>
         <SearchInput
-          setSearchTerm={() => {}}
+          setSearchTerm={setSearchTerm}
           isLoading={false}
-          defaultValue={""}
+          defaultValue={search}
         />
       </Col>
       <Col span={24} className={styles.foldersContainer}>
@@ -30,13 +48,15 @@ function Dashbaord() {
           />
         </div>
         <FolderLayout
-        // pagination={{
-        //   pageSize: 10,
-        //   onChange(page, pageSize) {
-        // setPage(page);
-        // setPerPage(pageSize);
-        //   },
-        // }}
+          apiCrudConfig={{
+            getAllConfig: {
+              params: {
+                page: 1,
+                items_per_page: 3,
+                search: search !== "" ? search : undefined,
+              },
+            },
+          }}
         />
       </Col>
     </Row>
