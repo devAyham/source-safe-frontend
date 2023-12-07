@@ -90,7 +90,6 @@ export default function EntityFormContainer<
       createdData && createEntity.mutate(createdData);
     }
   };
-  // console.log(mapGetDetailsEntity && entityId ? mapGetDetailsEntity(getDetailsEntity.data?.data as getResponse) : getDetailsEntity.data?.data as SubmittedValues)
 
   return (
     <Spin spinning={getDetailsEntity.isFetching}>

@@ -39,7 +39,6 @@ export const useRefreshToken = () => {
       });
     if (res) {
       const tokens = res.data.data;
-      console.log(tokens);
       dispatch(
         AuthSliceActions.SetTokens({
           accessToken: tokens.accessToken,

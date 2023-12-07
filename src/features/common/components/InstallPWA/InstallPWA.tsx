@@ -30,9 +30,6 @@ const InstallPWA = () => {
 
   const handleInstallClick = () => {
     if (deferredPrompt) {
-      // const deferredPrompt2 = JSON.parse(deferredPrompt);
-      // console.log(deferredPrompt);
-
       deferredPrompt.prompt();
       deferredPrompt.userChoice.then((choiceResult: any) => {
         // message.info("User prompt");

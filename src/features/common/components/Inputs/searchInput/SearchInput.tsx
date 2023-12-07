@@ -53,7 +53,6 @@ const SearchInput = ({
           setFeildValue(value);
         }}
         onChange={(e) => {
-          console.log(e.target.value);
 
           setSearchTerm(e.target.value);
           setFeildValue(e.target.value);

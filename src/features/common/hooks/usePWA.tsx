@@ -9,8 +9,6 @@ const usePWA = () => {
 
   useEffect(() => {
     window.addEventListener("beforeinstallprompt", (e) => {
-      // e.preventDefault();
-      // console.log(JSON.stringify(e));
       dispatch(UiSliceActions.SetDeferredPrompt(e));
     });
   }, [dispatch]);

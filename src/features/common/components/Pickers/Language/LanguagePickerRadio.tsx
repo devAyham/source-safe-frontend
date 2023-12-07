@@ -12,7 +12,6 @@ export const LanguagePicker: React.FC = () => {
     const {language, setLanguage} = useLanguage();
     const queryClient = useQueryClient();
     const refetch = () => {
-        console.log(language)
         queryClient.invalidateQueries()
         // queryClient.refetchQueries()
         // queryClient.resetQueries();

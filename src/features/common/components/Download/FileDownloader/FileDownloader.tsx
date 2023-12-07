@@ -29,7 +29,6 @@ const FilesDownloader = ({ description, url }: FilesDownloaderProps) => {
             type="primary"
             icon={<DownloadIcon />}
             onClick={() => {
-              console.log(url);
               // window.open(url, "_blank");
               // downloadURL(url);
               const link = document.createElement("a");

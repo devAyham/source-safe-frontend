@@ -26,7 +26,6 @@ export default class ApiProvider {
     this.axiosInstance.interceptors.response.use(
       (response) => response,
       async (error) => {
-        console.log(tokens);
         const prevRequest = error?.config;
         if (
           error?.response?.status === 401 &&

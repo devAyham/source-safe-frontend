@@ -8,7 +8,6 @@ function Component({ routeKey, icon, text }: Props) {
   const navigate = useNavigate();
   const location = useLocation();
   const paths = location.pathname.split("/");
-  console.log(paths[2] === routeKey);
 
   return (
     <Button
