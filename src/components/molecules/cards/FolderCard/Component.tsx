@@ -13,22 +13,23 @@ import {
   faFolderClosed,
 } from "@fortawesome/free-solid-svg-icons";
 
-function StructuredCard({}: // createdAt,
-// fileCount,
-// folderName,
-// icon,
-// membersImages,
-// size,
-// actions,
-// badge,
-// onClick,
-Props) {
-  // const onDeflautClick = (e: any) => {
-  //   onClick?.(e);
-  // };
+function StructuredCard({
+  createdAt,
+  fileCount,
+  folderName,
+  icon,
+  membersImages,
+  size,
+  actions,
+  badge,
+  onClick,
+}: Partial<Props>) {
+  const onDeflautClick = (e: any) => {
+    onClick?.(e);
+  };
 
   return (
-    <Row className={styles.cardContainer}>
+    <Row className={styles.cardContainer} onClick={onDeflautClick}>
       <Col span={24} className={styles.logoAndMembersContainer}>
         <div className={styles.logoContainer}>
           <FontAwesomeIcon icon={faFolderClosed} className={styles.logo} />
