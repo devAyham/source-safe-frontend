@@ -9,6 +9,8 @@ import { Outlet } from "react-router-dom";
  */
 export const ErrorRoutes = () => {
   const { errors } = useAppSelector((state) => state.ui);
+  console.log(errors);
+
   if (errors && errors.navigate) {
     switch (errors.code) {
       case 404:

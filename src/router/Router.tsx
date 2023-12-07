@@ -27,8 +27,8 @@ const MainRouter = () => {
         </Route>
         <Route key={"AuthenticatedRoutes"} element={<AuthenticatedRoutes />}>
           <Route path="/" element={<MainLayout />}>
-            {DashboardRoutes}
             <Route element={<ErrorRoutes />}>
+              {DashboardRoutes}
               <Route path="*" element={<FourOFourPage />} />
             </Route>
           </Route>
