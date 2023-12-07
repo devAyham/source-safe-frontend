@@ -7,6 +7,7 @@
   border-radius: 10px;
   overflow: hidden;
   transition: all 500ms;
+  cursor: pointer;
   &.selected {
     background-color: $primary_color_1 !important;
   }
