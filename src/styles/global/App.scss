@@ -10,7 +10,7 @@
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: $icon_color;
+    background-color: $primary_color_1;
     border-radius: 5px;
     margin: 10px;
   }
@@ -21,7 +21,7 @@
 
   &::-webkit-scrollbar-button {
     background-color: transparent;
-    height: 30px !important;
+    height: 50px !important;
   }
 
   &::selection {
@@ -44,7 +44,6 @@ html {
 body {
   margin: 0;
   padding: 0px;
-  background-color: blue;
   width: 100vw;
 }
 
