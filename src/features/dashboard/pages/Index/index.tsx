@@ -15,7 +15,7 @@ import {
 import { dashboardSliceActions } from "features/dashboard/redux/slices/dashboardSlice";
 import { debounce } from "lodash";
 
-function Dashbaord() {
+function DashbaordIndexPage() {
   const navigate = useNavigate();
   const resource: DashboardPagesType = "index";
   const {
@@ -63,4 +63,4 @@ function Dashbaord() {
   );
 }
 
-export default Dashbaord;
+export default DashbaordIndexPage;
