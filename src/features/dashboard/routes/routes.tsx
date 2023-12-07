@@ -3,8 +3,10 @@ import { MainFeaturesRoutes } from "router/constants/mainFeaturesRoutes";
 import { SubFeaturesRoutes } from "router/constants/subFeaturesRoutes";
 import { lazy } from "react";
 
-const DashboardPage = lazy(() => import("../pages/Dashboard/Dashboard"));
-const MyFolders = lazy(() => import("../pages/MyFolders/MyFolders"));
+const DashbaordIndexPage = lazy(() => import("../pages/Index"));
+const MyFoldersPage = lazy(() => import("../pages/MyFolders/MyFolders"));
+const ShowFolderPage = lazy(() => import("../pages/ShowFolder/ShowFolder"));
+
 export default [
   <Route
     key={MainFeaturesRoutes.DashboardRoute}
@@ -13,12 +15,17 @@ export default [
     <Route
       index
       key={MainFeaturesRoutes.DashboardRoute}
-      element={<DashboardPage />}
+      element={<DashbaordIndexPage />}
     />
     <Route
       key={SubFeaturesRoutes.MyFolders}
       path={SubFeaturesRoutes.MyFolders}
-      element={<MyFolders />}
+      element={<MyFoldersPage />}
+    />
+    <Route
+      key={`${SubFeaturesRoutes.MyFolders}/:id`}
+      path={`${SubFeaturesRoutes.MyFolders}/:id`}
+      element={<ShowFolderPage />}
     />
   </Route>,
 ];
