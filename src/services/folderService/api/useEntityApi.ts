@@ -10,18 +10,18 @@ import IUpdate from "../interfaces/Update.interface";
 const useEntityApi = (
   options?: IApiCrudConfig<
     IRequestParams,
-    ICreate,
-    IUpdate,
-    IUpdate,
+    ICreate | FormData,
+    IUpdate | FormData,
+    IUpdate | FormData,
     IGetResponse,
     IGetAllResponse
   >
 ) => {
   return useApiCRUD<
     IRequestParams,
-    ICreate,
-    IUpdate,
-    IUpdate,
+    ICreate | FormData,
+    IUpdate | FormData,
+    IUpdate | FormData,
     IGetResponse,
     IGetAllResponse
   >(ServiceName, options);

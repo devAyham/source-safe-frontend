@@ -1,6 +1,5 @@
 import { Image } from "components";
 import { GenericColumnsType } from "interfaces/GenericColumnType";
-import { useTranslation } from "react-i18next";
 import IGetAllResponse from "../../interfaces/GetAllResponse.interface";
 
 function GetTableColumns(): GenericColumnsType<IGetAllResponse> {

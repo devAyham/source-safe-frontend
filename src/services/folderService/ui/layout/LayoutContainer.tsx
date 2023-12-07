@@ -7,6 +7,7 @@ import IGetResponse from "../../interfaces/GetResponse.interface";
 import IRequestParams from "../../interfaces/RequestParams.interface";
 import IUpdate from "../../interfaces/Update.interface";
 import GetTableColumns from "./columns";
+import { FolderCard } from "components/molecules/cards/FolderCard";
 
 export interface Props
   extends GenericOmit<
@@ -36,6 +37,11 @@ const LayoutContainer = (props: Props) => {
         tableProps={{
           columns: GetTableColumns(),
         }}
+        cardRender={(record) => {
+          return <FolderCard />;
+        }}
+        cardLayoutMargin="0px"
+        cardLayoutRowGutter={[45,20]}
         {...props}
         serviceName={ServiceName}
       />

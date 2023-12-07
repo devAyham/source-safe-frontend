@@ -1,6 +1,6 @@
 import { EntityIdInterface } from "../../../interfaces/EntityId.interface";
 
 export default interface IEntity extends EntityIdInterface {
-  logo: File;
+  logo: any;
   name: string;
 }
