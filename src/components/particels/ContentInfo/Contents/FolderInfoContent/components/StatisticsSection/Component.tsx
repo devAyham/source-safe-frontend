@@ -10,7 +10,6 @@ import { Image, Typography } from "components/atoms";
 import { Radio } from "antd";
 import { ReactNode, useState } from "react";
 
-
 type folderInfoRadioType = "members" | "statistics";
 const folderInfoRadio: folderInfoRadioType[] = ["members", "statistics"];
 
