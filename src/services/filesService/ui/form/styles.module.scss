@@ -1,0 +1,14 @@
+.select {
+  [class~="ant-select-selection-item"] {
+    height: 40px;
+    padding-inline: 10px !important;
+  }
+}
+.icon {
+  width: 90px;
+  height: 90px;
+  background-color: white;
+}
+.form {
+  gap: 20px;
+}
