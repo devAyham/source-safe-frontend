@@ -1,74 +1,35 @@
-import { HttpStatus } from "api/constants/httpStatusCodes";
-import {
-  useAppDispatch,
-  useAppSelector,
-} from "features/common/hooks/useReduxHooks";
-import { ShearedDataSliceActions } from "features/common/redux/slices/shearedDataSlices";
-import { useFolderApi } from "services/folderService";
+import { Typography, Button } from "components/atoms";
+import { Props } from "./Props";
+import { MemberRow } from "./components";
 import styles from "./styels.module.scss";
-import { Image, Typography } from "components/atoms";
-import { Radio } from "antd";
-import { ReactNode, useState } from "react";
-
-type folderInfoRadioType = "members" | "statistics";
-const folderInfoRadio: folderInfoRadioType[] = ["members", "statistics"];
-
-function Component() {
-  const [state, setState] = useState<folderInfoRadioType>(folderInfoRadio[0]);
-  const { activeFolderId } = useAppSelector(
-    (state) => state.sharedData.contentInfo
-  );
-  const dispatch = useAppDispatch();
-  const { SetFolderId } = ShearedDataSliceActions;
-  const {
-    getDetailsEntity: { data, isLoading },
-  } = useFolderApi({
-    getDetailsConfig: {
-      id: activeFolderId ? activeFolderId : 0,
-      enabled: !!activeFolderId,
-      onError(error: any) {
-        if (error.response?.status === HttpStatus.NotFound) {
-          dispatch(SetFolderId(null));
-        }
-      },
-    },
-  });
-  const folderInfoContent: {
-    [key in folderInfoRadioType]: ReactNode;
-  } = {
-    members: <>members</>,
-    statistics: <>statistics</>,
-  };
+import { Space } from "antd";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
+function Component({ members }: Props) {
   return (
     <div className={styles.container}>
-      <div className={styles.folderGeneralInfo}>
-        <div className={styles.imageContainer}>
-          <Image
-            className={styles.image}
-            src="https://xsgames.co/randomusers/avatar.php?g=pixel&key=2"
-          />
-        </div>
-        <Typography.SubTitle level={3} className={styles.folderName}>
-          Folder Name
+      <Space className={styles.totalRow}>
+        <Button
+          shape="round"
+          type="primary"
+          size="small"
+          icon={<FontAwesomeIcon icon={faPlusCircle} className={styles.icon} />}
+        >
+          Add new
+        </Button>
+        <Typography.SubTitle level={5}>
+          {members.length} member
         </Typography.SubTitle>
-        <Typography.Text className={styles.folderInfo}>
-          Files count 23 - 2GB
-        </Typography.Text>
-      </div>
-      <div className={styles.divider}></div>
-      <Radio.Group
-        defaultValue={folderInfoRadio[0]}
-        buttonStyle="solid"
-        className={styles.buttons}
-        onChange={(e) => {
-          setState(e.target.value);
-        }}
-      >
-        {folderInfoRadio.map((value) => {
-          return <Radio.Button value={value}>{value}</Radio.Button>;
+      </Space>
+      <div className={styles.membersContinaer}>
+        {members.map((member) => {
+          return (
+            <>
+              <MemberRow {...member} />
+            </>
+          );
         })}
-      </Radio.Group>
-      {folderInfoContent[state]}
+      </div>
     </div>
   );
 }

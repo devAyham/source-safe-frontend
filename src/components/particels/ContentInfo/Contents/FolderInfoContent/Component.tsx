@@ -9,7 +9,8 @@ import styles from "./styels.module.scss";
 import { Image, Typography } from "components/atoms";
 import { Radio } from "antd";
 import { ReactNode, useState } from "react";
-
+import { MembersSection } from "./components/MembersSection";
+import { StatisticsSection } from "./components/StatisticsSection";
 
 type folderInfoRadioType = "members" | "statistics";
 const folderInfoRadio: folderInfoRadioType[] = ["members", "statistics"];
@@ -37,8 +38,8 @@ function Component() {
   const folderInfoContent: {
     [key in folderInfoRadioType]: ReactNode;
   } = {
-    members: <>members</>,
-    statistics: <>statistics</>,
+    members: <MembersSection members={data?.data.members ?? []} />,
+    statistics: <StatisticsSection />,
   };
   return (
     <div className={styles.container}>
