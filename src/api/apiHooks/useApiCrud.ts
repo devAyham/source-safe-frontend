@@ -76,7 +76,7 @@ export default function useApiCRUD<
         getAllConfig?.onSuccess &&
           getAllConfig.onSuccess(
             {
-              ...data.data,
+              ...data.data.data,
             },
             undefined,
             undefined,

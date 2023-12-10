@@ -94,7 +94,7 @@ function CrudLayout<
 
   const _data: readonly getAllResponse[] = getAllEntityCallback
     ? tableProps?.dataSource ?? []
-    : getAllEntities.data?.data ?? [];
+    : getAllEntities.data?.data.data ?? [];
 
   const ActionMode = actions?.mode ?? "icon";
   const _defaultDeleteButton =
@@ -300,12 +300,10 @@ function CrudLayout<
           {pagination && _data?.length > 0 && (
             <Pagination
               className={styles.pagination}
-              current={getAllConfig?.params?.page ?? pagination.current}
-              pageSize={
-                getAllConfig?.params?.items_per_page ?? pagination.pageSize
-              }
+              current={getAllConfig?.params?.page}
+              pageSize={getAllConfig?.params?.items_per_page}
               // total={getAllEntities?.data?.data?.pagination?.total}
-              total={getAllEntities?.data?.data?.length}
+              total={Number(getAllEntities?.data?.data?.pagination.totalItems)}
               currentPageLength={_data?.length ?? 0}
               {...pagination}
             />

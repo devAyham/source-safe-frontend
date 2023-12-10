@@ -14,7 +14,7 @@ export const perPageAction = (
   action: IDashboardPayloadAction<number>
 ) => {
   if (state[action.payload.resource].pagnation)
-    state[action.payload.resource].pagnation.page = action.payload.value;
+    state[action.payload.resource].pagnation.perPage = action.payload.value;
 };
 export const searchAction = (
   state: WritableDraft<IDashboardSliceInitialState>,

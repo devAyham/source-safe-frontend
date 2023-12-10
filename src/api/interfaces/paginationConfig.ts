@@ -1,8 +1,6 @@
 export interface IPaginationConfig {
-    currentPage?: number
-    from?: number
-    lastPage?: number
-    perPage?: number
-    to?: number
-    total?: number
+  page?: number;
+  items_per_page?: number;
+  totalPages?: number;
+  totalItems?: number;
 }

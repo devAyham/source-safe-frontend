@@ -1,13 +1,13 @@
 import { UseMutationOptions, UseQueryOptions } from "react-query";
 import { IPaginationConfig } from "./paginationConfig";
 
-// export interface CrudTableResponseData<T> {
-//     items: T[]
-//     pagination: IPaginationConfig
-// }
+export interface CrudTableResponseData<T> {
+  data: T[];
+  pagination: IPaginationConfig;
+}
 
 export interface IBaseApiResponse<T> {
-  data: T[];
+  data: CrudTableResponseData<T>;
   meta: any;
   extra: any;
 }

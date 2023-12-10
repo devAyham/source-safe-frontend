@@ -13,7 +13,7 @@ function Pagination({
       <AntPagination
         size="small"
         showSizeChanger={true}
-        pageSizeOptions={[2, 4, 8, 10, 12, 20]}
+        pageSizeOptions={[3,6,9,12,15,18,21]}
         showTotal={(total: number) => {
           return (
             <>
