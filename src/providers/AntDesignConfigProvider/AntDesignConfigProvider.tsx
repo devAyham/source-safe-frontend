@@ -21,15 +21,6 @@ import { UiSliceActions } from "features/common/redux/slices/uiSlices";
 const AntDesignConfigProvider = ({ children }: any) => {
   const { theme } = useAppSelector((state) => state.ui);
 
-  const customizeRenderEmpty = () => (
-    <div style={{ textAlign: "center", height: "150px" }}>
-      <CustomEmpty hidden={false} />
-    </div>
-  );
-  return (
-    <ConfigProvider theme={defaultTheme} renderEmpty={customizeRenderEmpty}>
-      {children}
-    </ConfigProvider>
-  );
+  return <ConfigProvider theme={defaultTheme}>{children}</ConfigProvider>;
 };
 export default AntDesignConfigProvider;

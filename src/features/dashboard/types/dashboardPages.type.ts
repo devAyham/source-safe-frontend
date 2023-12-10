@@ -1,1 +1,5 @@
-export type DashboardPagesType = "index" | "myFolders" | "recentActivities";
+export type DashboardPagesType =
+  | "index"
+  | "myFolders"
+  | "recentActivities"
+  | "showFolder";

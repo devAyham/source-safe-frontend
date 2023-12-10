@@ -217,7 +217,7 @@ function CrudLayout<
           <div>
             <Table<getAllResponse>
               className={styles.Stable}
-              scroll={{ x: 1000, y: 400 }}
+              scroll={{ x: 800, y: 400 }}
               {...tableProps}
               columns={mergedColumns}
               dataSource={_data.map((record, index) => {

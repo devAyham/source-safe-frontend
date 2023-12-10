@@ -16,6 +16,10 @@ const initialState: IDashboardSliceInitialState = {
     pagnation: { page: 1, perPage: 9 },
     search: "",
   },
+  showFolder: {
+    pagnation: { page: 1, perPage: 9 },
+    search: "",
+  },
   recentActivities: {
     pagnation: { page: 1, perPage: 12 },
     search: "",
