@@ -1,13 +1,13 @@
 import { useAppDispatch } from "features/common/hooks/useReduxHooks";
 import { useTranslation } from "react-i18next";
-import { IUserData } from "services/authService/interfaces/Entity.interface";
 import { DestructureUserInfo } from "../helpers/DestructureUserInfo";
 import useNavigateFromState from "./useNavigateFromState";
 import useSetUserGlobally from "./useSetUserGlobally";
 import { AuthStateInterface } from "../interfaces/AuthStateInterface.d";
+import { IUserEntity } from "services/userService";
 
 interface Props {
-  user: IUserData;
+  user: IUserEntity;
   tokens: AuthStateInterface["tokens"];
 }
 function useOnSuccessLoginHelper() {

@@ -1,11 +1,11 @@
+import { IUserEntity } from "services/userService";
 import { UserInterface } from "../interfaces/UserInterface.d";
-import { IUserData } from "services/authService/interfaces/Entity.interface";
 
 /**
  * @param data
  * @returns
  */
-export const DestructureUserInfo = (data: IUserData) => {
+export const DestructureUserInfo = (data: IUserEntity) => {
   const { id, name, email } = data;
   let userInfo: UserInterface;
   userInfo = {
