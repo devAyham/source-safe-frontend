@@ -10,6 +10,7 @@ import GetTableColumns from "./columns";
 import { FolderCard } from "components/molecules/cards/FolderCard";
 import { useNavigate } from "react-router-dom";
 import { PagesRotes } from "router/constants/pagesRoutes";
+import { dateFormatter } from "helpers/dateFormatter";
 
 export interface Props
   extends GenericOmit<
@@ -40,11 +41,14 @@ const LayoutContainer = (props: Props) => {
         tableProps={{
           columns: GetTableColumns(),
         }}
-        cardRender={(record) => {
+        cardRender={({ id, logo, name, created_at }) => {
           return (
             <FolderCard
+              icon={logo}
+              folderName={name}
+              createdAt={dateFormatter(created_at ?? "")}
               onClick={() => {
-                navigate(PagesRotes.DashboardRoutes.MyFolders.show(record.id));
+                navigate(PagesRotes.DashboardRoutes.MyFolders.show(id));
               }}
             />
           );

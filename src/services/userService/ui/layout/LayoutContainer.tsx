@@ -40,15 +40,15 @@ const LayoutContainer = (props: Props) => {
         tableProps={{
           columns: GetTableColumns(),
         }}
-        cardRender={(record) => {
-          return (
-            <FolderCard
-              onClick={() => {
-                navigate(PagesRotes.DashboardRoutes.MyFolders.show(record.id));
-              }}
-            />
-          );
-        }}
+        // cardRender={(record) => {
+        //   return (
+        //     <FolderCard
+        //       onClick={() => {
+        //         navigate(PagesRotes.DashboardRoutes.MyFolders.show(record.id));
+        //       }}
+        //     />
+        //   );
+        // }}
         cardLayoutMargin="0px"
         cardLayoutRowGutter={[45, 20]}
         {...props}

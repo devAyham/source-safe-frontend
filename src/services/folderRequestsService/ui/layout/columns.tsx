@@ -3,6 +3,7 @@ import { GenericColumnsType } from "interfaces/GenericColumnType";
 import IGetAllResponse from "../../interfaces/GetAllResponse.interface";
 import { Avatar } from "antd";
 import { dateFormatter } from "helpers/dateFormatter";
+import { EntityWithAvatarInfo } from "components/molecules/EntityWithAvatarInf";
 
 function GetTableColumns(): GenericColumnsType<IGetAllResponse> {
   return [
@@ -10,26 +11,25 @@ function GetTableColumns(): GenericColumnsType<IGetAllResponse> {
       title: "#",
       dataIndex: "id",
       key: "id",
-      width: 100,
+      width: 50,
     },
     {
-      title: "Logo",
-      dataIndex: ["logo"],
-      key: "image",
+      title: "Folder",
+      dataIndex: ["folder"],
+      key: "Folder",
       align: "center",
-      render(value) {
-        return <Image src={value} width={50} height={50} />;
+      render(value, record) {
+        return (
+          <EntityWithAvatarInfo
+            avatarSrc={record.folder.logo}
+            title={record.folder.name}
+          />
+        );
       },
     },
     {
-      title: "Name",
-      dataIndex: ["folder", "name"],
-      key: "name",
-      align: "center",
-    },
-    {
       title: "Created At",
-      dataIndex: ["folder", "create_At"],
+      dataIndex: ["folder", "created_at"],
       key: "folder",
       align: "center",
       render(value, record, index) {
@@ -38,11 +38,11 @@ function GetTableColumns(): GenericColumnsType<IGetAllResponse> {
     },
     {
       title: "Files Count",
-      dataIndex: ["files_count"],
+      dataIndex: ["folder", "files_counts"],
       key: "files_count",
       align: "center",
-      render(value) {
-        return `${value} files`;
+      render(value, record) {
+        return `${record.folder.file_counts} files`;
       },
     },
     {
@@ -56,10 +56,10 @@ function GetTableColumns(): GenericColumnsType<IGetAllResponse> {
             maxCount={4}
             maxStyle={{ color: "#f56a00", backgroundColor: "#fde3cf" }}
           >
-            {record.members.map((member) => {
+            {record.folder.members?.map((member) => {
               return (
                 <Avatar style={{ backgroundColor: "#f56a00" }}>
-                  {member.name}
+                  {member.user.name}
                 </Avatar>
               );
             })}

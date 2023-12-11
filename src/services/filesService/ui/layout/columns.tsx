@@ -27,6 +27,15 @@ function GetTableColumns(): GenericColumnsType<IGetAllResponse> {
       align: "center",
     },
     {
+      title: "Size",
+      dataIndex: ["size"],
+      key: "size",
+      align: "center",
+      render(value, record, index) {
+        return "1.7 MB";
+      },
+    },
+    {
       title: "Created At",
       dataIndex: ["created_at"],
       key: "created_at",

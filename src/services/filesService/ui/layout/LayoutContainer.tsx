@@ -40,15 +40,18 @@ const LayoutContainer = (props: Props) => {
         tableProps={{
           columns: GetTableColumns(),
         }}
-        cardRender={(record) => {
-          return (
-            <FolderCard
-              onClick={() => {
-                navigate(PagesRotes.DashboardRoutes.MyFolders.show(record.id));
-              }}
-            />
-          );
-        }}
+        // cardRender={({ name, created_at }) => {
+        //   return (
+        //     <FolderCard
+        //       icon={logo}
+        //       folderName={name}
+        //       createdAt={dateFormatter(created_at ?? "")}
+        //       onClick={() => {
+        //         navigate(PagesRotes.DashboardRoutes.MyFolders.show(id));
+        //       }}
+        //     />
+        //   );
+        // }}
         cardLayoutMargin="0px"
         cardLayoutRowGutter={[45, 20]}
         {...props}
