@@ -4,6 +4,7 @@ import IGetAllResponse from "../../interfaces/GetAllResponse.interface";
 import { Tag } from "antd";
 import { FileStatusEnum } from "services/filesService/interfaces/Entity.interface";
 import variables from "styles/variables/_main_colors_vars.module.scss";
+import { dateFormatter } from "helpers/dateFormatter";
 
 function GetTableColumns(): GenericColumnsType<IGetAllResponse> {
   return [
@@ -30,12 +31,18 @@ function GetTableColumns(): GenericColumnsType<IGetAllResponse> {
       dataIndex: ["created_at"],
       key: "created_at",
       align: "center",
+      render(value, record, index) {
+        return dateFormatter(value);
+      },
     },
     {
       title: "Last Modified",
       dataIndex: ["last_modified"],
       key: "last_modified",
       align: "center",
+      render(value, record, index) {
+        return dateFormatter(value);
+      },
     },
     {
       title: "Status",

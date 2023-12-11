@@ -1,6 +1,6 @@
 import { EntityIdType } from "types";
 import { EntityIdInterface } from "../../../interfaces/EntityId.interface";
-import { IUserData } from "services/authService/interfaces/Entity.interface";
+import { IUserEntity } from "services/userService";
 
 export enum FileStatusEnum {
   CHECKED_IN = "check_in",
@@ -21,6 +21,6 @@ export default interface IEntity extends EntityIdInterface {
     name: string;
     extension: string;
     size: number;
-    user: IUserData;
+    user: IUserEntity;
   }[];
 }

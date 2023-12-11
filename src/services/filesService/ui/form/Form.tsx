@@ -12,6 +12,7 @@ import IUpdate from "../../interfaces/Update.interface";
 import { IExtraData } from "./interfaces/ExtraData.interface";
 import { IFormProps } from "./interfaces/FormProps.interface";
 import { ISubmittedValues } from "./interfaces/SubmittedValues.interface";
+import { useFilerApi } from "services/filesService/api";
 
 function Form({
   formName,
@@ -24,7 +25,7 @@ function Form({
   const {
     createEntity: { mutateAsync: createFolder },
     updateEntity: { mutateAsync: updateolder },
-  } = useFolderApi();
+  } = useFilerApi();
   const onFinish = (values: ISubmittedValues) => {
     const formData = new FormData();
     formData.append("file", values.file.file);
@@ -39,7 +40,7 @@ function Form({
     <>
       <EntityForm<ISubmittedValues, ICreate, IUpdate, IGetResponse, IExtraData>
         handleSubmit={onFinish}
-        serviceName={ServiceType.Folder}
+        serviceName={ServiceType.File}
         formName={formName}
         entityId={entityId}
         formProps={{
@@ -94,8 +95,8 @@ function Form({
             render() {
               return (
                 <FormItem
-                  name={"logo"}
-                  label={"folder logo"}
+                  name={"file"}
+                  label={"File logo"}
                   labelCol={{ span: 24 }}
                   rules={[
                     {
@@ -135,50 +136,3 @@ function Form({
 }
 
 export default Form;
-
-{
-  /* <AntForm
-onFinish={onFinish}
-form={form}
-className={styles.form}
-name={formName}
->
-<FormItem
-  name={"logo"}
-  label={"folder logo"}
-  labelCol={{ span: 24 }}
-  rules={[
-    {
-      required: true,
-    },
-  ]}
->
-  <Upload.Dragger
-    beforeUpload={(file) => {
-      return false;
-    }}
-    multiple={false}
-    listType="picture"
-    height={100}
-  >
-    <Button type="primary" icon={<UploadOutlined />}>
-      Click to Upload
-    </Button>
-  </Upload.Dragger>
-</FormItem>
-<FormItem
-  name={"name"}
-  label={"folder name"}
-  labelCol={{ span: 24 }}
-  required
-  rules={[
-    {
-      required: true,
-    },
-  ]}
->
-  <Input />
-</FormItem>
-</AntForm>
-</> */
-}

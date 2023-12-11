@@ -1,6 +1,6 @@
-import { IUserData } from "services/authService/interfaces/Entity.interface";
+import { IUserEntity } from "services/userService";
 
-export type MemberType= {
-    user: IUserData;
-    role: "admin" | "user";
-  }
+export type MemberType = {
+  user: IUserEntity;
+  role: "admin" | "user";
+};
