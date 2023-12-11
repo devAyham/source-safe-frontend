@@ -9,6 +9,7 @@ import { Route, Routes } from "react-router-dom";
 import { AuthenticatedRoutes } from "./middlewares/AuthenticatedRoutes";
 import { ErrorRoutes } from "./middlewares/ErrorRoutes";
 import { UnAuthenticatedRoutes } from "./middlewares/UnAuthenticatedRoutes";
+import { FolderRequestsRoutes } from "features/foldersRequests/routes";
 // import CustomErrorBoundary from "features/common/Errors/CustomErrorBoundary/CustomErrorBoundary";
 
 /**
@@ -29,6 +30,7 @@ const MainRouter = () => {
           <Route path="/" element={<MainLayout />}>
             <Route element={<ErrorRoutes />}>
               {DashboardRoutes}
+              {FolderRequestsRoutes}
               <Route path="*" element={<FourOFourPage />} />
             </Route>
           </Route>

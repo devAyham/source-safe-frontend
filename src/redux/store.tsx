@@ -3,6 +3,7 @@ import uiReducer from "features/common/redux/slices/uiSlices";
 import authReducer from "features/auth/redux/slices/authSlice";
 import { dashboardReducer } from "features/dashboard/redux/slices/dashboardSlice";
 import { SharedDataReducer } from "features/common/redux/slices/shearedDataSlices";
+import { folderRequestReducer } from "features/foldersRequests/redux/slices/folderRequestsSlice";
 
 /**
  * @description the redux store
@@ -14,6 +15,7 @@ const store = configureStore({
     auth: authReducer,
     dashboard: dashboardReducer,
     sharedData: SharedDataReducer,
+    folderRequest: folderRequestReducer,
   },
 });
 export default store;
