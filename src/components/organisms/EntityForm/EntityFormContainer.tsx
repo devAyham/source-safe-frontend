@@ -34,7 +34,7 @@ export default function EntityFormContainer<
   const [form] = Form.useForm<(SubmittedValues & extraData) | getResponse>();
   const { mapGetDetailsEntity, mapPatchEntity, mapCreateEntity } =
     mappers ?? {};
-  const { createEntity, patchEntity, getDetailsEntity } = useApiCRUD<
+  const { createEntity, updateEntity, getDetailsEntity } = useApiCRUD<
     {},
     createRequest | SubmittedValues,
     {},
@@ -47,7 +47,7 @@ export default function EntityFormContainer<
     },
     getDetailsConfig: {
       id: entityId ?? "",
-      enabled: !!entityId,
+      enabled: !apiOptions?.getDetailsConfig?.enabled === false ?? !!entityId,
       onSuccess: (data) => {
         form.setFieldsValue(
           mapGetDetailsEntity
@@ -76,7 +76,7 @@ export default function EntityFormContainer<
             id: entityId,
           };
 
-      patchedData && patchEntity.mutate(patchedData);
+      patchedData && updateEntity.mutate(patchedData);
     } else {
       const createdData = mapCreateEntity
         ? mapCreateEntity({

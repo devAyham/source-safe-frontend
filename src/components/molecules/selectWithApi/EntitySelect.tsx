@@ -19,14 +19,17 @@ export default function EntitySelect<T>({
   const [apiParams, setApiParams] = useState<IRequestParams<T>>({
     ...params,
   });
-  const { getAllEntities } = useApiCRUD<{}, {}, {}, {}, {}, T>(entityType, {
-    getAllConfig: {
-      params: {
-        ...apiParams,
+  const { getAllEntities } = useApiCRUD<{}, {}, {}, {}, {}, T>(
+    entityType as any,
+    {
+      getAllConfig: {
+        params: {
+          ...apiParams,
+        },
+        enabled: true,
       },
-      enabled: true,
-    },
-  });
+    }
+  );
   const options: EntityOption[] =
     getAllEntities?.data?.data.data.map((entity) => ({
       label: entity[labelKey],

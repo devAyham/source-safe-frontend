@@ -5,7 +5,7 @@ import { IRequestParams } from "api/interfaces/requestParams";
 
 export interface EntitySelectProps<T, S = {}>
   extends Omit<SelectProps, "options"> {
-  entityType: ServiceType;
+  entityType: ServiceType | string;
   labelKey: keyof T;
   valueKey: keyof T;
   optionRender?: (record: T) => ReactNode;
