@@ -1,12 +1,14 @@
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Col, Row, Space } from "antd";
 import { generateEntityCollectionQueryKey } from "api/helpers/queryKeysFactory";
-import { Button, PageHeader } from "components";
+import { Button, PageHeader, Typography } from "components";
 import {
   useAppDispatch,
   useAppSelector,
 } from "features/common/hooks/useReduxHooks";
 import { ShearedDataSliceActions } from "features/common/redux/slices/shearedDataSlices";
+import { CheckinFile } from "features/dashboard/components/molecules/CheckInFile";
 import { AddFileModal } from "features/dashboard/components/organismis";
 import { dashboardSliceActions } from "features/dashboard/redux/slices/dashboardSlice";
 import { DashboardPagesType } from "features/dashboard/types/dashboardPages.type";
@@ -15,6 +17,7 @@ import { QueryClient, useQueryClient } from "react-query";
 import { useNavigate, useParams } from "react-router-dom";
 import { PagesRotes } from "router/constants/pagesRoutes";
 import { FileLayout, FileServiceName } from "services/filesService";
+import { FileStatusEnum } from "services/filesService/interfaces/Entity.interface";
 
 function ShowFolder() {
   const resource: DashboardPagesType = "showFolder";
@@ -74,8 +77,14 @@ function ShowFolder() {
           },
         }}
       />
+      <br />
+      <br />
       <PageHeader
-        title={"Folder Informations & Files"}
+        title={
+          <Typography.Title level={1}>
+            Folder Informations & Files
+          </Typography.Title>
+        }
         mainActions={{
           primaryAction: {
             action: (
@@ -104,6 +113,40 @@ function ShowFolder() {
         viewType={"list"}
         actions={{
           deleteAction: true,
+          extraAction(record) {
+            return (
+              <Row style={{ width: 100 }}>
+                <Col span={24}>
+                  <Button style={{ height: 40 }} type="text" block>
+                    Download
+                  </Button>
+                </Col>
+                <Col span={24}>
+                  <Button style={{ height: 40 }} type="text" block>
+                    Show Info
+                  </Button>
+                </Col>
+
+                <Col span={24}>
+                  <CheckinFile
+                    file_id={record.id}
+                    disabled={record.status !== FileStatusEnum.CHECKED_OUT}
+                  />
+                </Col>
+                <Col span={24}>
+                  <Button
+                    style={{ height: 40 }}
+                    type="text"
+                    block
+                    disabled={record.status !== FileStatusEnum.CHECKED_IN}
+                  >
+                    Check Out
+                  </Button>
+                </Col>
+              </Row>
+            );
+          },
+          mode: "menu",
         }}
         apiCrudConfig={{
           getAllConfig: {
