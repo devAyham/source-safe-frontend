@@ -1,17 +1,35 @@
-import { useTranslation } from "react-i18next";
+import { Result } from "antd";
+import { Button } from "components";
+import { useAppDispatch } from "features/common/hooks/useReduxHooks";
+import { UiSliceActions } from "features/common/redux/slices/uiSlices";
+import { useNavigate } from "react-router-dom";
+import { MainFeaturesRoutes } from "router/constants/mainFeaturesRoutes";
 import styles from "../styles.module.scss";
-import { ReactComponent as SVG403 } from "assets/svgs/403_svg.svg";
 /**
  * @description a component that used to show an ui error intereface for 403 errors
  */
 const FourOThreePage = () => {
-  const { t } = useTranslation();
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+  const { SetError } = UiSliceActions;
   return (
-    <div className={styles.errorPage}>
-      <div className={styles.container}>
-        <SVG403 className={styles.image} />
-        <div className={styles.text}>{t("SORRY_BUT_YOU_DO_NOT_HAVE_ACCESS_THIS_PAGE")}</div>
-      </div>
+    <div className={styles.container}>
+      <Result
+        status="403"
+        title="403"
+        subTitle="UnAuthorized Action"
+        extra={
+          <Button
+            onClick={() => {
+              dispatch(SetError(null));
+              navigate(MainFeaturesRoutes.DashboardRoute);
+            }}
+            type="primary"
+          >
+            Back Home
+          </Button>
+        }
+      />
     </div>
   );
 };
