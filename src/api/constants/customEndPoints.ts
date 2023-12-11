@@ -4,5 +4,9 @@ export enum CustomEndPoints {
   SignOut = "sign-out",
   Refresh = "token-by-refresh",
   AddUsers = "add-users",
-  NotInFolder = 'not-in-folder'
+  NotInFolder = "not-in-folder",
+  AcceptJoinFolder = "accept-join-folder",
+  RejectJoinFolder = "reject-join-folder",
+  CheckIn = "check-in",
+  CheckOut = "check-out",
 }
