@@ -1,5 +1,5 @@
 import { Avatar, Checkbox, Col, Row, Space, Tooltip } from "antd";
-import { Card, Typography } from "components/atoms";
+import { Card, Image, Typography } from "components/atoms";
 import React, { ReactNode, useMemo } from "react";
 import { Item } from "types/Content.type";
 import { Props } from "./Props";
@@ -15,15 +15,15 @@ import {
 
 function StructuredCard({
   createdAt,
-  fileCount,
+  // fileCount,
   folderName,
   icon,
-  membersImages,
-  size,
-  actions,
-  badge,
+  // membersImages,
+  // size,
+  // actions,
+  // badge,
   onClick,
-}: Partial<Props>) {
+}: Props) {
   const onDeflautClick = (e: any) => {
     onClick?.(e);
   };
@@ -32,7 +32,7 @@ function StructuredCard({
     <Row className={styles.cardContainer} onClick={onDeflautClick}>
       <Col span={24} className={styles.logoAndMembersContainer}>
         <div className={styles.logoContainer}>
-          <FontAwesomeIcon icon={faFolderClosed} className={styles.logo} />
+          <Image src={icon} className={styles.logo} />
         </div>
         <div className={styles.membersContainer}>
           <Avatar.Group
@@ -54,7 +54,7 @@ function StructuredCard({
       </Col>
       <Col span={24} className={styles.contentContainer}>
         <Typography.SubTitle level={3} className={styles.name}>
-          terst
+          {folderName}
         </Typography.SubTitle>
         <div className={styles.sizeInfo}>
           <Space className={styles.fileCountContainer}>
@@ -71,7 +71,7 @@ function StructuredCard({
           <Space>
             <FontAwesomeIcon icon={faClock} />
             <Typography.Text className={styles.createAtText}>
-              Created on 2023-20-20
+              {createdAt}
             </Typography.Text>
           </Space>
         </div>

@@ -1,9 +1,5 @@
-import React from 'react'
-
 function Component() {
-  return (
-    <div>folder</div>
-  )
+  return <div>Folders Requests</div>;
 }
 
-export default Component
+export default Component;

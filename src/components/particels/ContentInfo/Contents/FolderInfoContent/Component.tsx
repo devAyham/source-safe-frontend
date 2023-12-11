@@ -45,16 +45,13 @@ function Component() {
     <div className={styles.container}>
       <div className={styles.folderGeneralInfo}>
         <div className={styles.imageContainer}>
-          <Image
-            className={styles.image}
-            src="https://xsgames.co/randomusers/avatar.php?g=pixel&key=2"
-          />
+          <Image className={styles.image} src={data?.data.logo} />
         </div>
         <Typography.SubTitle level={3} className={styles.folderName}>
-          Folder Name
+          {data?.data.name}
         </Typography.SubTitle>
         <Typography.Text className={styles.folderInfo}>
-          Files count 23 - 2GB
+          Files count {data?.data.files.length} - 2GB
         </Typography.Text>
       </div>
       <div className={styles.divider}></div>

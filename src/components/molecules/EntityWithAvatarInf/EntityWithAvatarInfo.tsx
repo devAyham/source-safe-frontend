@@ -2,7 +2,6 @@ import { UserOutlined } from "@ant-design/icons";
 import { Avatar, Space } from "antd";
 import { Image } from "components/atoms";
 import { Props } from "./EntityWithAvatarInfo.props";
-import usersIcon from "assets/svgs/users_icon.svg";
 
 function EntityWithAvatarInfo({
   avatarProps,
@@ -13,14 +12,13 @@ function EntityWithAvatarInfo({
   return (
     <Space size={8}>
       <Avatar
-        size={30}
+        size={40}
         src={
           <Image
             width={"100%"}
             height={"100%"}
             src={avatarSrc}
             placeholder={<UserOutlined />}
-            fallback={fallbackSrc ?? usersIcon}
           />
         }
         {...avatarProps}

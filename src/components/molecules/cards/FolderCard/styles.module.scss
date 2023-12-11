@@ -38,7 +38,8 @@
       height: 50px;
       .logo {
         color: $primary_color_1;
-        font-size: 30px;
+        width: 40px;
+        object-fit: contain;
       }
     }
     .membersContainer {
