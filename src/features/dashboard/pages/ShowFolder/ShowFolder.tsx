@@ -1,21 +1,24 @@
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { generateEntityCollectionQueryKey } from "api/helpers/queryKeysFactory";
 import { Button, PageHeader } from "components";
 import {
   useAppDispatch,
   useAppSelector,
 } from "features/common/hooks/useReduxHooks";
 import { ShearedDataSliceActions } from "features/common/redux/slices/shearedDataSlices";
+import { AddFileModal } from "features/dashboard/components/organismis";
 import { dashboardSliceActions } from "features/dashboard/redux/slices/dashboardSlice";
 import { DashboardPagesType } from "features/dashboard/types/dashboardPages.type";
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
+import { QueryClient, useQueryClient } from "react-query";
 import { useNavigate, useParams } from "react-router-dom";
 import { PagesRotes } from "router/constants/pagesRoutes";
-import { FileLayout } from "services/filesService";
+import { FileLayout, FileServiceName } from "services/filesService";
 
 function ShowFolder() {
   const resource: DashboardPagesType = "showFolder";
-
+  const [open, setOpen] = useState(false);
   const { id } = useParams<{ id: string }>();
   const {
     contentInfo: { activeFolderId },
@@ -30,7 +33,7 @@ function ShowFolder() {
   const dispatch = useAppDispatch();
   const { Reset, SetFolderId } = ShearedDataSliceActions;
   const { SetPage, SetPerPage } = dashboardSliceActions;
-
+  const queryClient = useQueryClient();
   useEffect(() => {
     if (Number(id) > 0) {
       dispatch(SetFolderId(Number(id)));
@@ -51,6 +54,26 @@ function ShowFolder() {
   );
   return (
     <>
+      <AddFileModal
+        modalProps={{
+          open,
+          onCancel: () => {
+            setOpen(false);
+          },
+        }}
+        formProps={{
+          folder_id: Number(id),
+          onSuccess: () => {
+            setOpen(false);
+            queryClient.invalidateQueries(
+              generateEntityCollectionQueryKey({
+                entityType: FileServiceName,
+                params: {},
+              })
+            );
+          },
+        }}
+      />
       <PageHeader
         title={"Folder Informations & Files"}
         mainActions={{
@@ -61,6 +84,9 @@ function ShowFolder() {
                 block
                 shape="round"
                 icon={<FontAwesomeIcon icon={faPlus} />}
+                onClick={() => {
+                  setOpen(true);
+                }}
               >
                 Add new File
               </Button>
@@ -81,6 +107,7 @@ function ShowFolder() {
         }}
         apiCrudConfig={{
           getAllConfig: {
+            enabled: !!activeFolderId,
             params: {
               page,
               items_per_page: perPage,
