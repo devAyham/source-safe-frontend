@@ -9,6 +9,7 @@ function Component() {
   const data: IFileTypeStatistics[] = [
     { filesCount: 400, fileType: "video", size: 40 },
     { filesCount: 1300, fileType: "image", size: 50 },
+    { filesCount: 60, fileType: "audio", size: 277 },
     { filesCount: 660, fileType: "document", size: 77 },
     { filesCount: 100, fileType: "other", size: 10 },
   ];

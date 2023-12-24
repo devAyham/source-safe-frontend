@@ -1,8 +1,9 @@
 import {
-    faClapperboard,
-    faFileCircleQuestion,
-    faFileLines,
-    faImage,
+  faClapperboard,
+  faFileCircleQuestion,
+  faFileLines,
+  faImage,
+  faMusic
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ReactNode } from "react";
@@ -26,10 +27,15 @@ export const fileCategory: {
     color: variables.success_dark,
     text: "Images",
   },
+  audio: {
+    icon: <FontAwesomeIcon icon={faMusic} />,
+    color: variables.info_color,
+    text: "Audios",
+  },
   document: {
     icon: <FontAwesomeIcon icon={faFileLines} />,
     color: variables.warninig_dark,
-    text: "Ducuments",
+    text: "Documents",
   },
   other: {
     icon: <FontAwesomeIcon icon={faFileCircleQuestion} />,
