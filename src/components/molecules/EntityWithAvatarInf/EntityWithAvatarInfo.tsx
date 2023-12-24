@@ -14,12 +14,14 @@ function EntityWithAvatarInfo({
       <Avatar
         size={40}
         src={
-          <Image
-            width={"100%"}
-            height={"100%"}
-            src={avatarSrc}
-            placeholder={<UserOutlined />}
-          />
+          avatarSrc ? (
+            <Image
+              width={"100%"}
+              height={"100%"}
+              src={avatarSrc}
+              placeholder={<UserOutlined />}
+            />
+          ) : undefined
         }
         {...avatarProps}
       />
