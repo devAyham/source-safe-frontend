@@ -28,10 +28,11 @@ export default function getColumns<
   return !isObjectUndefined(actions)
     ? [
         {
-          title: "Actions",
+          title: " ",
           key: "actions",
           fixed: true,
           align: "center",
+          width: mode === "menu" ? 70 : undefined,
           render: (text: string, record: getAllResponse) =>
             mode === "icon" ? (
               <ActionButtons<
