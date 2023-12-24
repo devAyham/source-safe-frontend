@@ -2,11 +2,13 @@ $primary_color_1: #e61c5f;
 $primary_color_2: #c2327f;
 $primary_color_3: #9e499f;
 $secondary_color_1: #7b60bf;
+$secondary_color_2: #d8d2e6;
 
 $errors_color_1: #dc6e6e;
 $errors_color_2: #ec9e9ed1;
 $errors_color_3: #ec9e9e92;
 $errors_color_4: #ec9e9e47;
+$info_color: #2196f3;
 $warning_dark: #ff9811;
 $warning_two: #fbf8e1;
 $warning_light: #f5e6df;
@@ -32,6 +34,7 @@ $dorian: rgba(82, 82, 82, 0.075);
   primary_color_two: $primary_color_2;
   primary_color_three: $primary_color_3;
   secondary_color_one: $secondary_color_1;
+  secondary_color_two: $secondary_color_2;
 }
 :export {
   errors_color_one: $errors_color_1;
@@ -40,6 +43,7 @@ $dorian: rgba(82, 82, 82, 0.075);
   errors_color_four: $errors_color_4;
   warninig_dark: $warning_dark;
   success_dark: $success_dark;
+  info_color: $info_color;
   warning_two: $warning_two;
   warning_light: $warning_light;
   dark_color: $dark_color;
