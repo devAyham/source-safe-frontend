@@ -20,12 +20,16 @@ import { PagesRotes } from "router/constants/pagesRoutes";
 import { FileLayout, FileServiceName } from "services/filesService";
 import { FileStatusEnum } from "services/filesService/interfaces/Entity.interface";
 import styles from "./styles.module.scss";
+import { hexToRGB } from "helpers/hexToRGB";
+import Colors from "styles/variables/_main_colors_vars.module.scss";
 function ShowFolder() {
   const resource: DashboardPagesType = "showFolder";
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
   const [open, setOpen] = useState(false);
   const { id } = useParams<{ id: string }>();
   const {
-    contentInfo: { activeFolderId },
+    contentInfo: { activeFolderId, activeFileId },
   } = useAppSelector((state) => state.sharedData);
   const {
     showFolder: {
@@ -33,11 +37,11 @@ function ShowFolder() {
       pagnation: { page, perPage },
     },
   } = useAppSelector((state) => state.dashboard);
-  const navigate = useNavigate();
-  const dispatch = useAppDispatch();
-  const { Reset, SetFolderId } = ShearedDataSliceActions;
+
+  const { Reset, SetFolderId, SetFileId } = ShearedDataSliceActions;
   const { SetPage, SetPerPage } = dashboardSliceActions;
   const queryClient = useQueryClient();
+
   useEffect(() => {
     if (Number(id) > 0) {
       dispatch(SetFolderId(Number(id)));
@@ -48,6 +52,7 @@ function ShowFolder() {
       dispatch(Reset());
     };
   }, [id]);
+
   const setPerPage = useCallback(
     (value: number) => dispatch(SetPerPage({ resource, value })),
     [dispatch]
@@ -123,6 +128,14 @@ function ShowFolder() {
       />
       <FileLayout
         viewType={"list"}
+        tableProps={{
+          onRow: (record) => {
+            return {
+              className:
+                record.id === activeFileId ? styles.avtiveRow : undefined,
+            };
+          },
+        }}
         actions={{
           deleteAction: true,
           extraAction(record) {
@@ -134,7 +147,15 @@ function ShowFolder() {
                   </Button>
                 </Col>
                 <Col span={24}>
-                  <Button style={{ height: 40 }} type="text" block>
+                  <Button
+                    style={{ height: 40 }}
+                    type="text"
+                    block
+                    disabled={record.id === activeFileId}
+                    onClick={() => {
+                      dispatch(SetFileId(record.id));
+                    }}
+                  >
                     Show Info
                   </Button>
                 </Col>
