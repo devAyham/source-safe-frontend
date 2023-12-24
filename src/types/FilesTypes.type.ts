@@ -1,1 +1,1 @@
-export type FileTypesType = "video" | "image" | "document" | "other";
+export type FileTypesType = "video" | "image" | "document" | "audio" | "other";
