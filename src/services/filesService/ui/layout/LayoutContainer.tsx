@@ -24,7 +24,7 @@ export interface Props
     "serviceName"
   > {}
 
-const LayoutContainer = (props: Props) => {
+const LayoutContainer = ({ tableProps, ...restProps }: Props) => {
   const navigate = useNavigate();
   return (
     <>
@@ -39,6 +39,7 @@ const LayoutContainer = (props: Props) => {
         viewType="list"
         tableProps={{
           columns: GetTableColumns(),
+          ...tableProps,
         }}
         // cardRender={({ name, created_at }) => {
         //   return (
@@ -54,7 +55,7 @@ const LayoutContainer = (props: Props) => {
         // }}
         cardLayoutMargin="0px"
         cardLayoutRowGutter={[45, 20]}
-        {...props}
+        {...restProps}
         serviceName={ServiceName}
       />
     </>
