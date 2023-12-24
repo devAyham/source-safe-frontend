@@ -1,24 +1,17 @@
-import { Avatar, Checkbox, Col, Row, Space, Tooltip } from "antd";
-import { Card, Image, Typography } from "components/atoms";
-import React, { ReactNode, useMemo } from "react";
-import { Item } from "types/Content.type";
+import { faClock, faFileLines } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Avatar, Col, Row, Space } from "antd";
+import { Image, Typography } from "components/atoms";
 import { Props } from "./Props";
 import styles from "./styles.module.scss";
-import { AntDesignOutlined, UserOutlined } from "@ant-design/icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faClock,
-  faFile,
-  faFileLines,
-  faFolderClosed,
-} from "@fortawesome/free-solid-svg-icons";
+import Colors from "styles/variables/_main_colors_vars.module.scss";
 
 function StructuredCard({
   createdAt,
   // fileCount,
   folderName,
   icon,
-  // membersImages,
+  members,
   // size,
   // actions,
   // badge,
@@ -36,19 +29,26 @@ function StructuredCard({
         </div>
         <div className={styles.membersContainer}>
           <Avatar.Group
+            size={35}
             maxCount={2}
-            maxStyle={{ color: "#f56a00", backgroundColor: "#fde3cf" }}
+            maxStyle={{
+              color: Colors.warninig_dark,
+              backgroundColor: Colors.warning_two,
+            }}
           >
-            <Avatar src="https://xsgames.co/randomusers/avatar.php?g=pixel&key=2" />
-            <Avatar style={{ backgroundColor: "#f56a00" }}>K</Avatar>
-            <Avatar
-              style={{ backgroundColor: "#87d068" }}
-              icon={<UserOutlined />}
-            />
-            <Avatar
-              style={{ backgroundColor: "#1677ff" }}
-              icon={<AntDesignOutlined />}
-            />
+            {members.map((member) => {
+              return (
+                <Avatar
+                  style={
+                    member.role === "admin"
+                      ? { backgroundColor: Colors.secondary_color_one }
+                      : { backgroundColor: Colors.warninig_dark }
+                  }
+                >
+                  {member.user.name}
+                </Avatar>
+              );
+            })}
           </Avatar.Group>
         </div>
       </Col>

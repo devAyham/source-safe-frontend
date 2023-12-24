@@ -1,4 +1,5 @@
 import { ReactElement, ReactNode } from "react";
+import { MemberType } from "services/folderService/types/member.type";
 
 export interface Props {
   // active: boolean;
@@ -8,7 +9,7 @@ export interface Props {
   folderName: ReactNode;
   // fileCount: number;
   // size: number;
-  // membersImages: string[];
+  members: MemberType[];
   createdAt: string;
   onClick?: (event: any) => void;
 }
