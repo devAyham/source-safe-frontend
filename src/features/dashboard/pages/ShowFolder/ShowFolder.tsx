@@ -1,3 +1,4 @@
+import { RollbackOutlined } from "@ant-design/icons";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Col, Row, Space } from "antd";
@@ -18,7 +19,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { PagesRotes } from "router/constants/pagesRoutes";
 import { FileLayout, FileServiceName } from "services/filesService";
 import { FileStatusEnum } from "services/filesService/interfaces/Entity.interface";
-
+import styles from "./styles.module.scss";
 function ShowFolder() {
   const resource: DashboardPagesType = "showFolder";
   const [open, setOpen] = useState(false);
@@ -81,9 +82,20 @@ function ShowFolder() {
       <br />
       <PageHeader
         title={
-          <Typography.Title level={1}>
-            Folder Informations & Files
-          </Typography.Title>
+          <>
+            <RollbackOutlined
+              onClick={() => {
+                navigate(PagesRotes.DashboardRoutes.MyFolders.index);
+              }}
+              style={{
+                marginInlineEnd: 10,
+              }}
+              className={styles.backIcon}
+            />
+            <Typography.Title level={1}>
+              Folder Informations & Files
+            </Typography.Title>
+          </>
         }
         mainActions={{
           primaryAction: {
