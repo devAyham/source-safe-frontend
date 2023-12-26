@@ -25,7 +25,6 @@ export interface Props
   > {}
 
 const LayoutContainer = ({ tableProps, ...restProps }: Props) => {
-  const navigate = useNavigate();
   return (
     <>
       <CrudLayout<
@@ -41,18 +40,6 @@ const LayoutContainer = ({ tableProps, ...restProps }: Props) => {
           columns: GetTableColumns(),
           ...tableProps,
         }}
-        // cardRender={({ name, created_at }) => {
-        //   return (
-        //     <FolderCard
-        //       icon={logo}
-        //       folderName={name}
-        //       createdAt={dateFormatter(created_at ?? "")}
-        //       onClick={() => {
-        //         navigate(PagesRotes.DashboardRoutes.MyFolders.show(id));
-        //       }}
-        //     />
-        //   );
-        // }}
         cardLayoutMargin="0px"
         cardLayoutRowGutter={[45, 20]}
         {...restProps}

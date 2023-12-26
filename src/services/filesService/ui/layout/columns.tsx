@@ -1,12 +1,10 @@
-import { Tag } from "antd";
 import { EntityWithAvatarInfo } from "components/molecules/EntityWithAvatarInf";
 import { fileCategory } from "data/FileCategory";
 import { dateFormatter } from "helpers/dateFormatter";
 import { transformExtentionToFileType } from "helpers/transfromExtentionToFileType";
 import { GenericColumnsType } from "interfaces/GenericColumnType";
-import { FileStatusEnum } from "services/filesService/interfaces/Entity.interface";
-import variables from "styles/variables/_main_colors_vars.module.scss";
 import IGetAllResponse from "../../interfaces/GetAllResponse.interface";
+import { FileStatusTag } from "components";
 
 function GetTableColumns(): GenericColumnsType<IGetAllResponse> {
   return [
@@ -78,17 +76,7 @@ function GetTableColumns(): GenericColumnsType<IGetAllResponse> {
       key: "status",
       align: "center",
       render(value) {
-        return (
-          <Tag
-            color={
-              value === FileStatusEnum.CHECKED_IN
-                ? variables.secondary_color_one
-                : variables.success_dark
-            }
-          >
-            {value === FileStatusEnum.CHECKED_IN ? "Checked-in" : "Free"}
-          </Tag>
-        );
+        return <FileStatusTag status={value} />;
       },
     },
   ];
