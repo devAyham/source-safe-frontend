@@ -1,30 +1,81 @@
-@use "/src/styles/variables/app_sizes_vars.module" as *;
 @use "/src/styles/variables/main_colors_vars.module" as *;
 @use "/src/styles/variables/app_colors_vars.module" as *;
-.contentInfo {
-  width: $content_info_width;
-  height: 100vh;
-  background-color: $content_info_background;
-  position: fixed;
-  left: calc(100% - $content_info_width);
-  border-radius: $content_info_radius 0 0 $content_info_radius;
-  box-shadow: -17px 2px 18px -5px rgba(156, 156, 156, 0.2);
+
+.container {
+  width: 100%;
+  height: 700px;
+  max-height: 100%;
   // background-color: red;
   overflow: hidden;
-  .user_info_container {
-    width: auto;
-    height: 75px;
-    margin: 20px;
-    // background-color: teal;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-  }
-  .chart {
+  padding: 10px;
+  .folderGeneralInfo {
     width: 100%;
-    height: 240px;
+    // height: 180px;
+    // background-color: yellow;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    .actionRow {
+      width: 90%;
+      height: 25px;
+      // background-color: red;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      .colseIcon {
+        color: $icon_color;
+        font-size: 20px;
+        cursor: pointer;
+        &:hover {
+          color: $secondary_color_1;
+        }
+      }
+    }
+    .imageContainer {
+      width: 100%;
+      height: 100px;
+      // background-color: aqua;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .icon {
+        width: 75px;
+        height: 75px;
+        object-fit: contain;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 50px;
+        color: $white;
+      }
+    }
+    .folderName {
+      line-height: 2rem !important;
+    }
+    .folderInfo {
+      margin: 5px;
+      color: $icon_color;
+      width: 100%;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+    }
+  }
+  .divider {
+    width: 100%;
+    height: 2px;
+    background-color: $icon_color;
+    opacity: 0.2;
+    border-radius: 5px;
+    margin-top: 5px;
+  }
+  .buttons {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    // background-color: red;
   }
 }

@@ -1,0 +1,94 @@
+@use "/src/styles/variables/main_colors_vars.module" as *;
+@use "/src/styles/variables/app_colors_vars.module" as *;
+
+.container {
+  width: 100%;
+  height: 100px;
+  // background-color: yellow;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+  // margin-top: 2px;
+  .titleRow {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    width: 100%;
+    height: 10px;
+    // background-color: aqua;
+    &::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: $icon_color_op;
+      // opacity: 0.5;
+    }
+    &.latest {
+      &::before {
+        background-color: $primary_color_1;
+        opacity: 1;
+      }
+    }
+    .title {
+      width: 150px;
+      // background-color: red;
+      margin-inline-start: 10px;
+      font-weight: bold;
+      color: $title_color;
+      text-transform: capitalize;
+      font-size: 12px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+    .date {
+      width: calc(100% - 150px);
+      font-size: 10px;
+      color: $icon_color;
+      font-weight: bold;
+    }
+  }
+  .detailsRow {
+    width: 100%;
+    height: calc(100% - 10px);
+    // background-color: blueviolet;
+    margin-inline-start: 5px;
+    border-left: solid 1px $icon_color_op;
+    &.latest {
+      border-left-color: $primary_color_1;
+    }
+    .subTitle {
+      width: 180px;
+      // background-color: red;
+      margin-inline-start: 15px;
+      margin-top: 5px;
+      font-weight: bold;
+      color: $primary_color_1;
+      text-transform: capitalize;
+      font-size: 11px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+    .avatarGroup {
+      padding-top: 5px;
+      padding-inline-start: 15px;
+      width: 100%;
+      // height: 100%;
+      // background-color: red;
+      display: flex;
+      justify-content: start;
+      align-items: start;
+      gap: 5px;
+      .download {
+        cursor: pointer;
+        transition: all 250ms;
+        &:hover {
+          border-radius: 50%;
+        }
+      }
+    }
+  }
+}
