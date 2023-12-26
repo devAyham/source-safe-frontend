@@ -22,6 +22,7 @@ import { FileStatusEnum } from "services/filesService/interfaces/Entity.interfac
 import styles from "./styles.module.scss";
 import { hexToRGB } from "helpers/hexToRGB";
 import Colors from "styles/variables/_main_colors_vars.module.scss";
+import { CheckOutFile } from "features/dashboard/components/molecules/CheckoutFile";
 function ShowFolder() {
   const resource: DashboardPagesType = "showFolder";
   const navigate = useNavigate();
@@ -167,14 +168,12 @@ function ShowFolder() {
                   />
                 </Col>
                 <Col span={24}>
-                  <Button
-                    style={{ height: 40 }}
-                    type="text"
-                    block
+                  <CheckOutFile
+                    file_id={record.id}
                     disabled={record.status !== FileStatusEnum.CHECKED_IN}
-                  >
-                    Check-out
-                  </Button>
+                  />
+                </Col>
+                <Col span={24}>
                   <Button
                     style={{ height: 40 }}
                     type="text"
