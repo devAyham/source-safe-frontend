@@ -60,6 +60,7 @@ export default function EntityFormContainer<
     },
     createConfig: apiOptions?.createConfig,
     patchConfig: apiOptions?.patchConfig,
+    updateConfig: apiOptions?.patchConfig,
   });
 
   const handleSubmit = async (values: SubmittedValues & extraData) => {
