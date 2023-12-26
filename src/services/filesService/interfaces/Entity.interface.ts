@@ -25,4 +25,6 @@ export default interface IEntity extends EntityIdInterface {
   check_in: any[];
   check_out: any[];
   file_versions: FileVersionType[];
+  latest_size: number;
+  full_size: number;
 }

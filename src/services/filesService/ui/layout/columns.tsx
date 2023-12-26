@@ -5,6 +5,7 @@ import { transformExtentionToFileType } from "helpers/transfromExtentionToFileTy
 import { GenericColumnsType } from "interfaces/GenericColumnType";
 import IGetAllResponse from "../../interfaces/GetAllResponse.interface";
 import { FileStatusTag } from "components";
+import { convertFileSize } from "helpers/convertFileSize";
 
 function GetTableColumns(): GenericColumnsType<IGetAllResponse> {
   return [
@@ -45,11 +46,11 @@ function GetTableColumns(): GenericColumnsType<IGetAllResponse> {
     // },
     {
       title: "Size",
-      dataIndex: ["size"],
+      dataIndex: ["latest_size"],
       key: "size",
       align: "center",
-      render(value, record, index) {
-        return "1.7 MB";
+      render(value) {
+        return convertFileSize(value, "MB");
       },
     },
     {
@@ -57,7 +58,7 @@ function GetTableColumns(): GenericColumnsType<IGetAllResponse> {
       dataIndex: ["created_at"],
       key: "created_at",
       align: "center",
-      render(value, record, index) {
+      render(value) {
         return dateFormatter(value);
       },
     },

@@ -41,27 +41,22 @@ const LayoutContainer = (props: Props) => {
         tableProps={{
           columns: GetTableColumns(),
         }}
-        cardRender={({ id, logo, name, created_at, members }) => {
+        cardRender={({
+          id,
+          logo,
+          name,
+          created_at,
+          members,
+          files_count,
+          folder_size,
+        }) => {
           return (
             <FolderCard
+              fileCount={files_count}
+              size={folder_size}
               icon={logo}
               folderName={name}
-              members={
-                members ?? [
-                  {
-                    user: { name: "ayham" },
-                    role: "admin",
-                  },
-                  {
-                    user: { name: "ayham" },
-                    role: "user",
-                  },
-                  {
-                    user: { name: "ayham" },
-                    role: "user",
-                  },
-                ]
-              }
+              members={members}
               createdAt={dateFormatter(created_at ?? "")}
               onClick={() => {
                 navigate(PagesRotes.DashboardRoutes.MyFolders.show(id));
