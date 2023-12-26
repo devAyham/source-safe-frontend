@@ -1,1 +1,1 @@
-export { default as useFilerApi } from "./useEntityApi";
+export { default as useFileApi } from "./useEntityApi";

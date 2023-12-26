@@ -12,7 +12,7 @@ import IUpdate from "../../interfaces/Update.interface";
 import { IExtraData } from "./interfaces/ExtraData.interface";
 import { IFormProps } from "./interfaces/FormProps.interface";
 import { ISubmittedValues } from "./interfaces/SubmittedValues.interface";
-import { useFilerApi } from "services/filesService/api";
+import { useFileApi } from "services/filesService/api";
 
 function Form({
   formName,
@@ -25,7 +25,7 @@ function Form({
   const {
     createEntity: { mutateAsync: createFolder },
     updateEntity: { mutateAsync: updateolder },
-  } = useFilerApi();
+  } = useFileApi();
   const onFinish = (values: ISubmittedValues) => {
     const formData = new FormData();
     formData.append("file", values.file.file);
