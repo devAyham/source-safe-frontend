@@ -16,7 +16,7 @@ export const request = async ({
   const decryptedData: AuthStateInterface = decryptData(
     sessionStorage.getItem("user") || ""
   );
-  const token = decryptedData?.tokens.accessToken ?? null;
+  const token = decryptedData?.tokens?.accessToken ?? null;
   Axios.defaults.headers.common.Authorization = `Bearer ${token}`; //from local storage or cookies
   const onSuccess = (response: AxiosResponse) => response;
   const onError = (error: unknown) => {
