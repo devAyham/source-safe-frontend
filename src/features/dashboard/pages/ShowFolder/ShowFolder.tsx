@@ -140,7 +140,7 @@ function ShowFolder() {
           deleteAction: true,
           extraAction(record) {
             return (
-              <Row style={{ width: 100 }}>
+              <Row>
                 <Col span={24}>
                   <Button style={{ height: 40 }} type="text" block>
                     Download
@@ -173,7 +173,15 @@ function ShowFolder() {
                     block
                     disabled={record.status !== FileStatusEnum.CHECKED_IN}
                   >
-                    Check Out
+                    Check-out
+                  </Button>
+                  <Button
+                    style={{ height: 40 }}
+                    type="text"
+                    block
+                    disabled={record.status !== FileStatusEnum.CHECKED_IN}
+                  >
+                    Force Check-out
                   </Button>
                 </Col>
               </Row>
