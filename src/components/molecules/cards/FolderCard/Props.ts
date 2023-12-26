@@ -7,8 +7,8 @@ export interface Props {
   // actions?: ReactNode[];
   // badge?: ReactElement;
   folderName: ReactNode;
-  // fileCount: number;
-  // size: number;
+  fileCount: number;
+  size: number;
   members: MemberType[];
   createdAt: string;
   onClick?: (event: any) => void;

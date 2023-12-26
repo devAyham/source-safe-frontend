@@ -5,14 +5,15 @@ import { Image, Typography } from "components/atoms";
 import { Props } from "./Props";
 import styles from "./styles.module.scss";
 import Colors from "styles/variables/_main_colors_vars.module.scss";
+import { convertFileSize } from "helpers/convertFileSize";
 
 function StructuredCard({
   createdAt,
-  // fileCount,
+  fileCount,
   folderName,
   icon,
   members,
-  // size,
+  size,
   // actions,
   // badge,
   onClick,
@@ -60,11 +61,11 @@ function StructuredCard({
           <Space className={styles.fileCountContainer}>
             <FontAwesomeIcon icon={faFileLines} />
             <Typography.Text className={styles.fileCount}>
-              83 file
+              {fileCount} file
             </Typography.Text>
           </Space>
           <Typography.SubTitle level={5} className={styles.size}>
-            24 GB
+            {convertFileSize(size, "MB")}
           </Typography.SubTitle>
         </div>
         <div className={styles.createAtContainer}>
