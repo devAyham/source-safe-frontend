@@ -26,7 +26,7 @@ const Component: React.FC = () => {
     selectedContent = dynamicContent.statistics;
   } else if (activeFolderId !== null && activeFileId === null) {
     selectedContent = dynamicContent.folderInfo;
-  } else if (activeFileId === null) {
+  } else if (activeFileId !== null) {
     selectedContent = dynamicContent.fileInfo;
   } else {
     selectedContent = <> error UI </>;
