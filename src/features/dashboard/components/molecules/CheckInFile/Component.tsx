@@ -13,21 +13,25 @@ function Component({ file_id, disabled }: Props) {
   const [open, setOpen] = useState(false);
   const { createEntity: acceptRequest } = useFolderRequestsApi({
     customEndPoint: `${ServiceType.File}/${file_id}/${CustomEndPoints.CheckIn}`,
+    options: {
+      createConfig: {
+        onSuccess() {
+          setOpen(false);
+          queryClient.invalidateQueries(
+            generateEntityCollectionQueryKey({
+              entityType: FileServiceName,
+              params: {},
+            })
+          );
+        },
+      },
+    },
   });
   const onCancel = () => {
     setOpen(false);
   };
   const onOk = () => {
-    acceptRequest.mutate({})
-    // .then(() => {
-    //   setOpen(false);
-    //   queryClient.invalidateQueries(
-    //     generateEntityCollectionQueryKey({
-    //       entityType: FileServiceName,
-    //       params: {},
-    //     })
-    //   );
-    // });
+    acceptRequest.mutate({});
   };
 
   return (
