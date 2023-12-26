@@ -45,7 +45,13 @@ export default function ActionMenu<
     </Menu>
   );
   return (
-    <Dropdown overlay={menu} trigger={["click"]}>
+    <Dropdown
+      overlay={menu}
+      trigger={["click"]}
+      overlayStyle={{
+        width: 150,
+      }}
+    >
       <Button type={"text"} icon={<OptionIcon />} />
     </Dropdown>
   );
