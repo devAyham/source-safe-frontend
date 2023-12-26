@@ -6,6 +6,15 @@ export enum FileStatusEnum {
   CHECKED_IN = "check_in",
   CHECKED_OUT = "check_out",
 }
+
+export type FileVersionType = {
+  id: EntityIdType;
+  path: string;
+  name: string;
+  extension: string;
+  size: number;
+  user: IUserEntity;
+};
 export default interface IEntity extends EntityIdInterface {
   name: string;
   extension: string;
@@ -15,12 +24,5 @@ export default interface IEntity extends EntityIdInterface {
   created_at: string;
   check_in: any[];
   check_out: any[];
-  file_versions: {
-    id: EntityIdType;
-    path: string;
-    name: string;
-    extension: string;
-    size: number;
-    user: IUserEntity;
-  }[];
+  file_versions: FileVersionType[];
 }
