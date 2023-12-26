@@ -23,6 +23,7 @@ import styles from "./styles.module.scss";
 import { hexToRGB } from "helpers/hexToRGB";
 import Colors from "styles/variables/_main_colors_vars.module.scss";
 import { CheckOutFile } from "features/dashboard/components/molecules/CheckoutFile";
+import downloadURL from "helpers/downloadUrl";
 function ShowFolder() {
   const resource: DashboardPagesType = "showFolder";
   const navigate = useNavigate();
@@ -143,7 +144,14 @@ function ShowFolder() {
             return (
               <Row>
                 <Col span={24}>
-                  <Button style={{ height: 40 }} type="text" block>
+                  <Button
+                    style={{ height: 40 }}
+                    type="text"
+                    block
+                    onClick={() => {
+                      downloadURL(record.latest_path);
+                    }}
+                  >
                     Download
                   </Button>
                 </Col>
