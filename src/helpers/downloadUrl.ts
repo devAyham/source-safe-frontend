@@ -26,7 +26,7 @@ const downloadURL = async (url: string): Promise<void> => {
       const link = document.createElement("a");
       link.setAttribute("download", "");
       link.href = res.data;
-      link.setAttribute("target", "_blank");
+      // link.setAttribute("target", "_blank");
       link.click();
     })
     .catch((error: any) => {
