@@ -1,24 +1,23 @@
+import { faClose } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Radio } from "antd";
+import { Typography } from "components/atoms";
 import { FileStatusTag, Spin } from "components/molecules";
+import { fileCategory } from "data/FileCategory";
 import {
   useAppDispatch,
   useAppSelector,
 } from "features/common/hooks/useReduxHooks";
-import { useFileApi } from "services/filesService";
-import styles from "./styels.module.scss";
-import { ReactNode, useState } from "react";
-import { transformExtentionToFileType } from "helpers/transfromExtentionToFileType";
-import { FileTypesType } from "types/FilesTypes.type";
-import { Typography } from "components/atoms";
-import { fileCategory } from "data/FileCategory";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faClose } from "@fortawesome/free-solid-svg-icons";
 import { ShearedDataSliceActions } from "features/common/redux/slices/shearedDataSlices";
-import { Radio, Tag } from "antd";
+import { convertFileSize } from "helpers/convertFileSize";
+import { transformExtentionToFileType } from "helpers/transfromExtentionToFileType";
+import { ReactNode, useState } from "react";
+import { useFileApi } from "services/filesService";
 import { FileStatusEnum } from "services/filesService/interfaces/Entity.interface";
-import variables from "styles/variables/_main_colors_vars.module.scss";
-import { dateFormatter } from "helpers/dateFormatter";
-import { InfoDetailsSection } from "./components/InfoDetailsSection";
+import { FileTypesType } from "types/FilesTypes.type";
 import { FileVersionsSection } from "./components/FileVersionsSection";
+import { InfoDetailsSection } from "./components/InfoDetailsSection";
+import styles from "./styels.module.scss";
 
 type fileInfoRadioType = "Info details" | "File versions";
 const fileInfoRadio: fileInfoRadioType[] = ["Info details", "File versions"];
@@ -57,7 +56,7 @@ function Component() {
       />
     ),
     "File versions": (
-      <FileVersionsSection versions={data?.data?.file_versions } />
+      <FileVersionsSection versions={data?.data?.file_versions} />
     ),
   };
 
@@ -92,8 +91,7 @@ function Component() {
           </Typography.Text> */}
           <Typography.Text className={styles.folderInfo}>
             <FileStatusTag status={data?.data?.status as FileStatusEnum} />
-            1.7 MB
-            {/* {data?.data?.size} */}
+            {convertFileSize(Number(data?.data?.latest_size), "MB")}
           </Typography.Text>
         </div>
         <div className={styles.divider} />

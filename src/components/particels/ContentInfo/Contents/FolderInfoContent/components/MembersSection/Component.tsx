@@ -32,6 +32,7 @@ function Component({ members }: Props) {
         }}
         formProps={{
           onSuccess: () => {
+            console.log("success");
             setOpen(false);
             queryClient.invalidateQueries(
               generateEntityQueryKey({

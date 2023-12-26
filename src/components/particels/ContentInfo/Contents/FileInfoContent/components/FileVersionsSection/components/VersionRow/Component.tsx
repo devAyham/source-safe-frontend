@@ -6,6 +6,8 @@ import { fileCategory } from "data/FileCategory";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDownload } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
+import downloadURL from "helpers/downloadUrl";
+import { convertFileSize } from "helpers/convertFileSize";
 
 function Component({ latest, extension, name, path, size, user }: Props) {
   const navigate = useNavigate();
@@ -29,7 +31,7 @@ function Component({ latest, extension, name, path, size, user }: Props) {
             }}
           />
           <Avatar size={40} shape="square">
-            {(size / 1024).toFixed(0)} KB
+            {convertFileSize(size, "MB")}
           </Avatar>
           <Avatar
             size={40}
@@ -41,7 +43,7 @@ function Component({ latest, extension, name, path, size, user }: Props) {
             }}
             className={styles.download}
             onClick={() => {
-              navigate(path);
+              downloadURL(path);
             }}
           ></Avatar>
         </div>

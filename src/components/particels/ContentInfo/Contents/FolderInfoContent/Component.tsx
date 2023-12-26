@@ -11,6 +11,7 @@ import { Radio } from "antd";
 import { ReactNode, useState } from "react";
 import { MembersSection } from "./components/MembersSection";
 import { StatisticsSection } from "./components/StatisticsSection";
+import { convertFileSize } from "helpers/convertFileSize";
 
 type folderInfoRadioType = "members" | "statistics";
 const folderInfoRadio: folderInfoRadioType[] = ["members", "statistics"];
@@ -51,7 +52,8 @@ function Component() {
           {data?.data.name}
         </Typography.SubTitle>
         <Typography.Text className={styles.folderInfo}>
-          Files count {data?.data.files.length} - 2GB
+          Files count {data?.data.files_count} -{" "}
+          {convertFileSize(data?.data?.folder_size ?? 0, "MB")}
         </Typography.Text>
       </div>
       <div className={styles.divider}></div>
