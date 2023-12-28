@@ -1,7 +1,7 @@
 import { RollbackOutlined } from "@ant-design/icons";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Col, Row, Space } from "antd";
+import { Col, Row } from "antd";
 import { generateEntityCollectionQueryKey } from "api/helpers/queryKeysFactory";
 import { Button, PageHeader, Typography } from "components";
 import {
@@ -10,20 +10,18 @@ import {
 } from "features/common/hooks/useReduxHooks";
 import { ShearedDataSliceActions } from "features/common/redux/slices/shearedDataSlices";
 import { CheckinFile } from "features/dashboard/components/molecules/CheckInFile";
+import { CheckOutFile } from "features/dashboard/components/molecules/CheckoutFile";
 import { AddFileModal } from "features/dashboard/components/organismis";
 import { dashboardSliceActions } from "features/dashboard/redux/slices/dashboardSlice";
 import { DashboardPagesType } from "features/dashboard/types/dashboardPages.type";
+import downloadURL from "helpers/downloadUrl";
 import { useCallback, useEffect, useState } from "react";
-import { QueryClient, useQueryClient } from "react-query";
+import { useQueryClient } from "react-query";
 import { useNavigate, useParams } from "react-router-dom";
 import { PagesRotes } from "router/constants/pagesRoutes";
 import { FileLayout, FileServiceName } from "services/filesService";
 import { FileStatusEnum } from "services/filesService/interfaces/Entity.interface";
 import styles from "./styles.module.scss";
-import { hexToRGB } from "helpers/hexToRGB";
-import Colors from "styles/variables/_main_colors_vars.module.scss";
-import { CheckOutFile } from "features/dashboard/components/molecules/CheckoutFile";
-import downloadURL from "helpers/downloadUrl";
 function ShowFolder() {
   const resource: DashboardPagesType = "showFolder";
   const navigate = useNavigate();
@@ -85,8 +83,6 @@ function ShowFolder() {
           },
         }}
       />
-      <br />
-      <br />
       <PageHeader
         title={
           <>

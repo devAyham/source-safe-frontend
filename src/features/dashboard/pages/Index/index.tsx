@@ -14,6 +14,8 @@ import {
 } from "features/common/hooks/useReduxHooks";
 import { dashboardSliceActions } from "features/dashboard/redux/slices/dashboardSlice";
 import { debounce } from "lodash";
+import { FolderCard } from "components/molecules/cards/FolderCard";
+import { dateFormatter } from "helpers/dateFormatter";
 
 function DashbaordIndexPage() {
   const navigate = useNavigate();
@@ -48,6 +50,29 @@ function DashbaordIndexPage() {
           />
         </div>
         <FolderLayout
+          cardRender={({
+            id,
+            logo,
+            name,
+            created_at,
+            members,
+            files_count,
+            folder_size,
+          }) => {
+            return (
+              <FolderCard
+                fileCount={files_count}
+                size={folder_size}
+                icon={logo}
+                folderName={name}
+                members={members}
+                createdAt={dateFormatter(created_at ?? "")}
+                onClick={() => {
+                  navigate(PagesRotes.DashboardRoutes.MyFolders.show(id));
+                }}
+              />
+            );
+          }}
           apiCrudConfig={{
             getAllConfig: {
               params: {
@@ -55,7 +80,7 @@ function DashbaordIndexPage() {
                 items_per_page: 3,
                 search: search !== "" ? search : undefined,
                 filter: {
-                  myFolders: true,
+                  myFolders: 1,
                 },
               },
             },

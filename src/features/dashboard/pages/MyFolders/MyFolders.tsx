@@ -11,8 +11,14 @@ import { dashboardSliceActions } from "features/dashboard/redux/slices/dashboard
 import { useCallback } from "react";
 import { DashboardPagesType } from "features/dashboard/types/dashboardPages.type";
 import { debounce } from "lodash";
+import { FolderCard } from "components/molecules/cards/FolderCard";
+import { dateFormatter } from "helpers/dateFormatter";
+import { PagesRotes } from "router/constants/pagesRoutes";
+import { useNavigate } from "react-router-dom";
 
 function MyFolders() {
+  const navigate = useNavigate();
+
   const resource: DashboardPagesType = "myFolders";
   const {
     myFolders: { pagnation, search },
@@ -54,10 +60,33 @@ function MyFolders() {
                 items_per_page: pagnation.perPage,
                 search: search !== "" ? search : undefined,
                 filter: {
-                  myFolders: true,
+                  myFolders: 1,
                 },
               },
             },
+          }}
+          cardRender={({
+            id,
+            logo,
+            name,
+            created_at,
+            members,
+            files_count,
+            folder_size,
+          }) => {
+            return (
+              <FolderCard
+                fileCount={files_count}
+                size={folder_size}
+                icon={logo}
+                folderName={name}
+                members={members}
+                createdAt={dateFormatter(created_at ?? "")}
+                onClick={() => {
+                  navigate(PagesRotes.DashboardRoutes.MyFolders.show(id));
+                }}
+              />
+            );
           }}
           pagination={{
             // showSizeChanger: false,

@@ -6,20 +6,20 @@ export const pageAction = (
   state: WritableDraft<IDashboardSliceInitialState>,
   action: IDashboardPayloadAction<number>
 ) => {
-  if (state[action.payload.resource].pagnation)
+  if (state[action.payload.resource]?.pagnation)
     state[action.payload.resource].pagnation.page = action.payload.value;
 };
 export const perPageAction = (
   state: WritableDraft<IDashboardSliceInitialState>,
   action: IDashboardPayloadAction<number>
 ) => {
-  if (state[action.payload.resource].pagnation)
+  if (state[action.payload.resource]?.pagnation)
     state[action.payload.resource].pagnation.perPage = action.payload.value;
 };
 export const searchAction = (
   state: WritableDraft<IDashboardSliceInitialState>,
   action: IDashboardPayloadAction<string>
 ) => {
-  if (state[action.payload.resource].pagnation)
+  if (state[action.payload.resource]?.pagnation)
     state[action.payload.resource].search = action.payload.value;
 };
