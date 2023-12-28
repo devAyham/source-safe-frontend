@@ -53,6 +53,9 @@ function MyFolders() {
                 page: pagnation.page,
                 items_per_page: pagnation.perPage,
                 search: search !== "" ? search : undefined,
+                filter: {
+                  myFolders: true,
+                },
               },
             },
           }}

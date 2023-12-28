@@ -54,6 +54,9 @@ function DashbaordIndexPage() {
                 page: 1,
                 items_per_page: 3,
                 search: search !== "" ? search : undefined,
+                filter: {
+                  myFolders: true,
+                },
               },
             },
           }}
