@@ -1,0 +1,20 @@
+@use "/src/styles/variables/main_colors_vars.module" as *;
+@use "/src/styles/variables/app_colors_vars.module" as *;
+.backIcon {
+  margin-inline-end: 10px;
+  &:hover {
+    color: $primary_color_1;
+  }
+}
+.avtiveRow {
+  :global(td) {
+    background-color: $table_row_active_color !important;
+    color: $white !important;
+    transition: all 200ms !important;
+    & * {
+      background-color: $table_row_active_color !important;
+      color: $white !important;
+      transition: all 200ms !important;
+    }
+  }
+}
