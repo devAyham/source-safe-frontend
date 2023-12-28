@@ -51,9 +51,7 @@ function Component({ file_id, disabled }: Props) {
               );
               setOpen(false);
             } else if (info.file.status === "error") {
-              message.error(
-                `${info.file.name} file failed to upload try again later or try to refresh your page`
-              );
+              message.error(`${info.file.response} `);
             }
           }}
         >

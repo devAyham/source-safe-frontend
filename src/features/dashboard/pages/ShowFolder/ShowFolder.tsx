@@ -22,6 +22,7 @@ import { PagesRotes } from "router/constants/pagesRoutes";
 import { FileLayout, FileServiceName } from "services/filesService";
 import { FileStatusEnum } from "services/filesService/interfaces/Entity.interface";
 import styles from "./styles.module.scss";
+import { ForceCheckOut } from "features/dashboard/components/molecules/ForceCheckoutFile";
 function ShowFolder() {
   const resource: DashboardPagesType = "showFolder";
   const navigate = useNavigate();
@@ -179,14 +180,10 @@ function ShowFolder() {
                   />
                 </Col>
                 <Col span={24}>
-                  <Button
-                    style={{ height: 40 }}
-                    type="text"
-                    block
+                  <ForceCheckOut
+                    file_id={record.id}
                     disabled={record.status !== FileStatusEnum.CHECKED_IN}
-                  >
-                    Force Check-out
-                  </Button>
+                  />
                 </Col>
               </Row>
             );
