@@ -46,13 +46,10 @@ function Component() {
   } = {
     "Info details": (
       <InfoDetailsSection
-        creator="Ayham"
-        modifier="Amgad"
         created_at={String(data?.data?.created_at)}
         extention={String(data?.data?.extension)}
         last_modified={String(data?.data?.last_modified)}
-        lastest_path={String(data?.data?.latest_path)}
-        check_in={String(data?.data?.last_modified)}
+        lastAction={data?.data?.last_action_on_file}
       />
     ),
     "File versions": (

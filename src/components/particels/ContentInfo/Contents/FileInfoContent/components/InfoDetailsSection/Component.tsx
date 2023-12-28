@@ -3,15 +3,14 @@ import { Props } from "./Props";
 import { DetailsRow } from "./components";
 import styles from "./styels.module.scss";
 import variables from "styles/variables/_main_colors_vars.module.scss";
+import { Tag } from "antd";
+import { FileStatusTag } from "components/molecules";
 
 function Component({
   extention,
   last_modified,
-  lastest_path,
   created_at,
-  creator,
-  modifier,
-  check_in,
+  lastAction,
 }: Props) {
   return (
     <>
@@ -31,10 +30,18 @@ function Component({
           value={dateFormatter(last_modified)}
           color={variables.warninig_dark}
         />
-        {check_in && (
+        {lastAction && (
           <DetailsRow
-            title={"Checked-in at"}
-            value={check_in}
+            title={"Last Action"}
+            value={
+              <>
+                <span>At {dateFormatter(lastAction.created_at)}</span>
+                <br />
+                By : <strong>{lastAction.user.name}</strong>
+                <br />
+                Action Type : <FileStatusTag status={lastAction.status} />
+              </>
+            }
             color={variables.primary_color_one}
           />
         )}
