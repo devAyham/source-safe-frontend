@@ -2,7 +2,6 @@ import { EntityIdType } from "types";
 import { EntityIdInterface } from "../../../interfaces/EntityId.interface";
 import { IUserEntity } from "services/userService";
 
-
 export enum FileStatusEnum {
   CHECKED_IN = "check_in",
   CHECKED_OUT = "check_out",
@@ -29,4 +28,14 @@ export default interface IEntity extends EntityIdInterface {
   file_versions: FileVersionType[];
   latest_size: number;
   full_size: number;
+  last_action_on_file: {
+    id: number;
+    text: string;
+    status: FileStatusEnum;
+    user_id: number;
+    file_id: number;
+    file_version_id: number;
+    created_at: string;
+    user: IUserEntity;
+  };
 }
