@@ -5,6 +5,7 @@ import { dashboardReducer } from "features/dashboard/redux/slices/dashboardSlice
 import { SharedDataReducer } from "features/common/redux/slices/shearedDataSlices";
 import { folderRequestReducer } from "features/foldersRequests/redux/slices/folderRequestsSlice";
 import { SharedWithMeReducer } from "features/sharedWithMe/redux";
+import { TrashReducer } from "features/trash/redux";
 
 /**
  * @description the redux store
@@ -18,6 +19,7 @@ const store = configureStore({
     sharedData: SharedDataReducer,
     folderRequest: folderRequestReducer,
     sharedWithMe: SharedWithMeReducer,
+    trash: TrashReducer,
   },
 });
 export default store;
