@@ -1,5 +1,5 @@
 import IEntity from "./Entity.interface";
 
 export default interface IRequestParams extends IEntity {
-  myFolders: Boolean;
+  myFolders: 0 | 1;
 }
