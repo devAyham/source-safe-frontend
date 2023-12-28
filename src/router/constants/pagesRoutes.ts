@@ -23,5 +23,6 @@ export const PagesRotes = {
   },
   SharedWithMeRoutes: {
     index: `/${MainFeaturesRoutes.SharedWithMe}`,
+    show: (id: EntityIdType) => `/${MainFeaturesRoutes.SharedWithMe}/${id}`,
   },
 };

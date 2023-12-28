@@ -10,6 +10,7 @@ import { AuthenticatedRoutes } from "./middlewares/AuthenticatedRoutes";
 import { ErrorRoutes } from "./middlewares/ErrorRoutes";
 import { UnAuthenticatedRoutes } from "./middlewares/UnAuthenticatedRoutes";
 import { FolderRequestsRoutes } from "features/foldersRequests/routes";
+import { SharedWIthMeRoutes } from "features/sharedWithMe/routes";
 // import CustomErrorBoundary from "features/common/Errors/CustomErrorBoundary/CustomErrorBoundary";
 
 /**
@@ -31,6 +32,7 @@ const MainRouter = () => {
             <Route element={<ErrorRoutes />}>
               {DashboardRoutes}
               {FolderRequestsRoutes}
+              {SharedWIthMeRoutes}
               <Route path="*" element={<FourOFourPage />} />
             </Route>
           </Route>
