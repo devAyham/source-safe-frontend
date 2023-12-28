@@ -5,6 +5,7 @@ export enum ServiceType {
   File = "file",
   User = "users",
   FolderRequests = "my-folder-requests",
+  FilesTrash = "file/my-trash",
 }
 // Define an array of service names as a readonly tuple
 const ServicesName = [
@@ -13,6 +14,7 @@ const ServicesName = [
   "FileService",
   "UserService",
   "FolderRequests",
+  "FilesTrashService",
 ] as const;
 // Define a type alias for the union of all service names
 
@@ -25,4 +27,5 @@ export const ServicesTypes: Record<ServicesName, ServiceType> = {
   FileService: ServiceType.File,
   UserService: ServiceType.User,
   FolderRequests: ServiceType.FolderRequests,
+  FilesTrashService: ServiceType.FilesTrash,
 } as const;
