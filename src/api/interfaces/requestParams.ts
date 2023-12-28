@@ -16,7 +16,7 @@ type filterOption<T> = {
 
 export interface IRequestParams<T> {
   filter?: Partial<{
-    [K in keyof T]: string; // filterOption<T[K]> |
+    [K in keyof T]: T[K]; // filterOption<T[K]> |
     // filterOption<T[K]>[];
   }>;
   //   Record<keyof T, filterOption<T[keyof T]> | filterOption<T[keyof T]>[]>
