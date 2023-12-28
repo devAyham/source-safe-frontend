@@ -41,29 +41,7 @@ const LayoutContainer = (props: Props) => {
         tableProps={{
           columns: GetTableColumns(),
         }}
-        cardRender={({
-          id,
-          logo,
-          name,
-          created_at,
-          members,
-          files_count,
-          folder_size,
-        }) => {
-          return (
-            <FolderCard
-              fileCount={files_count}
-              size={folder_size}
-              icon={logo}
-              folderName={name}
-              members={members}
-              createdAt={dateFormatter(created_at ?? "")}
-              onClick={() => {
-                navigate(PagesRotes.DashboardRoutes.MyFolders.show(id));
-              }}
-            />
-          );
-        }}
+
         cardLayoutMargin="0px"
         cardLayoutRowGutter={[45, 20]}
         {...props}
