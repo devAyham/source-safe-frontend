@@ -20,7 +20,7 @@ function Form({ formName, entityId, onSuccess, onError }: IFormProps) {
   const {
     createEntity: { mutateAsync: createFolder },
     updateEntity: { mutateAsync: updateolder },
-  } = useFolderApi();
+  } = useFolderApi({});
   const onFinish = (values: ISubmittedValues) => {
     const formData = new FormData();
     formData.append("logo", values.logo.file);

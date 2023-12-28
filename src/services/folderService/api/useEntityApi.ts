@@ -6,24 +6,29 @@ import IGetAllResponse from "../interfaces/GetAllResponse.interface";
 import IGetResponse from "../interfaces/GetResponse.interface";
 import IRequestParams from "../interfaces/RequestParams.interface";
 import IUpdate from "../interfaces/Update.interface";
+import { ICustomEndpoints } from "api/interfaces/customEndPoints";
 
-const useEntityApi = (
+const useEntityApi = <T = ICreate | FormData>({
+  options,
+  customEndPoint,
+}: {
   options?: IApiCrudConfig<
     IRequestParams,
-    ICreate | FormData,
+    T,
     IUpdate | FormData,
     IUpdate | FormData,
     IGetResponse,
     IGetAllResponse
-  >
-) => {
+  >;
+  customEndPoint?: ICustomEndpoints;
+}) => {
   return useApiCRUD<
     IRequestParams,
-    ICreate | FormData,
+    T,
     IUpdate | FormData,
     IUpdate | FormData,
     IGetResponse,
     IGetAllResponse
-  >(ServiceName, options);
+  >(ServiceName, options, customEndPoint);
 };
 export default useEntityApi;

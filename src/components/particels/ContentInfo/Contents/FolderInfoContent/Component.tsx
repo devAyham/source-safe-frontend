@@ -26,13 +26,15 @@ function Component() {
   const {
     getDetailsEntity: { data, isLoading },
   } = useFolderApi({
-    getDetailsConfig: {
-      id: activeFolderId ? activeFolderId : 0,
-      enabled: !!activeFolderId,
-      onError(error: any) {
-        if (error.response?.status === HttpStatus.NotFound) {
-          dispatch(SetFolderId(null));
-        }
+    options: {
+      getDetailsConfig: {
+        id: activeFolderId ? activeFolderId : 0,
+        enabled: !!activeFolderId,
+        onError(error: any) {
+          if (error.response?.status === HttpStatus.NotFound) {
+            dispatch(SetFolderId(null));
+          }
+        },
       },
     },
   });

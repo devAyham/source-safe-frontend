@@ -14,12 +14,20 @@ import {
 } from "api/helpers/queryKeysFactory";
 import { FolderServiceName } from "services/folderService";
 import { useAppSelector } from "features/common/hooks/useReduxHooks";
+import { EntityIdType } from "types";
 function Component({ members }: Props) {
   const [open, setOpen] = useState(false);
   const queryClient = useQueryClient();
   const {
     contentInfo: { activeFolderId },
   } = useAppSelector((state) => state.sharedData);
+
+  const owner_id = members?.reduce((accumulator: EntityIdType, member) => {
+    if (member.role === "admin") {
+      return member.user.id;
+    }
+    return accumulator;
+  }, "");
 
   return (
     <>
@@ -66,7 +74,7 @@ function Component({ members }: Props) {
           {members.map((member) => {
             return (
               <>
-                <MemberRow {...member} />
+                <MemberRow {...member} owner_id={owner_id} />
               </>
             );
           })}
