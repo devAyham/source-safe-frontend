@@ -88,7 +88,6 @@ function ShowFolder() {
           },
         }}
         actions={{
-          deleteAction: true,
           extraAction(record) {
             return (
               <Row>
@@ -100,6 +99,7 @@ function ShowFolder() {
                     onClick={() => {
                       downloadURL(record.latest_path);
                     }}
+                    disabled={record.status === FileStatusEnum.PROCESSING}
                   >
                     Download
                   </Button>

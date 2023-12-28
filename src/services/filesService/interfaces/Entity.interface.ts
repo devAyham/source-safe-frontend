@@ -2,9 +2,11 @@ import { EntityIdType } from "types";
 import { EntityIdInterface } from "../../../interfaces/EntityId.interface";
 import { IUserEntity } from "services/userService";
 
+
 export enum FileStatusEnum {
   CHECKED_IN = "check_in",
   CHECKED_OUT = "check_out",
+  PROCESSING = "processing",
 }
 
 export type FileVersionType = {
