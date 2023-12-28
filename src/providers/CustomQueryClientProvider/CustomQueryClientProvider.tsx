@@ -16,81 +16,10 @@ const CustomQueryClientProvider = ({ children }: any) => {
   const queryClient = new QueryClient({
     defaultOptions: {
       queries: {
-        refetchOnWindowFocus: false,
+        refetchOnWindowFocus: true,
       },
     },
-    // defaultOptions: {
-    //   queries: {
-    //     retry: (failureCount, error: any) => {
-    //       const RetryCount = 3;
-    //       const t = async () => {
-    //         if (
-    //           failureCount < RetryCount &&
-    //           (await isRetryOnStatus(error.response?.status))
-    //         )
-    //           return true;
-    //         else return false;
-    //       };
-    //       const f = t().then((val) => val);
-    //       return f;
-    //     },
-    //   },
-    //   mutations: {
-    //     retry(failureCount, error: any) {
-    //       const RetryCount = 3;
-    //       if (
-    //         failureCount < RetryCount &&
-    //         (await isRetryOnStatus(error.response?.status))
-    //       )
-    //         return true;
-    //       else return false;
-    //     },
-    //   },
-    // },
   });
-
-  // {
-  //   defaultOptions: {
-  //     queries: {
-  //       // cacheTime: 1000 * 60 * 60 * 24, // 24 hours
-  //       refetchOnMount: "always",
-  //           refetchOnWindowFocus: false,
-  //           retry(failureCount, error: any) {
-  //         const RetryCount = 3;
-  //         if (
-  //             failureCount < RetryCount &&
-  //             isRetryOnStatus(error.response?.status)
-  //         )
-  //           return true;
-  //         else return false;
-  //       },
-  //       onError(err: any) {
-  //         dispatch(
-  //             UiSliceActions.SetError({
-  //               message: err.response?.data?.message ?? err.message,
-  //               code: err.response?.status ?? err.code,
-  //               navigate: err.response?.config?.method === "get",
-  //             })
-  //         );
-  //       },
-  //     },
-  //     mutations: {
-  //       onMutate() {
-  //         dispatch(UiSliceActions.SetError(null));
-  //       },
-  //       onError(err: any, variables, context) {
-  //         dispatch(
-  //             UiSliceActions.SetError({
-  //               message: err.response?.data?.message ?? err.message,
-  //               code: err.response?.status ?? err.code,
-  //               navigate: err.response?.config?.method === "get",
-  //             })
-  //         );
-  //       },
-  //       retry: 0,
-  //     },
-  //   },
-  // }
 
   const sessionStoragePersistor = createWebStoragePersistor({
     storage: window.sessionStorage,
