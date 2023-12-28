@@ -19,9 +19,15 @@ export interface Props
       IGetAllResponse
     >,
     "serviceName"
-  > {}
+  > {
+  serviceName?: any;
+}
 
-const LayoutContainer = ({ tableProps, ...restProps }: Props) => {
+const LayoutContainer = ({
+  tableProps,
+  serviceName = ServiceName,
+  ...restProps
+}: Props) => {
   return (
     <>
       <CrudLayout<
@@ -39,8 +45,8 @@ const LayoutContainer = ({ tableProps, ...restProps }: Props) => {
         }}
         cardLayoutMargin="0px"
         cardLayoutRowGutter={[45, 20]}
+        serviceName={serviceName}
         {...restProps}
-        serviceName={ServiceName}
       />
     </>
   );
