@@ -6,7 +6,7 @@ import IGetAllResponse from "../../interfaces/GetAllResponse.interface";
 import IGetResponse from "../../interfaces/GetResponse.interface";
 import IRequestParams from "../../interfaces/RequestParams.interface";
 import IUpdate from "../../interfaces/Update.interface";
-import GetTableColumns from "./columns";
+import GetTableColumns from "./columns/columns";
 
 export interface Props
   extends GenericOmit<
@@ -19,9 +19,15 @@ export interface Props
       IGetAllResponse
     >,
     "serviceName"
-  > {}
+  > {
+  serviceName?: any;
+}
 
-const LayoutContainer = ({ tableProps, ...restProps }: Props) => {
+const LayoutContainer = ({
+  serviceName = ServiceName,
+  tableProps,
+  ...restProps
+}: Props) => {
   return (
     <>
       <CrudLayout<
@@ -39,8 +45,8 @@ const LayoutContainer = ({ tableProps, ...restProps }: Props) => {
         }}
         cardLayoutMargin="0px"
         cardLayoutRowGutter={[45, 20]}
+        serviceName={serviceName}
         {...restProps}
-        serviceName={ServiceName}
       />
     </>
   );

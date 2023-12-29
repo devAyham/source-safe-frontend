@@ -166,7 +166,6 @@ function ShowFolder() {
                     Show Info
                   </Button>
                 </Col>
-
                 <Col span={24}>
                   <CheckinFile
                     file_id={record.id}

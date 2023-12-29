@@ -3,11 +3,13 @@ import { fileCategory } from "data/FileCategory";
 import { dateFormatter } from "helpers/dateFormatter";
 import { transformExtentionToFileType } from "helpers/transfromExtentionToFileType";
 import { GenericColumnsType } from "interfaces/GenericColumnType";
-import IGetAllResponse from "../../interfaces/GetAllResponse.interface";
+import IGetAllResponse from "../../../interfaces/GetAllResponse.interface";
 import { FileStatusTag } from "components";
 import { convertFileSize } from "helpers/convertFileSize";
+import { useAppSelector } from "features/common/hooks/useReduxHooks";
 
 function GetTableColumns(): GenericColumnsType<IGetAllResponse> {
+  const { user } = useAppSelector((state) => state.auth);
   return [
     {
       title: "#",
@@ -38,12 +40,12 @@ function GetTableColumns(): GenericColumnsType<IGetAllResponse> {
         );
       },
     },
-    // {
-    //   title: "Estension",
-    //   dataIndex: ["extension"],
-    //   key: "extension",
-    //   align: "center",
-    // },
+    {
+      title: "Folder Name",
+      dataIndex: ["folder", "name"],
+      key: "name",
+      align: "left",
+    },
     {
       title: "Size",
       dataIndex: ["latest_size"],
@@ -62,15 +64,6 @@ function GetTableColumns(): GenericColumnsType<IGetAllResponse> {
         return dateFormatter(value);
       },
     },
-    // {
-    //   title: "Last Modified",
-    //   dataIndex: ["last_modified"],
-    //   key: "last_modified",
-    //   align: "center",
-    //   render(value, record, index) {
-    //     return dateFormatter(value);
-    //   },
-    // },
     {
       title: "Status",
       dataIndex: ["status"],

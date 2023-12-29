@@ -65,7 +65,7 @@ function Component() {
         />
         <SubMenuItem
           icon={<FontAwesomeIcon icon={faStar} className={styles.icon} />}
-          routeKey={SubFeaturesRoutes.CheckedInFiles}
+          routeKey={SubFeaturesRoutes.MyCheckIns}
           text="Checked-in Files"
         />
       </div>

@@ -12,6 +12,7 @@ import { UnAuthenticatedRoutes } from "./middlewares/UnAuthenticatedRoutes";
 import { FolderRequestsRoutes } from "features/foldersRequests/routes";
 import { SharedWIthMeRoutes } from "features/sharedWithMe/routes";
 import { TrashRoutes } from "features/trash/routes";
+import { PagesRotes } from "./constants/pagesRoutes";
 // import CustomErrorBoundary from "features/common/Errors/CustomErrorBoundary/CustomErrorBoundary";
 
 /**
@@ -29,7 +30,12 @@ const MainRouter = () => {
           {AuthRoutes}
         </Route>
         <Route key={"AuthenticatedRoutes"} element={<AuthenticatedRoutes />}>
-          <Route path="/" element={<MainLayout />}>
+          <Route
+            path="/"
+            element={
+              <MainLayout indexPage={PagesRotes.DashboardRoutes.index} />
+            }
+          >
             <Route element={<ErrorRoutes />}>
               {DashboardRoutes}
               {FolderRequestsRoutes}

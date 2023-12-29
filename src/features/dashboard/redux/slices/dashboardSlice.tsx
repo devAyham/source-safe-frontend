@@ -24,6 +24,10 @@ const initialState: IDashboardSliceInitialState = {
     pagnation: { page: 1, perPage: 12 },
     search: "",
   },
+  checkIns: {
+    pagnation: { page: 1, perPage: 12 },
+    search: "",
+  },
 };
 /**
  * @namespace dashboardSlice

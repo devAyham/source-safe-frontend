@@ -1,6 +1,7 @@
 import { EntityIdType } from "types";
 import { EntityIdInterface } from "../../../interfaces/EntityId.interface";
 import { IUserEntity } from "services/userService";
+import { IFolderEntity } from "services/folderService";
 
 export enum FileStatusEnum {
   CHECKED_IN = "check_in",
@@ -28,6 +29,7 @@ export default interface IEntity extends EntityIdInterface {
   file_versions: FileVersionType[];
   latest_size: number;
   full_size: number;
+  folder: IFolderEntity;
   last_action_on_file: {
     id: number;
     text: string;

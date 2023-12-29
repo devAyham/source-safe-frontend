@@ -3,5 +3,5 @@ export enum SubFeaturesRoutes {
   Register = "register",
   MyFolders = "my-folders",
   RecentActivities = "recent-activites",
-  CheckedInFiles = 'cheked-in-files'
+  MyCheckIns = 'my-check-ins'
 }

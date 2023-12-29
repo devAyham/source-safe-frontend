@@ -5,18 +5,27 @@ import { SideBar } from "components/particels/SideBar";
 import { useEffect, useRef, useState } from "react";
 import { Props } from "./Props";
 import styles from "./styles.module.scss";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 /**
  * the main controlled component for the entire app layout t
  */
-const Layout = (props: Props) => {
+const Layout = ({ indexPage }: Props) => {
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
   const [width, setWidth] = useState<string>("0px");
   const layoutRef = useRef<HTMLElement | null>(null);
+
   useEffect(() => {
     if (layoutRef.current) {
       layoutRef.current.style.marginInlineStart = width;
     }
   }, [width]);
+
+  useEffect(() => {
+    if (pathname === "/" && indexPage) {
+      navigate(indexPage);
+    }
+  }, [pathname]);
 
   return (
     <AntLayout hasSider>

@@ -14,6 +14,7 @@ export const PagesRotes = {
       show: (id: EntityIdType) =>
         `/${MainFeaturesRoutes.DashboardRoute}/${SubFeaturesRoutes.MyFolders}/${id}`,
     },
+    MyCheckIns: `/${MainFeaturesRoutes.DashboardRoute}/${SubFeaturesRoutes.MyCheckIns}`,
   },
   TrashRoutes: {
     index: `/${MainFeaturesRoutes.TrashRoute}`,
