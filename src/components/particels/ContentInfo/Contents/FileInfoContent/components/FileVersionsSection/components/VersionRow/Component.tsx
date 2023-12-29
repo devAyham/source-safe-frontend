@@ -8,6 +8,7 @@ import { faDownload } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 import downloadURL from "helpers/downloadUrl";
 import { convertFileSize } from "helpers/convertFileSize";
+import moment from "moment";
 
 function Component({ latest, extension, name, path, size, user }: Props) {
   const navigate = useNavigate();
@@ -16,7 +17,11 @@ function Component({ latest, extension, name, path, size, user }: Props) {
     <div className={styles.container}>
       <div className={`${styles.titleRow} ${latest && styles.latest}`}>
         <div className={styles.title}>{user.name} upload new file</div>
-        <div className={styles.date}>2 day ago</div>
+        <div className={styles.date}>
+          <Tooltip title={moment("2023-12-29T12:34:21").fromNow()}>
+            {moment("2023-12-29T12:34:21").fromNow()}
+          </Tooltip>
+        </div>
       </div>
       <div className={`${styles.detailsRow} ${latest && styles.latest}`}>
         <div className={styles.subTitle}>Version Name : {name}</div>
