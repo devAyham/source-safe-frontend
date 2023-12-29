@@ -9,5 +9,5 @@ export function convertFileSize(
   };
 
   const convertedSize = fileSizeInBytes / units[unitOption];
-  return `${convertedSize.toFixed(2)} ${unitOption}`;
+  return `${convertedSize.toFixed(1)} ${unitOption}`;
 }

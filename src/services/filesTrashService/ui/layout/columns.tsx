@@ -6,7 +6,8 @@ import { GenericColumnsType } from "interfaces/GenericColumnType";
 import IGetAllResponse from "../../interfaces/GetAllResponse.interface";
 import { FileStatusTag } from "components";
 import { convertFileSize } from "helpers/convertFileSize";
-
+import { Tooltip } from "antd";
+import styles from "./style.module.scss";
 function GetTableColumns(): GenericColumnsType<IGetAllResponse> {
   return [
     {
@@ -38,12 +39,25 @@ function GetTableColumns(): GenericColumnsType<IGetAllResponse> {
         );
       },
     },
-    // {
-    //   title: "Estension",
-    //   dataIndex: ["extension"],
-    //   key: "extension",
-    //   align: "center",
-    // },
+    {
+      title: "Folder Name",
+      dataIndex: ["folder", "name"],
+      key: "name",
+      align: "left",
+    },
+    {
+      title: "Extension",
+      dataIndex: ["extension"],
+      key: "extension",
+      align: "center",
+      render(value, record, index) {
+        return (
+          <Tooltip title={value}>
+            <span className={styles.extention}>{value}</span>
+          </Tooltip>
+        );
+      },
+    },
     {
       title: "Size",
       dataIndex: ["latest_size"],
@@ -51,6 +65,15 @@ function GetTableColumns(): GenericColumnsType<IGetAllResponse> {
       align: "center",
       render(value) {
         return convertFileSize(value, "MB");
+      },
+    },
+    {
+      title: "Versions Count",
+      dataIndex: ["file_versions"],
+      key: "size",
+      align: "center",
+      render(value) {
+        return value.length;
       },
     },
     {

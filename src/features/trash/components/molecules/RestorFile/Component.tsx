@@ -44,7 +44,7 @@ function Component({ file_id }: Props) {
         closable={false}
         onCancel={onCancel}
         cancelButtonProps={{ danger: true }}
-        okText={"Check-in"}
+        okText={"ٌRestore"}
         cancelText={"Cancel"}
         confirmLoading={restoreFile.isLoading}
         width={310}

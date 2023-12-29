@@ -91,19 +91,6 @@ function MyFolders() {
                     </Button>
                   </Col>
                   <Col span={24}>
-                    <Button
-                      style={{ height: 40 }}
-                      type="text"
-                      block
-                      disabled={record.id === activeFileId}
-                      onClick={() => {
-                        dispatch(SetFileId(record.id));
-                      }}
-                    >
-                      Show Info
-                    </Button>
-                  </Col>
-                  <Col span={24}>
                     <RestorFile file_id={record.id} />
                   </Col>
                 </Row>
