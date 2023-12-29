@@ -12,4 +12,5 @@ export enum CustomEndPoints {
   ForceCheckOut = "force-check-out",
   RemoveMember = "remove-user",
   Restor = "restore",
+  Statistic ="statistic"
 }
