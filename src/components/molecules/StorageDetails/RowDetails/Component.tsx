@@ -3,7 +3,7 @@ import { hexToRGB } from "helpers/hexToRGB";
 import { Props } from "./Props";
 import styles from "./styles.module.scss";
 import { fileCategory } from "data/FileCategory";
-
+import { convertFileSize } from "helpers/convertFileSize";
 
 function Component({ fileType, filesCount, size }: Props) {
   const backgroundOpacity = 0.2;
@@ -32,7 +32,7 @@ function Component({ fileType, filesCount, size }: Props) {
         </div>
         <div className={styles.filesNumber}>{filesCount} files</div>
       </Space>
-      <div className={styles.storage}>{size} GB</div>
+      <div className={styles.storage}>{convertFileSize(size, "MB")}</div>
     </div>
   );
 }

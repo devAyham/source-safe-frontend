@@ -8,7 +8,7 @@ import IRequestParams from "../interfaces/RequestParams.interface";
 import IUpdate from "../interfaces/Update.interface";
 import { ICustomEndpoints } from "api/interfaces/customEndPoints";
 
-const useEntityApi = <T = ICreate | FormData>({
+const useEntityApi = <T = ICreate | FormData, G = IGetResponse>({
   options,
   customEndPoint,
 }: {
@@ -17,7 +17,7 @@ const useEntityApi = <T = ICreate | FormData>({
     T,
     IUpdate | FormData,
     IUpdate | FormData,
-    IGetResponse,
+    G,
     IGetAllResponse
   >;
   customEndPoint?: ICustomEndpoints;
@@ -27,7 +27,7 @@ const useEntityApi = <T = ICreate | FormData>({
     T,
     IUpdate | FormData,
     IUpdate | FormData,
-    IGetResponse,
+    G,
     IGetAllResponse
   >(ServiceName, options, customEndPoint);
 };

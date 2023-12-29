@@ -2,6 +2,7 @@ import { Pie } from "@ant-design/charts";
 import { ComponentProps } from "react";
 import { Props } from "./Props";
 import styles from "./styles.module.scss";
+import { convertFileSize } from "helpers/convertFileSize";
 const DoughnutChart = <T extends Record<string, any>>({
   data,
   angleField,
@@ -38,14 +39,17 @@ const DoughnutChart = <T extends Record<string, any>>({
             (sum, item: any) => sum + item[angleField],
             0
           );
-          const free = data?.reduce(
-            (sum, item: any) =>
-              item[colorField] !== "free" ? sum + item[angleField] : sum,
-            0
-          );
+
           return datum
-            ? `<span><div class=${styles.type}>${datum[colorField]}</div><div class=${styles.content}>${datum[angleField]} GB </div></span>`
-            : `<span><div class=${styles.type}>${free} GB</div><div class=${styles.content}> of ${total} GB </div></span>`;
+            ? `<span>
+              <div class=${styles.type}>${datum[colorField]}</div>
+              <div class=${styles.content}>
+              ${convertFileSize(datum[angleField], "MB")}
+              </div>
+              </span>`
+            : `<span><div class=${styles.type}>Total</div><div class=${
+                styles.content
+              }>   ${convertFileSize(total ?? 0, "MB")} </div></span>`;
         },
         style() {
           return {

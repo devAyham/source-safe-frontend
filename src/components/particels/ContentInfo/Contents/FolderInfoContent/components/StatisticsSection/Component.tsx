@@ -1,17 +1,41 @@
+import { CustomEndPoints } from "api/constants/customEndPoints";
 import { StorageDetails } from "components/molecules/StorageDetails";
+import { useAppSelector } from "features/common/hooks/useReduxHooks";
+import { convertFileSize } from "helpers/convertFileSize";
+import { transformExtentionToFileType } from "helpers/transfromExtentionToFileType";
 import { IFileTypeStatistics } from "interfaces/FileTypeStatistics.inteface";
+import { FolderServiceName, useFolderApi } from "services/folderService";
 
 function Component() {
-  const data: IFileTypeStatistics[] = [
-    { filesCount: 400, fileType: "video", size: 40 },
-    { filesCount: 1300, fileType: "image", size: 50 },
-    { filesCount: 660, fileType: "document", size: 77 },
-    { filesCount: 660, fileType: "audio", size: 77 },
-    { filesCount: 100, fileType: "other", size: 10 },
-  ];
+  const {
+    contentInfo: { activeFolderId },
+  } = useAppSelector((state) => state.sharedData);
+  const {
+    getDetailsEntity: { data },
+  } = useFolderApi<{}, StatisticsResponseType[]>({
+    customEndPoint: {
+      getEndpoint: `.`,
+    },
+    options: {
+      getDetailsConfig: {
+        enabled: !!activeFolderId,
+        id: `${FolderServiceName}/${CustomEndPoints.Statistic}?folder_id=${activeFolderId}`,
+      },
+    },
+  });
+  const DataWithMappers: IFileTypeStatistics[] =
+    data?.data.map((row) => {
+      const fileType = transformExtentionToFileType(row.extension_group);
+      return {
+        filesCount: Number(row.count),
+        size: row.total_size,
+        fileType,
+      };
+    }) ?? [];
+
   return (
     <>
-      <StorageDetails data={data} />
+      <StorageDetails data={DataWithMappers} />
     </>
   );
 }

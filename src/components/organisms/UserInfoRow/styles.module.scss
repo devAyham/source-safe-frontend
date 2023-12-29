@@ -1,8 +1,9 @@
 @use "/src/styles/variables/main_colors_vars.module" as *;
 
 .notifications {
-  padding-inline: 10px;
+  // padding-inline: 10px;
   // fill: gray;
+  margin-inline-end: auto;
 }
 .divider {
   background-color: rgba(128, 128, 128, 0.377);
@@ -12,7 +13,11 @@
 }
 .text {
   font-size: 16px !important;
-  padding-inline: 15px;
+  padding-inline: 5px;
+  width: 100px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 .avatar {
   background-color: $primary_color_1;

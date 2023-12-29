@@ -4,34 +4,54 @@ import { IFileTypeStatistics } from "interfaces/FileTypeStatistics.inteface";
 import variables from "styles/variables/_main_colors_vars.module.scss";
 import styles from "./styels.module.scss";
 import { StorageDetails } from "components/molecules/StorageDetails";
+import { FolderServiceName, useFolderApi } from "services/folderService";
+import { CustomEndPoints } from "api/constants/customEndPoints";
+import { transformExtentionToFileType } from "helpers/transfromExtentionToFileType";
 
 function Component() {
-  const data: IFileTypeStatistics[] = [
-    { filesCount: 400, fileType: "video", size: 40 },
-    { filesCount: 1300, fileType: "image", size: 50 },
-    { filesCount: 60, fileType: "audio", size: 277 },
-    { filesCount: 660, fileType: "document", size: 77 },
-    { filesCount: 100, fileType: "other", size: 10 },
-  ];
-  const dataWithFreeSpace = [
-    ...data,
-    { filesCount: 400, fileType: "free", size: 40 },
-  ];
-  const colors = data?.map((row) => {
+  const {
+    getDetailsEntity: { data, isLoading },
+  } = useFolderApi<{}, StatisticsResponseType[]>({
+    customEndPoint: {
+      getEndpoint: `.`,
+    },
+    options: {
+      getDetailsConfig: {
+        enabled: true,
+        id: `${FolderServiceName}/${CustomEndPoints.Statistic}`,
+      },
+    },
+  });
+  const DataWithMappers: IFileTypeStatistics[] =
+    data?.data.map((row) => {
+      const fileType = transformExtentionToFileType(row.extension_group);
+      return {
+        filesCount: Number(row.count),
+        size: +row.total_size,
+        fileType,
+      };
+    }) ?? [];
+
+  const colors = DataWithMappers?.map((row) => {
     return fileCategory[row.fileType].color;
   });
+
+  console.log(DataWithMappers);
+
   return (
     <>
       <div className={styles.chart}>
-        <DoughnutChart
-          loading={false}
-          data={dataWithFreeSpace}
-          angleField="size"
-          colorField="fileType"
-          colors={[...colors, variables.light_gray_color_two]}
-        />
+        {DataWithMappers.length > 0 && (
+          <DoughnutChart
+            loading={isLoading}
+            data={DataWithMappers}
+            angleField="size"
+            colorField="fileType"
+            colors={[...colors, variables.light_gray_color_two]}
+          />
+        )}
       </div>
-      <StorageDetails data={data} />
+      <StorageDetails data={DataWithMappers} />
     </>
   );
 }
