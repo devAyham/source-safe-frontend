@@ -1,0 +1,10 @@
+@use "/src/styles/variables/main_colors_vars.module" as *;
+
+.button {
+  font-weight: bold;
+  color: $title_color;
+  &.full {
+    color: $primary_color_1;
+    border-color: $primary_color_1;
+  }
+}
