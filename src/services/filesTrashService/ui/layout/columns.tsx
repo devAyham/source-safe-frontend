@@ -8,7 +8,9 @@ import { FileStatusTag } from "components";
 import { convertFileSize } from "helpers/convertFileSize";
 import { Tooltip } from "antd";
 import styles from "./style.module.scss";
+import { useAppSelector } from "features/common/hooks/useReduxHooks";
 function GetTableColumns(): GenericColumnsType<IGetAllResponse> {
+  const { filesSizeType } = useAppSelector((state) => state.sharedData);
   return [
     {
       title: "#",
@@ -64,7 +66,7 @@ function GetTableColumns(): GenericColumnsType<IGetAllResponse> {
       key: "size",
       align: "center",
       render(value) {
-        return convertFileSize(value, "MB");
+        return convertFileSize(value, filesSizeType);
       },
     },
     {

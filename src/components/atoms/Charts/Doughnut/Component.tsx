@@ -3,6 +3,7 @@ import { ComponentProps } from "react";
 import { Props } from "./Props";
 import styles from "./styles.module.scss";
 import { convertFileSize } from "helpers/convertFileSize";
+import { useAppSelector } from "features/common/hooks/useReduxHooks";
 const DoughnutChart = <T extends Record<string, any>>({
   data,
   angleField,
@@ -10,6 +11,7 @@ const DoughnutChart = <T extends Record<string, any>>({
   colors,
   loading,
 }: Props<T>) => {
+  const { filesSizeType } = useAppSelector((state) => state.sharedData);
   const config: ComponentProps<typeof Pie> = {
     loading,
     data,
@@ -44,12 +46,12 @@ const DoughnutChart = <T extends Record<string, any>>({
             ? `<span>
               <div class=${styles.type}>${datum[colorField]}</div>
               <div class=${styles.content}>
-              ${convertFileSize(datum[angleField], "MB")}
+              ${convertFileSize(datum[angleField], filesSizeType)}
               </div>
               </span>`
             : `<span><div class=${styles.type}>Total</div><div class=${
                 styles.content
-              }>   ${convertFileSize(total ?? 0, "MB")} </div></span>`;
+              }>   ${convertFileSize(total ?? 0, filesSizeType)} </div></span>`;
         },
         style() {
           return {

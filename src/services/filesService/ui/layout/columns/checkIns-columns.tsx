@@ -10,6 +10,7 @@ import { useAppSelector } from "features/common/hooks/useReduxHooks";
 
 function GetTableColumns(): GenericColumnsType<IGetAllResponse> {
   const { user } = useAppSelector((state) => state.auth);
+  const { filesSizeType } = useAppSelector((state) => state.sharedData);
   return [
     {
       title: "#",
@@ -52,7 +53,7 @@ function GetTableColumns(): GenericColumnsType<IGetAllResponse> {
       key: "size",
       align: "center",
       render(value) {
-        return convertFileSize(value, "MB");
+        return convertFileSize(value, filesSizeType);
       },
     },
     {

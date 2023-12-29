@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { ISharedDataSliceInitialState } from "features/common/interfaces/sharedDataSliceInitialState";
+import { FileSizesType } from "features/common/types/fileSizes.type";
 import { WritableDraft } from "immer/dist/internal";
 import { EntityIdType } from "types";
 
@@ -8,6 +9,7 @@ const initialStateForSearedData: ISharedDataSliceInitialState = {
     activeFileId: null,
     activeFolderId: null,
   },
+  filesSizeType: "MB",
 };
 /**
  * @namespace shearedDataSlice
@@ -28,6 +30,12 @@ const shearedDataSlice = createSlice({
       action: PayloadAction<EntityIdType | null>
     ) {
       state.contentInfo.activeFileId = action.payload;
+    },
+    SetFilesSizeType(
+      state: WritableDraft<ISharedDataSliceInitialState>,
+      action: PayloadAction<FileSizesType>
+    ) {
+      state.filesSizeType = action.payload;
     },
   },
 });

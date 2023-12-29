@@ -56,6 +56,7 @@ function Component() {
       <FileVersionsSection versions={data?.data?.file_versions} />
     ),
   };
+  const { filesSizeType } = useAppSelector((state) => state.sharedData);
 
   return (
     <div className={styles.container}>
@@ -88,7 +89,7 @@ function Component() {
           </Typography.Text> */}
           <Typography.Text className={styles.folderInfo}>
             <FileStatusTag status={data?.data?.status as FileStatusEnum} />
-            {convertFileSize(Number(data?.data?.latest_size), "MB")}
+            {convertFileSize(Number(data?.data?.latest_size), filesSizeType)}
           </Typography.Text>
         </div>
         <div className={styles.divider} />

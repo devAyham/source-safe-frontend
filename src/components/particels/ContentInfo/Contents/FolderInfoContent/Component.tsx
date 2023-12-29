@@ -44,6 +44,7 @@ function Component() {
     members: <MembersSection members={data?.data.members ?? []} />,
     statistics: <StatisticsSection />,
   };
+  const { filesSizeType } = useAppSelector((state) => state.sharedData);
   return (
     <div className={styles.container}>
       <div className={styles.folderGeneralInfo}>
@@ -55,7 +56,7 @@ function Component() {
         </Typography.SubTitle>
         <Typography.Text className={styles.folderInfo}>
           Files count {data?.data.files_count} -{" "}
-          {convertFileSize(data?.data?.folder_size ?? 0, "MB")}
+          {convertFileSize(data?.data?.folder_size ?? 0, filesSizeType)}
         </Typography.Text>
       </div>
       <div className={styles.divider}></div>

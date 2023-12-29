@@ -4,9 +4,12 @@ import { Props } from "./Props";
 import styles from "./styles.module.scss";
 import { fileCategory } from "data/FileCategory";
 import { convertFileSize } from "helpers/convertFileSize";
+import { useAppSelector } from "features/common/hooks/useReduxHooks";
 
 function Component({ fileType, filesCount, size }: Props) {
   const backgroundOpacity = 0.2;
+  const { filesSizeType } = useAppSelector((state) => state.sharedData);
+
   return (
     <div className={styles.row}>
       <Avatar
@@ -32,7 +35,9 @@ function Component({ fileType, filesCount, size }: Props) {
         </div>
         <div className={styles.filesNumber}>{filesCount} files</div>
       </Space>
-      <div className={styles.storage}>{convertFileSize(size, "MB")}</div>
+      <div className={styles.storage}>
+        {convertFileSize(size, filesSizeType)}
+      </div>
     </div>
   );
 }

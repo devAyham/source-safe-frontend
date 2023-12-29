@@ -24,4 +24,22 @@
     height: 240px;
     gap: 20px;
   }
+  .myCheckInContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 390px;
+    .layoutContainer {
+      // padding-inline: 30px;
+    }
+  }
+  .recentContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    // height: 390px;
+    .layoutContainer {
+      // padding-inline: 30px;
+    }
+  }
 }

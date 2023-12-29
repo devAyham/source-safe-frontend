@@ -1,6 +1,8 @@
+import { FileSizesType } from "features/common/types/fileSizes.type";
+
 export function convertFileSize(
   fileSizeInBytes: number,
-  unitOption: "GB" | "MB" | "KB"
+  unitOption: FileSizesType
 ): string {
   const units: Record<string, number> = {
     GB: 1024 * 1024 * 1024,

@@ -4,6 +4,8 @@ import { useAppSelector } from "features/common/hooks/useReduxHooks";
 import { GeneralStatistics } from "./Contents/GeneralStatistics";
 import { FolderInfoContent } from "./Contents/FolderInfoContent";
 import { FileInfoContent } from "./Contents/FileInfoContent";
+import { FilesSizeSwithcer } from "components/organisms/FilesSizeSwitcher";
+import { Divider } from "antd";
 
 interface DynamicContent {
   [key: string]: JSX.Element;
@@ -37,6 +39,17 @@ const Component: React.FC = () => {
       <div className={styles.user_info_container}>
         <UserInfoRow />
       </div>
+      <Divider
+        style={{
+          marginBlock: 4,
+        }}
+      />
+      <FilesSizeSwithcer />
+      <Divider
+        style={{
+          marginBlock: 4,
+        }}
+      />
       {selectedContent}
     </div>
   );

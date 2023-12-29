@@ -9,10 +9,12 @@ import { useNavigate } from "react-router-dom";
 import downloadURL from "helpers/downloadUrl";
 import { convertFileSize } from "helpers/convertFileSize";
 import moment from "moment";
+import { useAppSelector } from "features/common/hooks/useReduxHooks";
 
 function Component({ latest, extension, name, path, size, user }: Props) {
   const navigate = useNavigate();
   const fileType = fileCategory[transformExtentionToFileType(extension)];
+  const { filesSizeType } = useAppSelector((state) => state.sharedData);
   return (
     <div className={styles.container}>
       <div className={`${styles.titleRow} ${latest && styles.latest}`}>
@@ -36,7 +38,7 @@ function Component({ latest, extension, name, path, size, user }: Props) {
             }}
           />
           <Avatar size={40} shape="square">
-            {convertFileSize(size, "MB")}
+            {convertFileSize(size, filesSizeType)}
           </Avatar>
           <Avatar
             size={40}

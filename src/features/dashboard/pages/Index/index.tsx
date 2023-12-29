@@ -16,6 +16,14 @@ import { dashboardSliceActions } from "features/dashboard/redux/slices/dashboard
 import { debounce } from "lodash";
 import { FolderCard } from "components/molecules/cards/FolderCard";
 import { dateFormatter } from "helpers/dateFormatter";
+import {
+  FileLayout,
+  FileServiceName,
+  GetCheclInFileTableColumns,
+} from "services/filesService";
+import { AuthServiceName } from "services/authService";
+import { CustomEndPoints } from "api/constants/customEndPoints";
+import { FileStatusEnum } from "services/filesService/interfaces/Entity.interface";
 
 function DashbaordIndexPage() {
   const navigate = useNavigate();
@@ -86,6 +94,51 @@ function DashbaordIndexPage() {
             },
           }}
         />
+      </Col>
+      <Col span={24} className={styles.myCheckInContainer}>
+        <div className={styles.titleRow}>
+          <Typography.SubTitle level={3}>
+            My Checked in files
+          </Typography.SubTitle>
+          <FontAwesomeIcon
+            icon={faArrowRight}
+            className={styles.icon}
+            onClick={() => {
+              navigate(PagesRotes.DashboardRoutes.MyCheckIns);
+            }}
+          />
+        </div>
+        <div className={styles.layoutContainer}>
+          <FileLayout
+            tableProps={{
+              columns: GetCheclInFileTableColumns(),
+            }}
+            serviceName={`${FileServiceName}/${AuthServiceName}/${CustomEndPoints.CheckIn}`}
+            apiCrudConfig={{
+              getAllConfig: {
+                params: {
+                  page: 1,
+                  items_per_page: 2,
+                  search: search !== "" ? search : undefined,
+                },
+              },
+            }}
+            pagination={false}
+          />
+        </div>
+      </Col>
+      <Col span={24} className={styles.recentContainer}>
+        <div className={styles.titleRow}>
+          <Typography.SubTitle level={3}>Recent Activities</Typography.SubTitle>
+          <FontAwesomeIcon
+            icon={faArrowRight}
+            className={styles.icon}
+            onClick={() => {
+              navigate(PagesRotes.DashboardRoutes.RecentActivities);
+            }}
+          />
+        </div>
+        <div className={styles.layoutContainer}></div>
       </Col>
     </Row>
   );

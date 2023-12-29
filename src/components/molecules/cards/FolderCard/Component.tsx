@@ -6,6 +6,7 @@ import { Props } from "./Props";
 import styles from "./styles.module.scss";
 import Colors from "styles/variables/_main_colors_vars.module.scss";
 import { convertFileSize } from "helpers/convertFileSize";
+import { useAppSelector } from "features/common/hooks/useReduxHooks";
 
 function StructuredCard({
   createdAt,
@@ -21,6 +22,7 @@ function StructuredCard({
   const onDeflautClick = (e: any) => {
     onClick?.(e);
   };
+  const { filesSizeType } = useAppSelector((state) => state.sharedData);
 
   return (
     <Row className={styles.cardContainer} onClick={onDeflautClick}>
@@ -65,7 +67,7 @@ function StructuredCard({
             </Typography.Text>
           </Space>
           <Typography.SubTitle level={5} className={styles.size}>
-            {convertFileSize(size, "MB")}
+            {convertFileSize(size,filesSizeType)}
           </Typography.SubTitle>
         </div>
         <div className={styles.createAtContainer}>
