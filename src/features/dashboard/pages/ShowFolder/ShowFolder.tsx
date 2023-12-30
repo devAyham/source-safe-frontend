@@ -56,6 +56,8 @@ function ShowFolder() {
     }
     return () => {
       dispatch(Reset());
+      dispatch(setSelectedRows([]));
+      dispatch(setSelectionMode(false));
     };
   }, [id]);
 
