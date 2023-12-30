@@ -222,7 +222,7 @@ function CrudLayout<
               columns={mergedColumns}
               dataSource={_data.map((record, index) => {
                 return {
-                  key: `row-${index}`,
+                  key: (record as any).id ?? `row-${index}`,
                   ...record,
                 };
               })}

@@ -1,7 +1,7 @@
 import { RollbackOutlined } from "@ant-design/icons";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Col, Row } from "antd";
+import { Col, Divider, Row, message } from "antd";
 import { generateEntityCollectionQueryKey } from "api/helpers/queryKeysFactory";
 import { Button, PageHeader, Typography } from "components";
 import {
@@ -23,24 +23,29 @@ import { FileLayout, FileServiceName } from "services/filesService";
 import { FileStatusEnum } from "services/filesService/interfaces/Entity.interface";
 import styles from "./styles.module.scss";
 import { ForceCheckOut } from "features/dashboard/components/molecules/ForceCheckoutFile";
+import { MulriCheckinFile } from "features/dashboard/components/molecules/MultiCheckInFiles";
 function ShowFolder() {
   const resource: DashboardPagesType = "showFolder";
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const [open, setOpen] = useState(false);
+  const [multiCheckInOpen, setMultiCheckInOpen] = useState(false);
   const { id } = useParams<{ id: string }>();
   const {
     contentInfo: { activeFolderId, activeFileId },
   } = useAppSelector((state) => state.sharedData);
   const {
     showFolder: {
+      selectedRows,
+      selectionMode,
       search,
       pagnation: { page, perPage },
     },
   } = useAppSelector((state) => state.dashboard);
 
   const { Reset, SetFolderId, SetFileId } = ShearedDataSliceActions;
-  const { SetPage, SetPerPage } = dashboardSliceActions;
+  const { SetPage, SetPerPage, SetSelectedRows, SetSelectionMode } =
+    dashboardSliceActions;
   const queryClient = useQueryClient();
 
   useEffect(() => {
@@ -54,10 +59,19 @@ function ShowFolder() {
     };
   }, [id]);
 
+  const setSelectedRows = useCallback(
+    (value: any[]) => dispatch(SetSelectedRows(value)),
+    [dispatch]
+  );
+  const setSelectionMode = useCallback(
+    (value: boolean) => dispatch(SetSelectionMode(value)),
+    [dispatch]
+  );
   const setPerPage = useCallback(
     (value: number) => dispatch(SetPerPage({ resource, value })),
     [dispatch]
   );
+
   const setPage = useCallback(
     (value: number) => dispatch(SetPage({ resource, value })),
     [dispatch]
@@ -82,6 +96,15 @@ function ShowFolder() {
               })
             );
           },
+        }}
+      />
+      <MulriCheckinFile
+        files_ids={selectedRows ?? []}
+        open={multiCheckInOpen}
+        setOpen={setMultiCheckInOpen}
+        onSuccess={() => {
+          setSelectedRows([]);
+          setSelectionMode(false);
         }}
       />
       <PageHeader
@@ -112,6 +135,7 @@ function ShowFolder() {
                 onClick={() => {
                   setOpen(true);
                 }}
+                disabled={selectionMode}
               >
                 Add new File
               </Button>
@@ -123,11 +147,53 @@ function ShowFolder() {
               xl: 4,
             },
           },
+          secondaryAction: {
+            action: {
+              type: selectionMode ? "primary" : "link",
+              onClick: () => {
+                setSelectionMode(!selectionMode);
+                setSelectedRows([]);
+              },
+              children: "Select",
+            },
+          },
+          customActions: selectionMode
+            ? {
+                action: {
+                  type: "ghost",
+                  block: true,
+                  disabled: !(selectedRows && selectedRows?.length > 0),
+                  shape: "round",
+                  children: "Check-in",
+                  onClick: () => setMultiCheckInOpen(true),
+                },
+              }
+            : undefined,
         }}
       />
       <FileLayout
         viewType={"list"}
         tableProps={{
+          rowSelection: selectionMode
+            ? {
+                type: "checkbox",
+                defaultSelectedRowKeys: selectedRows,
+                selectedRowKeys: selectedRows,
+                preserveSelectedRowKeys: true,
+                onChange: (selectedRowKeys: React.Key[], selecteRows) => {
+                  console.log(selecteRows);
+                  const validSelectedRows = selecteRows?.filter((row) => {
+                    return row?.status === FileStatusEnum.CHECKED_OUT;
+                  });
+                  if (validSelectedRows?.length !== selecteRows.length) {
+                    message.warning(
+                      "you can not select rows with checked-in status"
+                    );
+                  }
+                  setSelectedRows(validSelectedRows.map((row) => row.id) ?? []);
+                },
+              }
+            : undefined,
           onRow: (record) => {
             return {
               className:

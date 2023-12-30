@@ -8,6 +8,7 @@ export enum CustomEndPoints {
   AcceptJoinFolder = "accept-join-folder",
   RejectJoinFolder = "reject-join-folder",
   CheckIn = "check-in",
+  MultiCheckIn = "multi-check-in",
   CheckOut = "check-out",
   ForceCheckOut = "force-check-out",
   RemoveMember = "remove-user",

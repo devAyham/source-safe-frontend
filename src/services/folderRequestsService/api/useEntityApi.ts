@@ -7,13 +7,13 @@ import IGetResponse from "../interfaces/GetResponse.interface";
 import IRequestParams from "../interfaces/RequestParams.interface";
 import IUpdate from "../interfaces/Update.interface";
 
-const useEntityApi = ({
+const useEntityApi = <T = ICreate | FormData>({
   customEndPoint,
   options,
 }: {
   options?: IApiCrudConfig<
     IRequestParams,
-    ICreate | FormData,
+    T,
     IUpdate | FormData,
     IUpdate | FormData,
     IGetResponse,
@@ -23,7 +23,7 @@ const useEntityApi = ({
 }) => {
   return useApiCRUD<
     IRequestParams,
-    ICreate | FormData,
+    T,
     IUpdate | FormData,
     IUpdate | FormData,
     IGetResponse,

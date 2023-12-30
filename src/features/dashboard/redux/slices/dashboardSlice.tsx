@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { AuthSliceActions } from "features/auth/redux/slices/authSlice";
 import { IDashboardSliceInitialState } from "features/dashboard/interfaces/dashboardSliceInitialState.interface";
 import {
@@ -6,6 +6,7 @@ import {
   DashboardPerPageAction,
   DashboardSearchAction,
 } from "../actions";
+import { IDashboardPayloadAction } from "features/dashboard/interfaces/dashboardSilcePayloadAction.interface";
 
 const initialState: IDashboardSliceInitialState = {
   index: {
@@ -19,6 +20,8 @@ const initialState: IDashboardSliceInitialState = {
   showFolder: {
     pagnation: { page: 1, perPage: 9 },
     search: "",
+    selectedRows: [],
+    selectionMode: false,
   },
   recentActivities: {
     pagnation: { page: 1, perPage: 12 },
@@ -40,6 +43,12 @@ const dashboardSlice = createSlice({
     SetPage: DashboardPageAction,
     SetPerPage: DashboardPerPageAction,
     SetSearch: DashboardSearchAction,
+    SetSelectedRows: (state, action: PayloadAction<any[]>) => {
+      state.showFolder.selectedRows = action.payload;
+    },
+    SetSelectionMode: (state, action: PayloadAction<boolean>) => {
+      state.showFolder.selectionMode = action.payload;
+    },
   },
   extraReducers(builder) {
     builder.addCase(AuthSliceActions.Logout, () => ({
