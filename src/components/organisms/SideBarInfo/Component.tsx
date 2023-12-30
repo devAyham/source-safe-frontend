@@ -16,16 +16,28 @@ import { DashboardContent } from "./Contents/DashboardContent";
 import { FolderRequestsContent } from "./Contents/FolderRequestsContent";
 import { SharedWithMeContent } from "./Contents/SharedWithMeContent";
 import { TrashContent } from "./Contents/TrashContent";
-
+import dashboardSvg from "assets/svgs/dashboard.svg";
+import folderRequestsSvg from "assets/svgs/folderRequests.svg";
+import sharedWithMeSvgs from "assets/svgs/sharedWithMe.svg";
+import trashSvg from "assets/svgs/trash.svg";
 function Component({ selectedKey }: Props) {
   const content: {
-    [key in MainFeaturesRoutes]: ReactNode;
+    [key in MainFeaturesRoutes]: {
+      content: ReactNode;
+      icon: string;
+    };
   } = {
-    auth: <></>,
-    dashboard: <DashboardContent />,
-    "folder-requests": <FolderRequestsContent />,
-    "shared-with-me": <SharedWithMeContent />,
-    trash: <TrashContent />,
+    auth: { content: <></>, icon: "" },
+    dashboard: { content: <DashboardContent />, icon: dashboardSvg },
+    "folder-requests": {
+      content: <FolderRequestsContent />,
+      icon: folderRequestsSvg,
+    },
+    "shared-with-me": {
+      content: <SharedWithMeContent />,
+      icon: sharedWithMeSvgs,
+    },
+    trash: { content: <TrashContent />, icon: trashSvg },
   };
   return (
     <div className={styles.siderBarInfo}>
@@ -33,7 +45,14 @@ function Component({ selectedKey }: Props) {
         <Image src={logo} className={styles.logo} />
       </div>
       {selectedKey ? (
-        <div className={styles.contentContainer}>{content[selectedKey]}</div>
+        <>
+          <div className={styles.contentContainer}>
+            {content[selectedKey].content}
+          </div>
+          <div className={styles.svgContainer}>
+            <Image src={content[selectedKey].icon} />
+          </div>
+        </>
       ) : (
         "noContent"
       )}

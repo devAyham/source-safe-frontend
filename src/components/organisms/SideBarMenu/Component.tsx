@@ -16,22 +16,50 @@ function Component({ selectedKey }: Props) {
       <MenuItem
         routeKey={MainFeaturesRoutes.DashboardRoute}
         active={selectedKey === MainFeaturesRoutes.DashboardRoute}
-        icon={<FontAwesomeIcon icon={faSliders} size="xl" />}
+        icon={
+          <FontAwesomeIcon
+            icon={faSliders}
+            size="xl"
+            bounce={selectedKey === MainFeaturesRoutes.DashboardRoute}
+            className={styles.icon}
+          />
+        }
       />
       <MenuItem
         routeKey={MainFeaturesRoutes.FoldersRequests}
         active={selectedKey === MainFeaturesRoutes.FoldersRequests}
-        icon={<FontAwesomeIcon icon={faFolderPlus} size="xl" />}
+        icon={
+          <FontAwesomeIcon
+            icon={faFolderPlus}
+            size="xl"
+            bounce={selectedKey === MainFeaturesRoutes.FoldersRequests}
+            className={styles.icon}
+          />
+        }
       />
       <MenuItem
         routeKey={MainFeaturesRoutes.SharedWithMe}
         active={selectedKey === MainFeaturesRoutes.SharedWithMe}
-        icon={<FontAwesomeIcon icon={faShareNodes} size="xl" />}
+        icon={
+          <FontAwesomeIcon
+            icon={faShareNodes}
+            size="xl"
+            bounce={selectedKey === MainFeaturesRoutes.SharedWithMe}
+            className={styles.icon}
+          />
+        }
       />
       <MenuItem
         routeKey={MainFeaturesRoutes.TrashRoute}
         active={selectedKey === MainFeaturesRoutes.TrashRoute}
-        icon={<FontAwesomeIcon icon={faTrashCan} size="xl" />}
+        icon={
+          <FontAwesomeIcon
+            icon={faTrashCan}
+            size="xl"
+            bounce={selectedKey === MainFeaturesRoutes.TrashRoute}
+            className={styles.icon}
+          />
+        }
       />
     </div>
   );

@@ -23,8 +23,19 @@
   }
   .contentContainer {
     width: 100%;
-    height: calc(100% - $sideBar_menu_padding_top);
+    height: calc(100% - $sideBar_menu_padding_top - 330px);
     padding-inline: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+  }
+  .svgContainer {
+    margin-top: auto;
+    width: 100%;
+    height: 200px;
+    padding-inline: 10px;
+    margin-bottom: 30px;
     display: flex;
     flex-direction: column;
     justify-content: start;
