@@ -2,6 +2,9 @@ import { Modal } from "antd";
 import { useLogout } from "features/auth/apis/useLogout";
 import { useState } from "react";
 import { LogoutMenuItem } from "../LogoutMenuItem";
+import { useAppDispatch } from "features/common/hooks/useReduxHooks";
+import useHandleUserCredantilesInStorge from "features/auth/hooks/useHandleUserCredantilesInStorge";
+import { AuthSliceActions } from "features/auth/redux/slices/authSlice";
 /**
  *
  * @returns
@@ -9,7 +12,12 @@ import { LogoutMenuItem } from "../LogoutMenuItem";
 const Logout = () => {
   const [open, setOpen] = useState(false);
   const { mutate, isLoading } = useLogout();
+  const dispatch = useAppDispatch();
+  const { removeUserCredantilesInStorge } = useHandleUserCredantilesInStorge();
   const onOk = () => {
+    removeUserCredantilesInStorge();
+
+    dispatch(AuthSliceActions.Logout());
     mutate({});
   };
   const onCancel = () => {

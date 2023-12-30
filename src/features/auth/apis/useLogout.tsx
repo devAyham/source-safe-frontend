@@ -8,7 +8,6 @@ export const useLogout = () => {
     options: {
       createConfig: {
         onSuccess(res) {
-
           onSuccessLogout();
         },
       },
