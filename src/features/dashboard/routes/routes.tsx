@@ -7,6 +7,9 @@ const DashbaordIndexPage = lazy(() => import("../pages/Index"));
 const MyFoldersPage = lazy(() => import("../pages/MyFolders/MyFolders"));
 const ShowFolderPage = lazy(() => import("../pages/ShowFolder/ShowFolder"));
 const MyCheckIns = lazy(() => import("../pages/MyCheckIns/MyCheckIns"));
+const RecentActivities = lazy(
+  () => import("../pages/RecentActivities/RecentActivities")
+);
 
 export default [
   <Route
@@ -32,6 +35,11 @@ export default [
       key={`${SubFeaturesRoutes.MyCheckIns}`}
       path={`${SubFeaturesRoutes.MyCheckIns}`}
       element={<MyCheckIns />}
+    />
+    <Route
+      key={`${SubFeaturesRoutes.RecentActivities}`}
+      path={`${SubFeaturesRoutes.RecentActivities}`}
+      element={<RecentActivities />}
     />
   </Route>,
 ];

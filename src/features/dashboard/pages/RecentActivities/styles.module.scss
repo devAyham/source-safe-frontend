@@ -1,0 +1,30 @@
+@use "/src/styles/variables/main_colors_vars.module" as *;
+@use "/src/styles/variables/app_colors_vars.module" as *;
+
+.listContainer {
+  margin-block: 20px;
+  .listTitles {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: start;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    font-weight: 500;
+    margin-inline-start: 20px;
+    gap: 12%;
+    .listTitle {
+      color: $icon_color;
+    }
+  }
+  .list {
+    width: 100%;
+    // background-color: red;
+    height: 69vh;
+    overflow: scroll;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+  }
+}
