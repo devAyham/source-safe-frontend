@@ -23,7 +23,7 @@ import { FileLayout, FileServiceName } from "services/filesService";
 import { FileStatusEnum } from "services/filesService/interfaces/Entity.interface";
 import styles from "./styles.module.scss";
 import { ForceCheckOut } from "features/dashboard/components/molecules/ForceCheckoutFile";
-import { MulriCheckinFile } from "features/dashboard/components/molecules/MultiCheckInFiles";
+import { MultiCheckinFile } from "features/dashboard/components/molecules/MultiCheckInFiles";
 function ShowFolder() {
   const resource: DashboardPagesType = "showFolder";
   const navigate = useNavigate();
@@ -100,7 +100,7 @@ function ShowFolder() {
           },
         }}
       />
-      <MulriCheckinFile
+      <MultiCheckinFile
         files_ids={selectedRows ?? []}
         open={multiCheckInOpen}
         setOpen={setMultiCheckInOpen}

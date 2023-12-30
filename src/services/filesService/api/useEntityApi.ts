@@ -8,14 +8,14 @@ import IRequestParams from "../interfaces/RequestParams.interface";
 import IUpdate from "../interfaces/Update.interface";
 import { ICustomEndpoints } from "api/interfaces/customEndPoints";
 
-const useEntityApi = <T = ICreate | FormData>(
+const useEntityApi = <T = ICreate | FormData, GA = IGetAllResponse>(
   options?: IApiCrudConfig<
     IRequestParams,
     T,
     IUpdate | FormData,
     IUpdate | FormData,
     IGetResponse,
-    IGetAllResponse
+    GA
   >,
   customEndPoints?: ICustomEndpoints
 ) => {
@@ -25,7 +25,7 @@ const useEntityApi = <T = ICreate | FormData>(
     IUpdate | FormData,
     IUpdate | FormData,
     IGetResponse,
-    IGetAllResponse
+    GA
   >(ServiceName, options, customEndPoints);
 };
 export default useEntityApi;

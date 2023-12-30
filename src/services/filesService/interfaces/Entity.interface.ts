@@ -16,6 +16,7 @@ export type FileVersionType = {
   extension: string;
   size: number;
   user: IUserEntity;
+  created_at : string
 };
 export default interface IEntity extends EntityIdInterface {
   name: string;

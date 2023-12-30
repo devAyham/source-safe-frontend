@@ -11,7 +11,15 @@ import { convertFileSize } from "helpers/convertFileSize";
 import moment from "moment";
 import { useAppSelector } from "features/common/hooks/useReduxHooks";
 
-function Component({ latest, extension, name, path, size, user }: Props) {
+function Component({
+  latest,
+  extension,
+  name,
+  path,
+  size,
+  user,
+  created_at,
+}: Props) {
   const navigate = useNavigate();
   const fileType = fileCategory[transformExtentionToFileType(extension)];
   const { filesSizeType } = useAppSelector((state) => state.sharedData);
@@ -21,7 +29,7 @@ function Component({ latest, extension, name, path, size, user }: Props) {
         <div className={styles.title}>{user.name} upload new file</div>
         <div className={styles.date}>
           <Tooltip title={moment("2023-12-29T12:34:21").fromNow()}>
-            {moment("2023-12-29T12:34:21").fromNow()}
+            {moment(created_at).fromNow()}
           </Tooltip>
         </div>
       </div>

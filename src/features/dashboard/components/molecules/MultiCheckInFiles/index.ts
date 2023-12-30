@@ -1,1 +1,1 @@
-export { default as MulriCheckinFile } from "./Component";
+export { default as MultiCheckinFile } from "./Component";
