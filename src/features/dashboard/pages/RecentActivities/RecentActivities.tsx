@@ -22,6 +22,7 @@ import {
 } from "services/filesService";
 import { RecentActivityRow } from "features/dashboard/components/molecules/RecentActivityRow";
 import { CustomEndPoints } from "api/constants/customEndPoints";
+import { FadeInEffect } from "components/templates/FadeInEffect";
 
 function MyFolders() {
   const navigate = useNavigate();
@@ -51,19 +52,20 @@ function MyFolders() {
   );
 
   return (
-    <Row className={styles.page}>
-      <Col span={24}>
-        <Typography.Title level={1}>Recent Activities</Typography.Title>
-      </Col>
-      <Col span={24}>
-        <SearchInput
-          setSearchTerm={setSearchTerm}
-          isLoading={false}
-          defaultValue={search}
-        />
-      </Col>
-      <Col span={24} className={styles.listContainer}>
-        {/* <div className={styles.listTitles}>
+    <FadeInEffect>
+      <Row className={styles.page}>
+        <Col span={24}>
+          <Typography.Title level={1}>Recent Activities</Typography.Title>
+        </Col>
+        <Col span={24}>
+          <SearchInput
+            setSearchTerm={setSearchTerm}
+            isLoading={false}
+            defaultValue={search}
+          />
+        </Col>
+        <Col span={24} className={styles.listContainer}>
+          {/* <div className={styles.listTitles}>
             <span className={styles.listTitle}>File</span>
             <span className={styles.listTitle}>Folder</span>
             <span className={styles.listTitle}>Owner</span>
@@ -71,20 +73,21 @@ function MyFolders() {
             <span className={styles.listTitle}>Modified at</span>
             <span className={styles.listTitle}>Modified by</span>
           </div> */}
-        <Spin
-          spinning={isLoading}
-          style={{
-            width: "100%",
-          }}
-        >
-          <div className={styles.list}>
-            {(data?.data as any)?.map((row: IFileEntity) => {
-              return <RecentActivityRow {...row} />;
-            })}
-          </div>
-        </Spin>
-      </Col>
-    </Row>
+          <Spin
+            spinning={isLoading}
+            style={{
+              width: "100%",
+            }}
+          >
+            <div className={styles.list}>
+              {(data?.data as any)?.map((row: IFileEntity) => {
+                return <RecentActivityRow {...row} />;
+              })}
+            </div>
+          </Spin>
+        </Col>
+      </Row>
+    </FadeInEffect>
   );
 }
 

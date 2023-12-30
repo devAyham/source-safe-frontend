@@ -24,6 +24,7 @@ import { FileStatusEnum } from "services/filesService/interfaces/Entity.interfac
 import styles from "./styles.module.scss";
 import { ForceCheckOut } from "features/dashboard/components/molecules/ForceCheckoutFile";
 import { MultiCheckinFile } from "features/dashboard/components/molecules/MultiCheckInFiles";
+import { FadeInEffect } from "components/templates/FadeInEffect";
 function ShowFolder() {
   const resource: DashboardPagesType = "showFolder";
   const navigate = useNavigate();
@@ -109,172 +110,176 @@ function ShowFolder() {
           setSelectionMode(false);
         }}
       />
-      <PageHeader
-        title={
-          <>
-            <RollbackOutlined
-              onClick={() => {
-                navigate(PagesRotes.DashboardRoutes.MyFolders.index);
-              }}
-              style={{
-                marginInlineEnd: 10,
-              }}
-              className={styles.backIcon}
-            />
-            <Typography.Title level={1}>
-              Folder Informations & Files
-            </Typography.Title>
-          </>
-        }
-        mainActions={{
-          primaryAction: {
-            action: (
-              <Button
-                type="primary"
-                block
-                shape="round"
-                icon={<FontAwesomeIcon icon={faPlus} />}
+      <FadeInEffect>
+        <PageHeader
+          title={
+            <>
+              <RollbackOutlined
                 onClick={() => {
-                  setOpen(true);
+                  navigate(PagesRotes.DashboardRoutes.MyFolders.index);
                 }}
-                disabled={selectionMode}
-              >
-                Add new File
-              </Button>
-            ),
-            grid: {
-              sm: 12,
-              md: 10,
-              lg: 6,
-              xl: 4,
-            },
-          },
-          secondaryAction: {
-            action: {
-              type: selectionMode ? "primary" : "link",
-              onClick: () => {
-                setSelectionMode(!selectionMode);
-                setSelectedRows([]);
+                style={{
+                  marginInlineEnd: 10,
+                }}
+                className={styles.backIcon}
+              />
+              <Typography.Title level={1}>
+                Folder Informations & Files
+              </Typography.Title>
+            </>
+          }
+          mainActions={{
+            primaryAction: {
+              action: (
+                <Button
+                  type="primary"
+                  block
+                  shape="round"
+                  icon={<FontAwesomeIcon icon={faPlus} />}
+                  onClick={() => {
+                    setOpen(true);
+                  }}
+                  disabled={selectionMode}
+                >
+                  Add new File
+                </Button>
+              ),
+              grid: {
+                sm: 12,
+                md: 10,
+                lg: 6,
+                xl: 4,
               },
-              children: "Select",
             },
-          },
-          customActions: selectionMode
-            ? {
-                action: {
-                  type: "ghost",
-                  block: true,
-                  disabled: !(selectedRows && selectedRows?.length > 0),
-                  shape: "round",
-                  children: "Check-in",
-                  onClick: () => setMultiCheckInOpen(true),
+            secondaryAction: {
+              action: {
+                type: selectionMode ? "primary" : "link",
+                onClick: () => {
+                  setSelectionMode(!selectionMode);
+                  setSelectedRows([]);
                 },
-              }
-            : undefined,
-        }}
-      />
-      <FileLayout
-        viewType={"list"}
-        tableProps={{
-          rowSelection: selectionMode
-            ? {
-                type: "checkbox",
-                defaultSelectedRowKeys: selectedRows,
-                selectedRowKeys: selectedRows,
-                preserveSelectedRowKeys: true,
-                onChange: (selectedRowKeys: React.Key[], selecteRows) => {
-                  console.log(selecteRows);
-                  const validSelectedRows = selecteRows?.filter((row) => {
-                    return row?.status === FileStatusEnum.CHECKED_OUT;
-                  });
-                  if (validSelectedRows?.length !== selecteRows.length) {
-                    message.warning(
-                      "you can not select rows with checked-in status"
+                children: "Select",
+              },
+            },
+            customActions: selectionMode
+              ? {
+                  action: {
+                    type: "ghost",
+                    block: true,
+                    disabled: !(selectedRows && selectedRows?.length > 0),
+                    shape: "round",
+                    children: "Check-in",
+                    onClick: () => setMultiCheckInOpen(true),
+                  },
+                }
+              : undefined,
+          }}
+        />
+        <FileLayout
+          viewType={"list"}
+          tableProps={{
+            rowSelection: selectionMode
+              ? {
+                  type: "checkbox",
+                  defaultSelectedRowKeys: selectedRows,
+                  selectedRowKeys: selectedRows,
+                  preserveSelectedRowKeys: true,
+                  onChange: (selectedRowKeys: React.Key[], selecteRows) => {
+                    console.log(selecteRows);
+                    const validSelectedRows = selecteRows?.filter((row) => {
+                      return row?.status === FileStatusEnum.CHECKED_OUT;
+                    });
+                    if (validSelectedRows?.length !== selecteRows.length) {
+                      message.warning(
+                        "you can not select rows with checked-in status"
+                      );
+                    }
+                    setSelectedRows(
+                      validSelectedRows.map((row) => row.id) ?? []
                     );
-                  }
-                  setSelectedRows(validSelectedRows.map((row) => row.id) ?? []);
-                },
-              }
-            : undefined,
-          onRow: (record) => {
-            return {
-              className:
-                record.id === activeFileId ? styles.avtiveRow : undefined,
-            };
-          },
-        }}
-        actions={{
-          deleteAction: true,
-          extraAction(record) {
-            return (
-              <Row>
-                <Col span={24}>
-                  <Button
-                    style={{ height: 40 }}
-                    type="text"
-                    block
-                    onClick={() => {
-                      downloadURL(record.latest_path);
-                    }}
-                    disabled={record.status === FileStatusEnum.PROCESSING}
-                  >
-                    Download
-                  </Button>
-                </Col>
-                <Col span={24}>
-                  <Button
-                    style={{ height: 40 }}
-                    type="text"
-                    block
-                    disabled={record.id === activeFileId}
-                    onClick={() => {
-                      dispatch(SetFileId(record.id));
-                    }}
-                  >
-                    Show Info
-                  </Button>
-                </Col>
-                <Col span={24}>
-                  <CheckinFile
-                    file_id={record.id}
-                    disabled={record.status !== FileStatusEnum.CHECKED_OUT}
-                  />
-                </Col>
-                <Col span={24}>
-                  <CheckOutFile
-                    file_id={record.id}
-                    disabled={record.status !== FileStatusEnum.CHECKED_IN}
-                  />
-                </Col>
-                <Col span={24}>
-                  <ForceCheckOut
-                    file_id={record.id}
-                    disabled={record.status !== FileStatusEnum.CHECKED_IN}
-                  />
-                </Col>
-              </Row>
-            );
-          },
-          mode: "menu",
-        }}
-        apiCrudConfig={{
-          getAllConfig: {
-            enabled: !!activeFolderId,
-            params: {
-              page,
-              items_per_page: perPage,
-              search: search !== "" ? search : undefined,
-              folder_id: String(activeFolderId),
+                  },
+                }
+              : undefined,
+            onRow: (record) => {
+              return {
+                className:
+                  record.id === activeFileId ? styles.avtiveRow : undefined,
+              };
             },
-          },
-        }}
-        pagination={{
-          onChange(page, pageSize) {
-            setPage(page);
-            setPerPage(pageSize);
-          },
-        }}
-      />
+          }}
+          actions={{
+            deleteAction: true,
+            extraAction(record) {
+              return (
+                <Row>
+                  <Col span={24}>
+                    <Button
+                      style={{ height: 40 }}
+                      type="text"
+                      block
+                      onClick={() => {
+                        downloadURL(record.latest_path);
+                      }}
+                      disabled={record.status === FileStatusEnum.PROCESSING}
+                    >
+                      Download
+                    </Button>
+                  </Col>
+                  <Col span={24}>
+                    <Button
+                      style={{ height: 40 }}
+                      type="text"
+                      block
+                      disabled={record.id === activeFileId}
+                      onClick={() => {
+                        dispatch(SetFileId(record.id));
+                      }}
+                    >
+                      Show Info
+                    </Button>
+                  </Col>
+                  <Col span={24}>
+                    <CheckinFile
+                      file_id={record.id}
+                      disabled={record.status !== FileStatusEnum.CHECKED_OUT}
+                    />
+                  </Col>
+                  <Col span={24}>
+                    <CheckOutFile
+                      file_id={record.id}
+                      disabled={record.status !== FileStatusEnum.CHECKED_IN}
+                    />
+                  </Col>
+                  <Col span={24}>
+                    <ForceCheckOut
+                      file_id={record.id}
+                      disabled={record.status !== FileStatusEnum.CHECKED_IN}
+                    />
+                  </Col>
+                </Row>
+              );
+            },
+            mode: "menu",
+          }}
+          apiCrudConfig={{
+            getAllConfig: {
+              enabled: !!activeFolderId,
+              params: {
+                page,
+                items_per_page: perPage,
+                search: search !== "" ? search : undefined,
+                folder_id: String(activeFolderId),
+              },
+            },
+          }}
+          pagination={{
+            onChange(page, pageSize) {
+              setPage(page);
+              setPerPage(pageSize);
+            },
+          }}
+        />
+      </FadeInEffect>
     </>
   );
 }

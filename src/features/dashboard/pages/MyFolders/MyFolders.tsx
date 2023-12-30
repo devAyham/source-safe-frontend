@@ -15,6 +15,7 @@ import { FolderCard } from "components/molecules/cards/FolderCard";
 import { dateFormatter } from "helpers/dateFormatter";
 import { PagesRotes } from "router/constants/pagesRoutes";
 import { useNavigate } from "react-router-dom";
+import { FadeInEffect } from "components/templates/FadeInEffect";
 
 function MyFolders() {
   const navigate = useNavigate();
@@ -40,64 +41,66 @@ function MyFolders() {
   );
 
   return (
-    <Row className={styles.page}>
-      <Col span={24}>
-        <Typography.Title level={1}>My Folders</Typography.Title>
-      </Col>
-      <Col span={24}>
-        <SearchInput
-          setSearchTerm={setSearchTerm}
-          isLoading={false}
-          defaultValue={search}
-        />
-      </Col>
-      <Col span={24} className={styles.foldersContainer}>
-        <FolderLayout
-          apiCrudConfig={{
-            getAllConfig: {
-              params: {
-                page: pagnation.page,
-                items_per_page: pagnation.perPage,
-                search: search !== "" ? search : undefined,
-                filter: {
-                  myFolders: 1,
+    <FadeInEffect>
+      <Row className={styles.page}>
+        <Col span={24}>
+          <Typography.Title level={1}>My Folders</Typography.Title>
+        </Col>
+        <Col span={24}>
+          <SearchInput
+            setSearchTerm={setSearchTerm}
+            isLoading={false}
+            defaultValue={search}
+          />
+        </Col>
+        <Col span={24} className={styles.foldersContainer}>
+          <FolderLayout
+            apiCrudConfig={{
+              getAllConfig: {
+                params: {
+                  page: pagnation.page,
+                  items_per_page: pagnation.perPage,
+                  search: search !== "" ? search : undefined,
+                  filter: {
+                    myFolders: 1,
+                  },
                 },
               },
-            },
-          }}
-          cardRender={({
-            id,
-            logo,
-            name,
-            created_at,
-            members,
-            files_count,
-            folder_size,
-          }) => {
-            return (
-              <FolderCard
-                fileCount={files_count}
-                size={folder_size}
-                icon={logo}
-                folderName={name}
-                members={members}
-                createdAt={dateFormatter(created_at ?? "")}
-                onClick={() => {
-                  navigate(PagesRotes.DashboardRoutes.MyFolders.show(id));
-                }}
-              />
-            );
-          }}
-          pagination={{
-            // showSizeChanger: false,
-            onChange(page, pageSize) {
-              setPage(page);
-              setPerPage(pageSize);
-            },
-          }}
-        />
-      </Col>
-    </Row>
+            }}
+            cardRender={({
+              id,
+              logo,
+              name,
+              created_at,
+              members,
+              files_count,
+              folder_size,
+            }) => {
+              return (
+                <FolderCard
+                  fileCount={files_count}
+                  size={folder_size}
+                  icon={logo}
+                  folderName={name}
+                  members={members}
+                  createdAt={dateFormatter(created_at ?? "")}
+                  onClick={() => {
+                    navigate(PagesRotes.DashboardRoutes.MyFolders.show(id));
+                  }}
+                />
+              );
+            }}
+            pagination={{
+              // showSizeChanger: false,
+              onChange(page, pageSize) {
+                setPage(page);
+                setPerPage(pageSize);
+              },
+            }}
+          />
+        </Col>
+      </Row>
+    </FadeInEffect>
   );
 }
 

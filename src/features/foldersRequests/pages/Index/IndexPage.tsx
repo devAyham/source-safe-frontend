@@ -16,6 +16,7 @@ import { Button } from "components";
 import { CustomEndPoints } from "api/constants/customEndPoints";
 import { AcceptJoinRequest } from "features/foldersRequests/components/AcceptJoinRequest";
 import { RejectJoinRequest } from "features/foldersRequests/components/RejectJoinRequest";
+import { FadeInEffect } from "components/templates/FadeInEffect";
 
 function IndexPage() {
   const dispatch = useAppDispatch();
@@ -42,52 +43,54 @@ function IndexPage() {
   });
 
   return (
-    <Row className={styles.page}>
-      <Col span={24}>
-        <Typography.Title className={styles.title} level={1}>
-          Folders Requests
-        </Typography.Title>
-      </Col>
-      <Col span={24}>
-        <SearchInput
-          setSearchTerm={setSearchTerm}
-          isLoading={false}
-          defaultValue={search}
-        />
-      </Col>
-      <Col span={24} className={styles.foldersContainer}>
-        <FolderRequestsLayout
-          actions={{
-            extraAction(record) {
-              return (
-                <>
-                  <Space>
-                    <AcceptJoinRequest request_id={record.id} />
-                    <RejectJoinRequest request_id={record.id} />
-                  </Space>
-                </>
-              );
-            },
-          }}
-          apiCrudConfig={{
-            getAllConfig: {
-              params: {
-                page: page,
-                items_per_page: perPage,
-                search: search !== "" ? search : undefined,
+    <FadeInEffect>
+      <Row className={styles.page}>
+        <Col span={24}>
+          <Typography.Title className={styles.title} level={1}>
+            Folders Requests
+          </Typography.Title>
+        </Col>
+        <Col span={24}>
+          <SearchInput
+            setSearchTerm={setSearchTerm}
+            isLoading={false}
+            defaultValue={search}
+          />
+        </Col>
+        <Col span={24} className={styles.foldersContainer}>
+          <FolderRequestsLayout
+            actions={{
+              extraAction(record) {
+                return (
+                  <>
+                    <Space>
+                      <AcceptJoinRequest request_id={record.id} />
+                      <RejectJoinRequest request_id={record.id} />
+                    </Space>
+                  </>
+                );
               },
-            },
-          }}
-          pagination={{
-            // showSizeChanger: false,
-            onChange(page, pageSize) {
-              setPage(page);
-              setPerPage(pageSize);
-            },
-          }}
-        />
-      </Col>
-    </Row>
+            }}
+            apiCrudConfig={{
+              getAllConfig: {
+                params: {
+                  page: page,
+                  items_per_page: perPage,
+                  search: search !== "" ? search : undefined,
+                },
+              },
+            }}
+            pagination={{
+              // showSizeChanger: false,
+              onChange(page, pageSize) {
+                setPage(page);
+                setPerPage(pageSize);
+              },
+            }}
+          />
+        </Col>
+      </Row>
+    </FadeInEffect>
   );
 }
 

@@ -7,6 +7,7 @@ import styles from "./styles.module.scss";
 import Colors from "styles/variables/_main_colors_vars.module.scss";
 import { convertFileSize } from "helpers/convertFileSize";
 import { useAppSelector } from "features/common/hooks/useReduxHooks";
+import Atropos from "atropos/react";
 
 function StructuredCard({
   createdAt,
@@ -27,7 +28,7 @@ function StructuredCard({
   return (
     <Row className={styles.cardContainer} onClick={onDeflautClick}>
       <Col span={24} className={styles.logoAndMembersContainer}>
-        <div className={styles.logoContainer}>
+        <div className={styles.logoContainer} data-atropos-offset="5">
           <Image src={icon} className={styles.logo} />
         </div>
         <div className={styles.membersContainer}>
@@ -67,7 +68,7 @@ function StructuredCard({
             </Typography.Text>
           </Space>
           <Typography.SubTitle level={5} className={styles.size}>
-            {convertFileSize(size,filesSizeType)}
+            {convertFileSize(size, filesSizeType)}
           </Typography.SubTitle>
         </div>
         <div className={styles.createAtContainer}>

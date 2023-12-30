@@ -15,6 +15,7 @@ import { FolderLayout } from "services/folderService";
 import { SharedWithMeSliceActions } from "../../redux";
 import { SharedWithMePagesType } from "../../types/sharedWithMePages.type";
 import styles from "./styles.module.scss";
+import { FadeInEffect } from "components/templates/FadeInEffect";
 
 function MyFolders() {
   const navigate = useNavigate();
@@ -41,64 +42,66 @@ function MyFolders() {
   );
 
   return (
-    <Row className={styles.page}>
-      <Col span={24}>
-        <Typography.Title level={1}>Shared With Me</Typography.Title>
-      </Col>
-      <Col span={24}>
-        <SearchInput
-          setSearchTerm={setSearchTerm}
-          isLoading={false}
-          defaultValue={search}
-        />
-      </Col>
-      <Col span={24} className={styles.foldersContainer}>
-        <FolderLayout
-          cardRender={({
-            id,
-            logo,
-            name,
-            created_at,
-            members,
-            files_count,
-            folder_size,
-          }) => {
-            return (
-              <FolderCard
-                fileCount={files_count}
-                size={folder_size}
-                icon={logo}
-                folderName={name}
-                members={members}
-                createdAt={dateFormatter(created_at ?? "")}
-                onClick={() => {
-                  navigate(PagesRotes.SharedWithMeRoutes.show(id));
-                }}
-              />
-            );
-          }}
-          apiCrudConfig={{
-            getAllConfig: {
-              params: {
-                page: pagnation.page,
-                items_per_page: pagnation.perPage,
-                search: search !== "" ? search : undefined,
-                filter: {
-                  myFolders: 0,
+    <FadeInEffect>
+      <Row className={styles.page}>
+        <Col span={24}>
+          <Typography.Title level={1}>Shared With Me</Typography.Title>
+        </Col>
+        <Col span={24}>
+          <SearchInput
+            setSearchTerm={setSearchTerm}
+            isLoading={false}
+            defaultValue={search}
+          />
+        </Col>
+        <Col span={24} className={styles.foldersContainer}>
+          <FolderLayout
+            cardRender={({
+              id,
+              logo,
+              name,
+              created_at,
+              members,
+              files_count,
+              folder_size,
+            }) => {
+              return (
+                <FolderCard
+                  fileCount={files_count}
+                  size={folder_size}
+                  icon={logo}
+                  folderName={name}
+                  members={members}
+                  createdAt={dateFormatter(created_at ?? "")}
+                  onClick={() => {
+                    navigate(PagesRotes.SharedWithMeRoutes.show(id));
+                  }}
+                />
+              );
+            }}
+            apiCrudConfig={{
+              getAllConfig: {
+                params: {
+                  page: pagnation.page,
+                  items_per_page: pagnation.perPage,
+                  search: search !== "" ? search : undefined,
+                  filter: {
+                    myFolders: 0,
+                  },
                 },
               },
-            },
-          }}
-          pagination={{
-            // showSizeChanger: false,
-            onChange(page, pageSize) {
-              setPage(page);
-              setPerPage(pageSize);
-            },
-          }}
-        />
-      </Col>
-    </Row>
+            }}
+            pagination={{
+              // showSizeChanger: false,
+              onChange(page, pageSize) {
+                setPage(page);
+                setPerPage(pageSize);
+              },
+            }}
+          />
+        </Col>
+      </Row>
+    </FadeInEffect>
   );
 }
 

@@ -21,6 +21,7 @@ import {
 import { FileStatusEnum } from "services/filesService/interfaces/Entity.interface";
 import styles from "./styles.module.scss";
 import { useNavigate } from "react-router-dom";
+import { FadeInEffect } from "components/templates/FadeInEffect";
 
 function MyCheckIns() {
   const navigate = useNavigate();
@@ -54,70 +55,72 @@ function MyCheckIns() {
   }, []);
 
   return (
-    <Row className={styles.page}>
-      <Col span={24}>
-        <Typography.Title level={1}>My Checked In Files</Typography.Title>
-      </Col>
-      <Col span={24}>
-        <SearchInput
-          setSearchTerm={setSearchTerm}
-          isLoading={false}
-          defaultValue={search}
-        />
-      </Col>
-      <Col span={24} className={styles.foldersContainer}>
-        <FileLayout
-          tableProps={{
-            columns: GetCheclInFileTableColumns(),
-          }}
-          actions={{
-            mode: "menu",
-            extraAction(record) {
-              return (
-                <Row>
-                  <Col span={24}>
-                    <Button
-                      style={{ height: 40 }}
-                      type="text"
-                      block
-                      disabled={record.id === activeFileId}
-                      onClick={() => {
-                        dispatch(SetFileId(record.id));
-                      }}
-                    >
-                      Show Info
-                    </Button>
-                  </Col>
-                  <Col span={24}>
-                    <CheckOutFile
-                      file_id={record.id}
-                      disabled={record.status !== FileStatusEnum.CHECKED_IN}
-                    />
-                  </Col>
-                </Row>
-              );
-            },
-          }}
-          serviceName={`${FileServiceName}/${AuthServiceName}/${CustomEndPoints.CheckIn}`}
-          apiCrudConfig={{
-            getAllConfig: {
-              params: {
-                page: pagnation.page,
-                items_per_page: pagnation.perPage,
-                search: search !== "" ? search : undefined,
+    <FadeInEffect>
+      <Row className={styles.page}>
+        <Col span={24}>
+          <Typography.Title level={1}>My Checked In Files</Typography.Title>
+        </Col>
+        <Col span={24}>
+          <SearchInput
+            setSearchTerm={setSearchTerm}
+            isLoading={false}
+            defaultValue={search}
+          />
+        </Col>
+        <Col span={24} className={styles.foldersContainer}>
+          <FileLayout
+            tableProps={{
+              columns: GetCheclInFileTableColumns(),
+            }}
+            actions={{
+              mode: "menu",
+              extraAction(record) {
+                return (
+                  <Row>
+                    <Col span={24}>
+                      <Button
+                        style={{ height: 40 }}
+                        type="text"
+                        block
+                        disabled={record.id === activeFileId}
+                        onClick={() => {
+                          dispatch(SetFileId(record.id));
+                        }}
+                      >
+                        Show Info
+                      </Button>
+                    </Col>
+                    <Col span={24}>
+                      <CheckOutFile
+                        file_id={record.id}
+                        disabled={record.status !== FileStatusEnum.CHECKED_IN}
+                      />
+                    </Col>
+                  </Row>
+                );
               },
-            },
-          }}
-          pagination={{
-            // showSizeChanger: false,
-            onChange(page, pageSize) {
-              setPage(page);
-              setPerPage(pageSize);
-            },
-          }}
-        />
-      </Col>
-    </Row>
+            }}
+            serviceName={`${FileServiceName}/${AuthServiceName}/${CustomEndPoints.CheckIn}`}
+            apiCrudConfig={{
+              getAllConfig: {
+                params: {
+                  page: pagnation.page,
+                  items_per_page: pagnation.perPage,
+                  search: search !== "" ? search : undefined,
+                },
+              },
+            }}
+            pagination={{
+              // showSizeChanger: false,
+              onChange(page, pageSize) {
+                setPage(page);
+                setPerPage(pageSize);
+              },
+            }}
+          />
+        </Col>
+      </Row>
+    </FadeInEffect>
   );
 }
 

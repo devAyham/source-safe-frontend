@@ -16,6 +16,7 @@ import downloadURL from "helpers/downloadUrl";
 import { FileStatusEnum } from "services/filesService/interfaces/Entity.interface";
 import { FilesTrashLayout } from "services/filesTrashService";
 import styles from "./styles.module.scss";
+import { FadeInEffect } from "components/templates/FadeInEffect";
 
 function MyFolders() {
   const navigate = useNavigate();
@@ -51,71 +52,73 @@ function MyFolders() {
   );
 
   return (
-    <Row className={styles.page}>
-      <Col span={24}>
-        <Typography.Title level={1}>Trash</Typography.Title>
-      </Col>
-      <Col span={24}>
-        <SearchInput
-          setSearchTerm={setSearchTerm}
-          isLoading={false}
-          defaultValue={search}
-        />
-      </Col>
-      <Col span={24} className={styles.foldersContainer}>
-        <FilesTrashLayout
-          viewType={"list"}
-          tableProps={{
-            onRow: (record) => {
-              return {
-                className:
-                  record.id === activeFileId ? styles.avtiveRow : undefined,
-              };
-            },
-          }}
-          actions={{
-            extraAction(record) {
-              return (
-                <Row>
-                  <Col span={24}>
-                    <Button
-                      style={{ height: 40 }}
-                      type="text"
-                      block
-                      onClick={() => {
-                        downloadURL(record.latest_path);
-                      }}
-                      disabled={record.status === FileStatusEnum.PROCESSING}
-                    >
-                      Download
-                    </Button>
-                  </Col>
-                  <Col span={24}>
-                    <RestorFile file_id={record.id} />
-                  </Col>
-                </Row>
-              );
-            },
-            mode: "menu",
-          }}
-          apiCrudConfig={{
-            getAllConfig: {
-              params: {
-                page,
-                items_per_page: perPage,
-                search: search !== "" ? search : undefined,
+    <FadeInEffect>
+      <Row className={styles.page}>
+        <Col span={24}>
+          <Typography.Title level={1}>Trash</Typography.Title>
+        </Col>
+        <Col span={24}>
+          <SearchInput
+            setSearchTerm={setSearchTerm}
+            isLoading={false}
+            defaultValue={search}
+          />
+        </Col>
+        <Col span={24} className={styles.foldersContainer}>
+          <FilesTrashLayout
+            viewType={"list"}
+            tableProps={{
+              onRow: (record) => {
+                return {
+                  className:
+                    record.id === activeFileId ? styles.avtiveRow : undefined,
+                };
               },
-            },
-          }}
-          pagination={{
-            onChange(page, pageSize) {
-              setPage(page);
-              setPerPage(pageSize);
-            },
-          }}
-        />
-      </Col>
-    </Row>
+            }}
+            actions={{
+              extraAction(record) {
+                return (
+                  <Row>
+                    <Col span={24}>
+                      <Button
+                        style={{ height: 40 }}
+                        type="text"
+                        block
+                        onClick={() => {
+                          downloadURL(record.latest_path);
+                        }}
+                        disabled={record.status === FileStatusEnum.PROCESSING}
+                      >
+                        Download
+                      </Button>
+                    </Col>
+                    <Col span={24}>
+                      <RestorFile file_id={record.id} />
+                    </Col>
+                  </Row>
+                );
+              },
+              mode: "menu",
+            }}
+            apiCrudConfig={{
+              getAllConfig: {
+                params: {
+                  page,
+                  items_per_page: perPage,
+                  search: search !== "" ? search : undefined,
+                },
+              },
+            }}
+            pagination={{
+              onChange(page, pageSize) {
+                setPage(page);
+                setPerPage(pageSize);
+              },
+            }}
+          />
+        </Col>
+      </Row>
+    </FadeInEffect>
   );
 }
 
