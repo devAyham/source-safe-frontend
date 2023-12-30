@@ -13,7 +13,7 @@ const ResponsivnessProvider = ({ children }: any) => {
   const { height, width } = useWindowSize();
 
   return (
-    <>{width < 1300 || height < 700 ? <NotResponsiveDesign /> : <NotResponsiveDesign />}</>
+    <>{width < 1300 || height < 700 ? <NotResponsiveDesign /> : children}</>
   );
 };
 export default ResponsivnessProvider;

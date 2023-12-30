@@ -9,17 +9,23 @@ import {
   faSliders,
   faTrashCan,
 } from "@fortawesome/free-solid-svg-icons";
+import Atropos from "atropos/react";
+
 function Component() {
   return (
     <div className={styles.container}>
-      <div className={styles.overlay}>
-        <div className={styles.imageContainer}>
+      <Atropos
+        // shadow={false}
+        className="my-atropos"
+        innerClassName={styles.overlay}
+      >
+        <div className={styles.imageContainer} data-atropos-offset="10">
           <img src={img} className={styles.image} />
         </div>
-        <div className={styles.title}>
+        <div className={styles.title} data-atropos-offset="3">
           Sorry this app is only support the xl screens
         </div>
-        <div className={styles.icons}>
+        <div className={styles.icons} data-atropos-offset="-5">
           <FontAwesomeIcon
             style={{
               animationDelay: "0.3s",
@@ -29,6 +35,7 @@ function Component() {
             bounce
           />
           <FontAwesomeIcon
+            data-atropos-offset="5"
             style={{
               animationDelay: "0.2s",
             }}
@@ -36,8 +43,14 @@ function Component() {
             icon={faFolderPlus}
             bounce
           />
-          <FontAwesomeIcon className={styles.icon} icon={faShareNodes} bounce />
           <FontAwesomeIcon
+            data-atropos-offset="5"
+            className={styles.icon}
+            icon={faShareNodes}
+            bounce
+          />
+          <FontAwesomeIcon
+            data-atropos-offset="5"
             style={{
               animationDelay: "0.3s",
             }}
@@ -46,7 +59,7 @@ function Component() {
             bounce
           />
         </div>
-      </div>
+      </Atropos>
     </div>
   );
 }

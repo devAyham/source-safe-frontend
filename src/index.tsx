@@ -1,19 +1,17 @@
-import React from "react";
+import "atropos/css";
+import VersionSupportProvider from "providers/VersionSupportProvider/VersionSupportProvider";
 import ReactDOM from "react-dom/client";
 import App from "./App";
-import reportWebVitals from "./tests/reportWebVitals";
-import * as serviceWorker from "./serviceWorker";
 import "./libs/i18n";
-import VersionSupportProvider from "providers/VersionSupportProvider/VersionSupportProvider";
-
+import * as serviceWorker from "./serviceWorker";
+import reportWebVitals from "./tests/reportWebVitals";
 const root = ReactDOM.createRoot(
-    document.getElementById("root") as HTMLElement
+  document.getElementById("root") as HTMLElement
 );
 serviceWorker.register();
 root.render(
-    <VersionSupportProvider>
-            <App/>
-        </VersionSupportProvider>
-
+  <VersionSupportProvider>
+    <App />
+  </VersionSupportProvider>
 );
 reportWebVitals();
