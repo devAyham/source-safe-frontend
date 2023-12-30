@@ -51,7 +51,7 @@ function Component({ file_id, disabled }: Props) {
               );
               setOpen(false);
             } else if (info.file.status === "error") {
-              message.error(`${info.file.response} `);
+              message.error(`${info.file.response.message} `);
             }
           }}
         >
