@@ -1,7 +1,7 @@
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Col, Row } from "antd";
-import { Typography } from "components";
+import { Spin, Typography } from "components";
 import SearchInput from "features/common/components/Inputs/searchInput/SearchInput";
 import { useNavigate } from "react-router-dom";
 import { PagesRotes } from "router/constants/pagesRoutes";
@@ -20,10 +20,13 @@ import {
   FileLayout,
   FileServiceName,
   GetCheclInFileTableColumns,
+  IFileEntity,
+  useFileApi,
 } from "services/filesService";
 import { AuthServiceName } from "services/authService";
 import { CustomEndPoints } from "api/constants/customEndPoints";
 import { FileStatusEnum } from "services/filesService/interfaces/Entity.interface";
+import { RecentActivityRow } from "features/dashboard/components/molecules/RecentActivityRow";
 
 function DashbaordIndexPage() {
   const navigate = useNavigate();
@@ -37,6 +40,22 @@ function DashbaordIndexPage() {
   const setSearchTerm = debounce((value: string) => {
     dispatch(SetSearch({ resource, value }));
   }, 1500);
+
+  const {
+    getAllEntities: { isLoading, data },
+  } = useFileApi(
+    {
+      getAllConfig: {
+        enabled: true,
+        params: {
+          items_per_page: 3,
+        },
+      },
+    },
+    {
+      getAllEndpoint: `${FileServiceName}/${CustomEndPoints.RecentActivies}`,
+    }
+  );
   return (
     <Row className={styles.page}>
       <Col span={24}>
@@ -138,7 +157,20 @@ function DashbaordIndexPage() {
             }}
           />
         </div>
-        <div className={styles.layoutContainer}></div>
+        <div className={styles.layoutContainer}>
+          <Spin
+            spinning={isLoading}
+            style={{
+              width: "100%",
+            }}
+          >
+            <div className={styles.list}>
+              {(data?.data as any)?.map((row: IFileEntity) => {
+                return <RecentActivityRow {...row} />;
+              })}
+            </div>
+          </Spin>
+        </div>
       </Col>
     </Row>
   );

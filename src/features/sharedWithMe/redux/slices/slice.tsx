@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { AuthSliceActions } from "features/auth/redux/slices/authSlice";
 import { pageAction, perPageAction, searchAction } from "../actions/actions";
 import { ISliceInitialState } from "../../interfaces/sliceInitialState/sliceInitialState.interface";
@@ -11,6 +11,8 @@ const initialState: ISliceInitialState = {
   showFolder: {
     pagnation: { page: 1, perPage: 9 },
     search: "",
+    selectedRows: [],
+    selectionMode: false,
   },
 };
 /**
@@ -24,6 +26,12 @@ const slice = createSlice({
     SetPage: pageAction,
     SetPerPage: perPageAction,
     SetSearch: searchAction,
+    SetSelectedRows: (state, action: PayloadAction<any[]>) => {
+      state.showFolder.selectedRows = action.payload;
+    },
+    SetSelectionMode: (state, action: PayloadAction<boolean>) => {
+      state.showFolder.selectionMode = action.payload;
+    },
   },
   extraReducers(builder) {
     builder.addCase(AuthSliceActions.Logout, () => ({

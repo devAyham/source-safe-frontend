@@ -5,14 +5,20 @@ import { UiSliceActions } from "features/common/redux/slices/uiSlices";
 import { useNavigate } from "react-router";
 import { MainFeaturesRoutes } from "router/constants/mainFeaturesRoutes";
 import styles from "./styles.module.scss";
+import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
 
 /**
  * @description a component that used to show an ui error intereface for 500 errors or any runtime error
  */
 const FiveOO = () => {
   const navigate = useNavigate();
+  const { pathname } = useLocation();
   const dispatch = useAppDispatch();
   const { SetError } = UiSliceActions;
+  // useEffect(() => {
+  // dispatch(SetError(null));
+  // }, [pathname]);
 
   return (
     <div className={styles.container}>

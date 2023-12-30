@@ -5,5 +5,6 @@ export type ISliceInitialState = {
   [key in SharedWithMePagesType]: Pick<
     IInitialStateCrud,
     "search" | "pagnation"
-  >;
+  > &
+    Partial<Pick<IInitialStateCrud, "selectedRows" | "selectionMode">>;
 };

@@ -1,5 +1,5 @@
 import { RollbackOutlined } from "@ant-design/icons";
-import { Col, Row } from "antd";
+import { Col, Row, message } from "antd";
 import { Button, PageHeader, Typography } from "components";
 import {
   useAppDispatch,
@@ -11,32 +11,40 @@ import { CheckOutFile } from "features/dashboard/components/molecules/CheckoutFi
 import { SharedWithMeSliceActions } from "features/sharedWithMe/redux";
 import { SharedWithMePagesType } from "features/sharedWithMe/types/sharedWithMePages.type";
 import downloadURL from "helpers/downloadUrl";
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useQueryClient } from "react-query";
 import { useNavigate, useParams } from "react-router-dom";
 import { PagesRotes } from "router/constants/pagesRoutes";
 import { FileLayout } from "services/filesService";
 import { FileStatusEnum } from "services/filesService/interfaces/Entity.interface";
 import styles from "./styles.module.scss";
+import { MultiCheckinFile } from "features/dashboard/components/molecules/MultiCheckInFiles";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 function ShowFolder() {
   const resource: SharedWithMePagesType = "showFolder";
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const queryClient = useQueryClient();
+  const [multiCheckInOpen, setMultiCheckInOpen] = useState(false);
+
   const { id } = useParams<{ id: string }>();
   const {
     contentInfo: { activeFolderId, activeFileId },
   } = useAppSelector((state) => state.sharedData);
   const {
     showFolder: {
+      selectedRows,
+      selectionMode,
       search,
       pagnation: { page, perPage },
     },
   } = useAppSelector((state) => state.sharedWithMe);
 
   const { Reset, SetFolderId, SetFileId } = ShearedDataSliceActions;
-  const { SetPage, SetPerPage } = SharedWithMeSliceActions;
+  const { SetPage, SetPerPage, SetSelectedRows, SetSelectionMode } =
+    SharedWithMeSliceActions;
 
   useEffect(() => {
     if (Number(id) > 0) {
@@ -46,9 +54,19 @@ function ShowFolder() {
     }
     return () => {
       dispatch(Reset());
+      dispatch(setSelectedRows([]));
+      dispatch(setSelectionMode(false));
     };
   }, [id]);
 
+  const setSelectedRows = useCallback(
+    (value: any[]) => dispatch(SetSelectedRows(value)),
+    [dispatch]
+  );
+  const setSelectionMode = useCallback(
+    (value: boolean) => dispatch(SetSelectionMode(value)),
+    [dispatch]
+  );
   const setPerPage = useCallback(
     (value: number) => dispatch(SetPerPage({ resource, value })),
     [dispatch]
@@ -59,6 +77,15 @@ function ShowFolder() {
   );
   return (
     <>
+      <MultiCheckinFile
+        files_ids={selectedRows ?? []}
+        open={multiCheckInOpen}
+        setOpen={setMultiCheckInOpen}
+        onSuccess={() => {
+          setSelectedRows([]);
+          setSelectionMode(false);
+        }}
+      />
       <PageHeader
         title={
           <>
@@ -76,10 +103,74 @@ function ShowFolder() {
             </Typography.Title>
           </>
         }
+        mainActions={{
+          primaryAction: {
+            action: (
+              <Button
+                type="primary"
+                block
+                shape="round"
+                icon={<FontAwesomeIcon icon={faPlus} />}
+                disabled={true}
+              >
+                Add new File
+              </Button>
+            ),
+            grid: {
+              sm: 12,
+              md: 10,
+              lg: 6,
+              xl: 4,
+            },
+          },
+          secondaryAction: {
+            action: {
+              type: selectionMode ? "primary" : "link",
+              onClick: () => {
+                setSelectionMode(!selectionMode);
+                setSelectedRows([]);
+              },
+              children: "Select",
+            },
+          },
+          customActions: selectionMode
+            ? {
+                action: {
+                  type: "ghost",
+                  block: true,
+                  disabled: !(selectedRows && selectedRows?.length > 0),
+                  shape: "round",
+                  children: "Check-in",
+                  onClick: () => setMultiCheckInOpen(true),
+                },
+              }
+            : undefined,
+        }}
       />
+
       <FileLayout
         viewType={"list"}
         tableProps={{
+          rowSelection: selectionMode
+            ? {
+                type: "checkbox",
+                defaultSelectedRowKeys: selectedRows,
+                selectedRowKeys: selectedRows,
+                preserveSelectedRowKeys: true,
+                onChange: (selectedRowKeys: React.Key[], selecteRows) => {
+                  console.log(selecteRows);
+                  const validSelectedRows = selecteRows?.filter((row) => {
+                    return row?.status === FileStatusEnum.CHECKED_OUT;
+                  });
+                  if (validSelectedRows?.length !== selecteRows.length) {
+                    message.warning(
+                      "you can not select rows with checked-in status"
+                    );
+                  }
+                  setSelectedRows(validSelectedRows.map((row) => row.id) ?? []);
+                },
+              }
+            : undefined,
           onRow: (record) => {
             return {
               className:
