@@ -21,14 +21,14 @@
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    height: 240px;
+    max-height: 240px;
     gap: 20px;
   }
   .myCheckInContainer {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    height: 390px;
+    max-height: 390px;
     .layoutContainer {
       // padding-inline: 30px;
     }
