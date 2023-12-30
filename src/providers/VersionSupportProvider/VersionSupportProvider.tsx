@@ -1,4 +1,4 @@
-import Logo from "assets/svgs/logo.svg";
+import Logo from "assets/images/logo.png";
 /**
  * @description This provider is to check the version browser is supproted or not
  * for our app, if the browser supported the will continue working else the app will
