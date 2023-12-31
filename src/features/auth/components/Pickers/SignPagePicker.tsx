@@ -14,7 +14,7 @@ const SignPagePicker = () => {
   const location = useLocation();
 
   return (
-    <div className={styles.lang_buttons}>
+    <div className={styles.lang_buttons} data-atropos-offset="1">
       <span
         className={`${styles.lang_name} ${
           location.pathname === PagesRotes.AuthRoutes.login && styles.active

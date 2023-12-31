@@ -33,7 +33,7 @@ const LoginForm = () => {
     <>
       <Row className={styles.login_form}>
         <Col span={24} className={styles.login_modal}>
-          <div className={styles.avatar}>
+          <div className={styles.avatar} data-atropos-offset="1">
             <Image src={logo} className={styles.avatar_icon} />
           </div>
           <Form
