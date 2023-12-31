@@ -26,61 +26,70 @@ function StructuredCard({
   const { filesSizeType } = useAppSelector((state) => state.sharedData);
 
   return (
-    <Row className={styles.cardContainer} onClick={onDeflautClick}>
-      <Col span={24} className={styles.logoAndMembersContainer}>
-        <div className={styles.logoContainer} data-atropos-offset="5">
-          <Image src={icon} className={styles.logo} />
-        </div>
-        <div className={styles.membersContainer}>
-          <Avatar.Group
-            size={35}
-            maxCount={2}
-            maxStyle={{
-              color: Colors.warninig_dark,
-              backgroundColor: Colors.warning_two,
-            }}
-          >
-            {members.map((member) => {
-              return (
-                <Avatar
-                  style={
-                    member.role === "admin"
-                      ? { backgroundColor: Colors.secondary_color_one }
-                      : { backgroundColor: Colors.warninig_dark }
-                  }
-                >
-                  {member.user.name}
-                </Avatar>
-              );
-            })}
-          </Avatar.Group>
-        </div>
-      </Col>
-      <Col span={24} className={styles.contentContainer}>
-        <Typography.SubTitle level={3} className={styles.name}>
-          {folderName}
-        </Typography.SubTitle>
-        <div className={styles.sizeInfo}>
-          <Space className={styles.fileCountContainer}>
-            <FontAwesomeIcon icon={faFileLines} />
-            <Typography.Text className={styles.fileCount}>
-              {fileCount} file
-            </Typography.Text>
-          </Space>
-          <Typography.SubTitle level={5} className={styles.size}>
-            {convertFileSize(size, filesSizeType)}
+    <Atropos
+      shadow={false}
+      activeOffset={10}
+      rotateXMax={10}
+      rotateYMax={10}
+      stretchX={10}
+      stretchY={10}
+    >
+      <Row className={styles.cardContainer} onClick={onDeflautClick}>
+        <Col span={24} className={styles.logoAndMembersContainer}>
+          <div className={styles.logoContainer} data-atropos-offset="5">
+            <Image src={icon} className={styles.logo} />
+          </div>
+          <div className={styles.membersContainer}>
+            <Avatar.Group
+              size={35}
+              maxCount={2}
+              maxStyle={{
+                color: Colors.warninig_dark,
+                backgroundColor: Colors.warning_two,
+              }}
+            >
+              {members.map((member) => {
+                return (
+                  <Avatar
+                    style={
+                      member.role === "admin"
+                        ? { backgroundColor: Colors.secondary_color_one }
+                        : { backgroundColor: Colors.warninig_dark }
+                    }
+                  >
+                    {member.user.name}
+                  </Avatar>
+                );
+              })}
+            </Avatar.Group>
+          </div>
+        </Col>
+        <Col span={24} className={styles.contentContainer}>
+          <Typography.SubTitle level={3} className={styles.name}>
+            {folderName}
           </Typography.SubTitle>
-        </div>
-        <div className={styles.createAtContainer}>
-          <Space>
-            <FontAwesomeIcon icon={faClock} />
-            <Typography.Text className={styles.createAtText}>
-              {createdAt}
-            </Typography.Text>
-          </Space>
-        </div>
-      </Col>
-    </Row>
+          <div className={styles.sizeInfo}>
+            <Space className={styles.fileCountContainer}>
+              <FontAwesomeIcon icon={faFileLines} />
+              <Typography.Text className={styles.fileCount}>
+                {fileCount} file
+              </Typography.Text>
+            </Space>
+            <Typography.SubTitle level={5} className={styles.size}>
+              {convertFileSize(size, filesSizeType)}
+            </Typography.SubTitle>
+          </div>
+          <div className={styles.createAtContainer}>
+            <Space>
+              <FontAwesomeIcon icon={faClock} />
+              <Typography.Text className={styles.createAtText}>
+                {createdAt}
+              </Typography.Text>
+            </Space>
+          </div>
+        </Col>
+      </Row>
+    </Atropos>
   );
 }
 
