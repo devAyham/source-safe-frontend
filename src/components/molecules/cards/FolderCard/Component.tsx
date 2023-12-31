@@ -8,6 +8,7 @@ import Colors from "styles/variables/_main_colors_vars.module.scss";
 import { convertFileSize } from "helpers/convertFileSize";
 import { useAppSelector } from "features/common/hooks/useReduxHooks";
 import Atropos from "atropos/react";
+import { AtroposOptions } from "atropos/.";
 
 function StructuredCard({
   createdAt,
@@ -24,16 +25,16 @@ function StructuredCard({
     onClick?.(e);
   };
   const { filesSizeType } = useAppSelector((state) => state.sharedData);
-
+  const atroposProps: AtroposOptions = {
+    shadow: false,
+    activeOffset: 10,
+    rotateXMax: 10,
+    rotateYMax: 10,
+    stretchX: 10,
+    stretchY: 10,
+  };
   return (
-    <Atropos
-      shadow={false}
-      activeOffset={10}
-      rotateXMax={10}
-      rotateYMax={10}
-      stretchX={10}
-      stretchY={10}
-    >
+    <Atropos {...atroposProps}>
       <Row className={styles.cardContainer} onClick={onDeflautClick}>
         <Col span={24} className={styles.logoAndMembersContainer}>
           <div className={styles.logoContainer} data-atropos-offset="5">
