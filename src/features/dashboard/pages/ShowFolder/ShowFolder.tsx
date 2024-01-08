@@ -1,7 +1,10 @@
 import { RollbackOutlined } from "@ant-design/icons";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import {
+  faFileCircleQuestion,
+  faPlus,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Col, Divider, Row, message } from "antd";
+import { Badge, Col, Divider, Row, message } from "antd";
 import { generateEntityCollectionQueryKey } from "api/helpers/queryKeysFactory";
 import { Button, PageHeader, Typography } from "components";
 import {
@@ -19,17 +22,27 @@ import { useCallback, useEffect, useState } from "react";
 import { useQueryClient } from "react-query";
 import { useNavigate, useParams } from "react-router-dom";
 import { PagesRotes } from "router/constants/pagesRoutes";
-import { FileLayout, FileServiceName } from "services/filesService";
+import {
+  FileLayout,
+  FileServiceName,
+  IFileEntity,
+  useFileApi,
+} from "services/filesService";
 import { FileStatusEnum } from "services/filesService/interfaces/Entity.interface";
 import styles from "./styles.module.scss";
 import { ForceCheckOut } from "features/dashboard/components/molecules/ForceCheckoutFile";
 import { MultiCheckinFile } from "features/dashboard/components/molecules/MultiCheckInFiles";
 import { FadeInEffect } from "components/templates/FadeInEffect";
+import { FolderServiceName } from "services/folderService";
+import { CustomEndPoints } from "api/constants/customEndPoints";
+import { IUserEntity } from "services/userService";
+import { FileRequestsModal } from "features/dashboard/components/organismis/FileRequestsModal";
 function ShowFolder() {
   const resource: DashboardPagesType = "showFolder";
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const [open, setOpen] = useState(false);
+  const [openRequests, setOpenRequests] = useState(false);
   const [multiCheckInOpen, setMultiCheckInOpen] = useState(false);
   const { id } = useParams<{ id: string }>();
   const {
@@ -79,8 +92,40 @@ function ShowFolder() {
     (value: number) => dispatch(SetPage({ resource, value })),
     [dispatch]
   );
+  const {
+    getAllEntities: { data },
+  } = useFileApi<
+    {},
+    {
+      file: IFileEntity;
+      // user: IUserEntity;
+    }
+  >(
+    {
+      getAllConfig: {
+        enabled: true,
+        params: {
+          items_per_page: 1000,
+          // folder_id: String(activeFolderId),
+          // hide: true,
+        },
+      },
+    },
+    {
+      getAllEndpoint: `${FolderServiceName}/${activeFolderId}/${CustomEndPoints.FileRequests}`,
+    }
+  );
   return (
     <>
+      <FileRequestsModal
+        fileRequests={data?.data.data ?? []}
+        modalProps={{
+          open: openRequests,
+          onCancel: () => {
+            setOpenRequests(false);
+          },
+        }}
+      />
       <AddFileModal
         modalProps={{
           open,
@@ -113,20 +158,31 @@ function ShowFolder() {
       <FadeInEffect>
         <PageHeader
           title={
-            <>
-              <RollbackOutlined
-                onClick={() => {
-                  navigate(PagesRotes.DashboardRoutes.MyFolders.index);
-                }}
-                style={{
-                  marginInlineEnd: 10,
-                }}
-                className={styles.backIcon}
-              />
-              <Typography.Title level={1}>
-                Folder Informations & Files
-              </Typography.Title>
-            </>
+            <div className={styles.titleRow}>
+              <span style={{ display: "flex" }}>
+                <RollbackOutlined
+                  onClick={() => {
+                    navigate(PagesRotes.DashboardRoutes.MyFolders.index);
+                  }}
+                  style={{
+                    marginInlineEnd: 10,
+                  }}
+                  className={styles.backIcon}
+                />
+                <Typography.Title level={1}>
+                  Folder Informations & Files
+                </Typography.Title>
+              </span>
+              <Badge count={data?.data.data.length}>
+                <FontAwesomeIcon
+                  onClick={() => {
+                    setOpenRequests(true);
+                  }}
+                  className={styles.fileRequests}
+                  icon={faFileCircleQuestion}
+                />
+              </Badge>
+            </div>
           }
           mainActions={{
             primaryAction: {
@@ -269,6 +325,7 @@ function ShowFolder() {
                 items_per_page: perPage,
                 search: search !== "" ? search : undefined,
                 folder_id: String(activeFolderId),
+                hide: false,
               },
             },
           }}

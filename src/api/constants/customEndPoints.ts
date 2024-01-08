@@ -15,4 +15,6 @@ export enum CustomEndPoints {
   Restor = "restore",
   Statistic = "statistic",
   RecentActivies = "recent-activities",
+  FileRequests = 'file-requests',
+  RequestHandle  = 'request-handle'
 }

@@ -263,6 +263,7 @@ function ShowFolder() {
                 items_per_page: perPage,
                 search: search !== "" ? search : undefined,
                 folder_id: String(activeFolderId),
+                hide: false,
               },
             },
           }}

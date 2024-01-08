@@ -1,28 +1,23 @@
 import { Col, Row } from "antd";
-import SearchInput from "features/common/components/Inputs/searchInput/SearchInput";
-import styles from "./styles.module.scss";
+import { CustomEndPoints } from "api/constants/customEndPoints";
 import { Spin, Typography } from "components";
-import { FolderLayout } from "services/folderService";
+import { FadeInEffect } from "components/templates/FadeInEffect";
+import SearchInput from "features/common/components/Inputs/searchInput/SearchInput";
 import {
   useAppDispatch,
   useAppSelector,
 } from "features/common/hooks/useReduxHooks";
+import { RecentActivityRow } from "features/dashboard/components/molecules/RecentActivityRow";
 import { dashboardSliceActions } from "features/dashboard/redux/slices/dashboardSlice";
-import { useCallback } from "react";
 import { DashboardPagesType } from "features/dashboard/types/dashboardPages.type";
 import { debounce } from "lodash";
-import { FolderCard } from "components/molecules/cards/FolderCard";
-import { dateFormatter } from "helpers/dateFormatter";
-import { PagesRotes } from "router/constants/pagesRoutes";
 import { useNavigate } from "react-router-dom";
 import {
   FileServiceName,
   IFileEntity,
   useFileApi,
 } from "services/filesService";
-import { RecentActivityRow } from "features/dashboard/components/molecules/RecentActivityRow";
-import { CustomEndPoints } from "api/constants/customEndPoints";
-import { FadeInEffect } from "components/templates/FadeInEffect";
+import styles from "./styles.module.scss";
 
 function MyFolders() {
   const navigate = useNavigate();
@@ -44,6 +39,9 @@ function MyFolders() {
     {
       getAllConfig: {
         enabled: true,
+        params: {
+          hide: false,
+        },
       },
     },
     {

@@ -18,3 +18,19 @@
     }
   }
 }
+.titleRow {
+  width: 800px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+  .fileRequests {
+    font-size: 35px;
+    color: $icon_color;
+
+    cursor: pointer;
+    &:hover {
+      color: $primary_color_1;
+    }
+  }
+}

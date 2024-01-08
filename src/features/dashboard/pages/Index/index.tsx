@@ -51,8 +51,9 @@ function DashbaordIndexPage() {
         enabled: true,
         params: {
           items_per_page: 3,
+          hide: false,
+          limit: 3,
         },
-        limit: 3,
       },
     },
     {
@@ -143,6 +144,7 @@ function DashbaordIndexPage() {
                     page: 1,
                     items_per_page: 2,
                     search: search !== "" ? search : undefined,
+                    hide: false,
                   },
                 },
               }}
