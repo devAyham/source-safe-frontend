@@ -15,13 +15,15 @@ import { useCallback, useEffect, useState } from "react";
 import { useQueryClient } from "react-query";
 import { useNavigate, useParams } from "react-router-dom";
 import { PagesRotes } from "router/constants/pagesRoutes";
-import { FileLayout } from "services/filesService";
+import { FileLayout, FileServiceName } from "services/filesService";
 import { FileStatusEnum } from "services/filesService/interfaces/Entity.interface";
 import styles from "./styles.module.scss";
 import { MultiCheckinFile } from "features/dashboard/components/molecules/MultiCheckInFiles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FadeInEffect } from "components/templates/FadeInEffect";
+import { generateEntityCollectionQueryKey } from "api/helpers/queryKeysFactory";
+import { AddFileModal } from "features/dashboard/components/organismis";
 
 function ShowFolder() {
   const resource: SharedWithMePagesType = "showFolder";
@@ -29,7 +31,7 @@ function ShowFolder() {
   const dispatch = useAppDispatch();
   const queryClient = useQueryClient();
   const [multiCheckInOpen, setMultiCheckInOpen] = useState(false);
-
+  const [open, setOpen] = useState(false);
   const { id } = useParams<{ id: string }>();
   const {
     contentInfo: { activeFolderId, activeFileId },
@@ -78,6 +80,26 @@ function ShowFolder() {
   );
   return (
     <>
+      <AddFileModal
+        modalProps={{
+          open,
+          onCancel: () => {
+            setOpen(false);
+          },
+        }}
+        formProps={{
+          folder_id: Number(id),
+          onSuccess: () => {
+            setOpen(false);
+            queryClient.invalidateQueries(
+              generateEntityCollectionQueryKey({
+                entityType: FileServiceName,
+                params: {},
+              })
+            );
+          },
+        }}
+      />
       <MultiCheckinFile
         files_ids={selectedRows ?? []}
         open={multiCheckInOpen}
@@ -113,7 +135,10 @@ function ShowFolder() {
                   block
                   shape="round"
                   icon={<FontAwesomeIcon icon={faPlus} />}
-                  disabled={true}
+                  onClick={() => {
+                    setOpen(true);
+                  }}
+                  disabled={selectionMode}
                 >
                   Add new File
                 </Button>
