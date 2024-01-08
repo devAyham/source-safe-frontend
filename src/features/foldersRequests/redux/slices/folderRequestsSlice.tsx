@@ -15,7 +15,7 @@ const initialState: IFolderRequestsInitialState = {
  * @namespace foldersRequestsSlice
  */
 const foldersRequestsSlice = createSlice({
-  name: "dashboard",
+  name: "folderRequests",
   initialState,
   reducers: {
     Reset: () => ({ ...initialState }),
