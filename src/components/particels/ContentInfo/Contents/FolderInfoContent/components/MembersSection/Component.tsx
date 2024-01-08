@@ -21,6 +21,7 @@ function Component({ members }: Props) {
   const {
     contentInfo: { activeFolderId },
   } = useAppSelector((state) => state.sharedData);
+  const { user } = useAppSelector((state) => state.auth);
 
   const owner_id = members?.reduce((accumulator: EntityIdType, member) => {
     if (member.role === "admin") {
@@ -53,19 +54,22 @@ function Component({ members }: Props) {
       />
       <div className={styles.container}>
         <Space className={styles.totalRow}>
-          <Button
-            shape="round"
-            type="primary"
-            size="small"
-            icon={
-              <FontAwesomeIcon icon={faPlusCircle} className={styles.icon} />
-            }
-            onClick={() => {
-              setOpen(true);
-            }}
-          >
-            Add new
-          </Button>
+          {owner_id == user?.id && (
+            <Button
+              shape="round"
+              type="primary"
+              size="small"
+              icon={
+                <FontAwesomeIcon icon={faPlusCircle} className={styles.icon} />
+              }
+              onClick={() => {
+                setOpen(true);
+              }}
+            >
+              Add new
+            </Button>
+          )}
+
           <Typography.SubTitle level={5}>
             {members.length} member
           </Typography.SubTitle>
