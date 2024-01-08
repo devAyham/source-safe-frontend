@@ -1,5 +1,5 @@
 import { UploadOutlined } from "@ant-design/icons";
-import { Upload, message } from "antd";
+import { Input, Upload, message } from "antd";
 import { CustomEndPoints } from "api/constants/customEndPoints";
 import { generateEntityCollectionQueryKey } from "api/helpers/queryKeysFactory";
 import { Button, Modal } from "components";
@@ -18,6 +18,7 @@ function Component({ file_id, disabled }: Props) {
   const onCancel = () => {
     setOpen(false);
   };
+  const [versionName, setVersionName] = useState("");
 
   return (
     <>
@@ -31,6 +32,14 @@ function Component({ file_id, disabled }: Props) {
         width={410}
         destroyOnClose
       >
+        <Input
+          style={{
+            marginBlock: 10,
+          }}
+          placeholder="Enter the version name"
+          value={versionName}
+          onChange={(e) => setVersionName(e.target.value)}
+        />
         <Upload.Dragger
           name="file"
           multiple={false}
@@ -39,6 +48,9 @@ function Component({ file_id, disabled }: Props) {
           action={`${process.env.REACT_APP_BASE_API_URL}${FileServiceName}/${file_id}/${CustomEndPoints.CheckOut}`}
           headers={{
             Authorization: `Bearer ${accessToken}`,
+          }}
+          data={{
+            version_name: versionName,
           }}
           onChange={(info) => {
             if (info.file.status === "done") {

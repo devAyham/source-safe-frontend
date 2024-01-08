@@ -19,6 +19,7 @@ function Component({
   size,
   user,
   created_at,
+  version_name,
 }: Props) {
   const navigate = useNavigate();
   const fileType = fileCategory[transformExtentionToFileType(extension)];
@@ -34,7 +35,7 @@ function Component({
         </div>
       </div>
       <div className={`${styles.detailsRow} ${latest && styles.latest}`}>
-        <div className={styles.subTitle}>Version Name : {name}</div>
+        <div className={styles.subTitle}>Version Name : {version_name}</div>
         <div className={styles.avatarGroup}>
           <Avatar
             size={40}
