@@ -37,7 +37,7 @@ function StructuredCard({
     <Atropos {...atroposProps}>
       <Row className={styles.cardContainer} onClick={onDeflautClick}>
         <Col span={24} className={styles.logoAndMembersContainer}>
-          <div className={styles.logoContainer} data-atropos-offset="5">
+          <div className={styles.logoContainer} data-atropos-offset="15">
             <Image src={icon} className={styles.logo} />
           </div>
           <div className={styles.membersContainer}>
@@ -66,10 +66,14 @@ function StructuredCard({
           </div>
         </Col>
         <Col span={24} className={styles.contentContainer}>
-          <Typography.SubTitle level={3} className={styles.name}>
+          <Typography.SubTitle
+            level={3}
+            className={styles.name}
+            data-atropos-offset="5"
+          >
             {folderName}
           </Typography.SubTitle>
-          <div className={styles.sizeInfo}>
+          <div className={styles.sizeInfo} data-atropos-offset="1">
             <Space className={styles.fileCountContainer}>
               <FontAwesomeIcon icon={faFileLines} />
               <Typography.Text className={styles.fileCount}>
@@ -80,7 +84,7 @@ function StructuredCard({
               {convertFileSize(size, filesSizeType)}
             </Typography.SubTitle>
           </div>
-          <div className={styles.createAtContainer}>
+          <div className={styles.createAtContainer} data-atropos-offset="1">
             <Space>
               <FontAwesomeIcon icon={faClock} />
               <Typography.Text className={styles.createAtText}>
