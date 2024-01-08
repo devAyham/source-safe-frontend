@@ -41,6 +41,7 @@ function MyFolders() {
         enabled: true,
         params: {
           hide: false,
+          limit : 1000
         },
       },
     },
