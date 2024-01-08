@@ -22,9 +22,11 @@
     color: $white;
     transform: scale(1.02);
   }
+  .nameContianer{
+    width: 220px;
+  }
   .item {
-    // background-color: red;
-    width: 18%;
+    width: 20%;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;

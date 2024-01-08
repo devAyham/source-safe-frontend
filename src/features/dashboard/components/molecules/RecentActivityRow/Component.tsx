@@ -46,7 +46,7 @@ function Component({
         id === activeFileId && styles.active
       }`}
     >
-      <div className={styles.item}>
+      <div className={styles.nameContianer}>
         <EntityWithAvatarInfo
           title={name}
           avatarProps={{
