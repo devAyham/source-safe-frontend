@@ -30,7 +30,7 @@ export const useHandle = (): HandleReturnType => {
   const handleError = (error: any, navigateTo?: string) => {
     const statusCode = error?.response?.status;
     const errorMessage = error?.response?.data?.message;
-    if (error.response.config.method === "get") {
+    if (error?.response?.config?.method === "get") {
       dispatch(
         SetError({
           code: statusCode,
