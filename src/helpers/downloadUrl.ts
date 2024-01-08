@@ -16,13 +16,17 @@ export const downloadFile = (url: string): string => {
  * @param {string} url
  * @returns {Promise<void>}
  */
-const downloadURL = async (url: string): Promise<void> => {
+const downloadURL = async (
+  url: string,
+  callBackFun?: () => void
+): Promise<void> => {
   return request({
     url: downloadFile(url),
     method: "GET",
   })
     .then((res) => {
       console.log(res);
+      callBackFun?.();
       const link = document.createElement("a");
       link.setAttribute("download", "");
       link.href = res.data;

@@ -4,12 +4,13 @@ import styles from "./styels.module.scss";
 import { transformExtentionToFileType } from "helpers/transfromExtentionToFileType";
 import { fileCategory } from "data/FileCategory";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faDownload } from "@fortawesome/free-solid-svg-icons";
+import { faDownload, faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 import downloadURL from "helpers/downloadUrl";
 import { convertFileSize } from "helpers/convertFileSize";
 import moment from "moment";
 import { useAppSelector } from "features/common/hooks/useReduxHooks";
+import { useState } from "react";
 
 function Component({
   latest,
@@ -23,7 +24,13 @@ function Component({
 }: Props) {
   const navigate = useNavigate();
   const fileType = fileCategory[transformExtentionToFileType(extension)];
+  const [loading, setLoading] = useState(false);
   const { filesSizeType } = useAppSelector((state) => state.sharedData);
+  const makeLoaderAnimate = () => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 5000);
+  };
   return (
     <div className={styles.container}>
       <div className={`${styles.titleRow} ${latest && styles.latest}`}>
@@ -52,14 +59,22 @@ function Component({
           <Avatar
             size={40}
             shape="square"
-            icon={<FontAwesomeIcon icon={faDownload} />}
+            icon={
+              <FontAwesomeIcon
+                icon={loading ? faSpinner : faDownload}
+                spin={loading}
+              />
+            }
             style={{
               background: "whitesmoke",
               color: fileType.color,
             }}
             className={styles.download}
             onClick={() => {
-              downloadURL(path);
+              if (!loading) {
+                downloadURL(path, makeLoaderAnimate);
+                setLoading(true);
+              }
             }}
           ></Avatar>
         </div>
