@@ -68,8 +68,11 @@ function GetFileRequestTableColumns(): GenericColumnsType<{
       dataIndex: ["file", "latest_size"],
       key: "size",
       align: "center",
-      render(value) {
-        return convertFileSize(value, filesSizeType);
+      render(value, record) {
+        return convertFileSize(
+          (record.file as any).FileVersion[0].size,
+          filesSizeType
+        );
       },
     },
     {

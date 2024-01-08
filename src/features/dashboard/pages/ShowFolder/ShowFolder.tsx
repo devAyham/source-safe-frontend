@@ -112,12 +112,25 @@ function ShowFolder() {
       },
     },
     {
-      getAllEndpoint: `${FolderServiceName}/${activeFolderId}/${CustomEndPoints.FileRequests}`,
+      getAllEndpoint: `${FolderServiceName}/${String(id)}/${
+        CustomEndPoints.FileRequests
+      }`,
     }
   );
+
   return (
     <>
       <FileRequestsModal
+        // onSuccess={() => {
+        //   queryClient.invalidateQueries(
+        //     generateEntityCollectionQueryKey({
+        //       entityType: `${FolderServiceName}/${String(id)}/${
+        //         CustomEndPoints.FileRequests
+        //       }` as any,
+        //       params: {},
+        //     })
+        //   );
+        // }}
         fileRequests={data?.data.data ?? []}
         modalProps={{
           open: openRequests,
@@ -173,7 +186,7 @@ function ShowFolder() {
                   Folder Informations & Files
                 </Typography.Title>
               </span>
-              <Badge count={data?.data.data.length}>
+              <Badge count={data?.data?.data?.length}>
                 <FontAwesomeIcon
                   onClick={() => {
                     setOpenRequests(true);

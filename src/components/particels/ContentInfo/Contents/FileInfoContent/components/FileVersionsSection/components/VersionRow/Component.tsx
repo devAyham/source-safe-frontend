@@ -42,7 +42,7 @@ function Component({
         </div>
       </div>
       <div className={`${styles.detailsRow} ${latest && styles.latest}`}>
-        <div className={styles.subTitle}>Version Name : {version_name}</div>
+        <div className={styles.subTitle}>Version Name : {name}</div>
         <div className={styles.avatarGroup}>
           <Avatar
             size={40}
