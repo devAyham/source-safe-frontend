@@ -52,6 +52,7 @@ function DashbaordIndexPage() {
         params: {
           items_per_page: 3,
         },
+        limit: 3,
       },
     },
     {
