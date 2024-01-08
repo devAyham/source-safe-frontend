@@ -1,4 +1,6 @@
 @use "/src/styles/variables/main_colors_vars.module" as *;
+@use "/src/styles/variables/app_colors_vars.module" as *;
+
 .page {
   width: 100%;
   gap: 20px;
@@ -14,6 +16,18 @@
       &:hover {
         color: $title_color;
       }
+    }
+  }
+}
+.avtiveRow {
+  :global(td) {
+    background-color: $table_row_active_color !important;
+    color: $white !important;
+    transition: all 200ms !important;
+    & * {
+      background-color: $table_row_active_color !important;
+      color: $white !important;
+      transition: all 200ms !important;
     }
   }
 }

@@ -71,6 +71,12 @@ function MyCheckIns() {
           <FileLayout
             tableProps={{
               columns: GetCheclInFileTableColumns(),
+              onRow: (record) => {
+                return {
+                  className:
+                    record.id === activeFileId ? styles.avtiveRow : undefined,
+                };
+              },
             }}
             actions={{
               mode: "menu",
