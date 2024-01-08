@@ -11,5 +11,13 @@ export function convertFileSize(
   };
 
   const convertedSize = fileSizeInBytes / units[unitOption];
-  return `${convertedSize.toFixed(1)} ${unitOption}`;
+  let resualt;
+  if (convertedSize > 1) {
+    resualt = convertedSize.toFixed(1);
+  } else {
+    resualt = convertedSize.toFixed(4);
+  }
+  console.log(convertedSize);
+
+  return `${resualt.toString()} ${unitOption}`;
 }
