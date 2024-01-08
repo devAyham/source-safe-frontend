@@ -30,7 +30,7 @@ export default class ApiProvider {
         if (
           error?.response?.status === 401 &&
           !prevRequest?.sent &&
-          tokens.refreshToken
+          tokens?.refreshToken
         ) {
           prevRequest.sent = true;
           const newTokens = await getNewTokens();
