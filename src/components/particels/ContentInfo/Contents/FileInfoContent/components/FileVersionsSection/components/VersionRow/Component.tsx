@@ -36,7 +36,7 @@ function Component({
       <div className={`${styles.titleRow} ${latest && styles.latest}`}>
         <div className={styles.title}>{user.name} upload new file</div>
         <div className={styles.date}>
-          <Tooltip title={moment("2023-12-29T12:34:21").fromNow()}>
+          <Tooltip title={moment(created_at).fromNow()}>
             {moment(created_at).fromNow()}
           </Tooltip>
         </div>
